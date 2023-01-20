@@ -11,25 +11,25 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/component/alert',
-    title: 'Alert',
+    path: '/dashboard/doc-viewer',
+    title: 'Doc-viewer',
     icon: 'bi bi-bell',
     class: '',
     extralink: false,
     submenu: []
   },
   {
-    path: '/component/badges',
-    title: 'Badges',
-    icon: 'bi bi-patch-check',
+    path: '/dashboard/create-file',
+    title: 'Create File',
+    icon: 'bi bi-pencil-square',
     class: '',
     extralink: false,
     submenu: []
   },
   {
-    path: '/component/buttons',
-    title: 'Button',
-    icon: 'bi bi-hdd-stack',
+    path: '/dashboard/receive-file',
+    title: 'Receive File',
+    icon: 'bi bi-file-text',
     class: '',
     extralink: false,
     submenu: []

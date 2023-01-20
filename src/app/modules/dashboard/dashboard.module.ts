@@ -10,6 +10,11 @@ import { FeedsComponent } from './components/feeds/feeds.component';
 import { TopSellingComponent } from './components/top-selling/top-selling.component';
 import { TopCardsComponent } from './components/top-cards/top-cards.component';
 import { BlogCardsComponent } from './components/blog-cards/blog-cards.component';
+import { SharedUtilityModule } from '../shared/modules/shared-util.module';
+import { FileInfoComponent } from './components/file-info/file-info.component';
+import { CreateFileComponent } from './components/create-file/create-file.component';
+import { ReceiveFileComponent } from './components/receive-file/receive-file.component';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 
 
@@ -23,11 +28,17 @@ import { BlogCardsComponent } from './components/blog-cards/blog-cards.component
     FeedsComponent,
     TopSellingComponent,
     TopCardsComponent,
-    BlogCardsComponent
+    BlogCardsComponent,
+    FileInfoComponent,
+    CreateFileComponent,
+    ReceiveFileComponent,
+    
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule ,
+    SharedUtilityModule,
+    AgGridModule.withComponents([FileInfoComponent]),
      ]
 })
 export class DashboardModule { }
