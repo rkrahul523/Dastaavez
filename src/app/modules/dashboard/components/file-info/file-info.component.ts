@@ -18,6 +18,8 @@ export class FileInfoComponent implements OnInit {
   gridApi: GridApi
   gridColumnApi: ColumnApi
 
+  pageSize=10;
+
   @ViewChild('file-info') grid!: AgGridAngular;
 
   public defaultColDef: ColDef = {
@@ -31,7 +33,9 @@ export class FileInfoComponent implements OnInit {
     enablePivot: false,
     sortable: false,
     suppressMenu: true ,
+    resizable: true,
     filter: false,
+    
   };
   public autoGroupColumnDef: ColDef = {
     minWidth: 20,
@@ -67,7 +71,8 @@ gridOptions : GridOptions = {
     onRowClicked: event => console.log('A row was clicked'),
     onColumnResized: event => console.log('A column was resized'),
     onGridReady: event => console.log('The grid is now ready'),
-
+    suppressHorizontalScroll: false,
+    suppressColumnVirtualisation:true
     // CALLBACKS
    // getRowHeight: () => 25
 }
@@ -75,25 +80,18 @@ gridOptions : GridOptions = {
 
   rowData = [
     {
-      product: "Toyota Celica",
-      currentPrice: {amount: 29000, currency: 'USD'},
-      newPrice: {amount: 30000, currency: 'USD'},
-      country: "Japan"
-    },
-    {
-      product: "Ford Mondeo",
-      currentPrice: {amount: 36000, currency: 'USD'},
-      newPrice: {amount: 38000, currency: 'USD'},
-      currency: '$',
-      country: "USA"
-    },
-    {
-      product: "Porsche Boxster",
-      currentPrice: {amount: 62000, currency: 'EUR'},
-      newPrice: {amount: 60000, currency: 'EUR'},
-      currency: '€',
-      country: "Germany"
-    }
+      docket:'NITP/ee',
+      fts_id: 'FTS01',
+      file_title:'Project Purchase',
+      file_status: 'created',
+      document_type: 'Envelope',
+      subject_area: 'EE',
+      priority: 'Normal',
+      file_station: 'Across Department',
+      creation_date: '25/01/2023 17:53',
+      sent_to: 'EE',
+      sent_date: '26/01/2023 17:53'
+  }
   ];
 constructor( private ngbModal : NgbModal,
   ) {}
@@ -103,10 +101,16 @@ constructor( private ngbModal : NgbModal,
   ngOnInit(): void {
   }
 
+
+createColumns(){
+
+}
+
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-    this.gridApi.sizeColumnsToFit();
+    this.gridColumnApi.autoSizeAllColumns();
+    this.onPageSizeChanged();
   }
 
   exportAsExcel(filename?: string): void {
@@ -147,5 +151,12 @@ const modelRef = this.ngbModal.open(CreateFileComponent,{
 });
 
 }
+
+
+onPageSizeChanged() {
+  this.gridApi.paginationSetPageSize(Number(this.pageSize));
+}
+
+
 
 }

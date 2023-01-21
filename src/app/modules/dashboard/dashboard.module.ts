@@ -15,6 +15,8 @@ import { FileInfoComponent } from './components/file-info/file-info.component';
 import { CreateFileComponent } from './components/create-file/create-file.component';
 import { ReceiveFileComponent } from './components/receive-file/receive-file.component';
 import { AgGridModule } from '@ag-grid-community/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -37,7 +39,11 @@ import { AgGridModule } from '@ag-grid-community/angular';
   imports: [
     CommonModule,
     DashboardRoutingModule ,
+    FormsModule,
+    ReactiveFormsModule,
     SharedUtilityModule,
+    NgbModule,
+    NgbDropdownModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]
 })

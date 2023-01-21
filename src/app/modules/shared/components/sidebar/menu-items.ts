@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/dashboard/doc-viewer',
-    title: 'Doc-viewer',
+    title: 'Track File',
     icon: 'bi bi-bell',
     class: '',
     extralink: false,

@@ -18,6 +18,10 @@ import { FullComponent } from './modules/shared/full/full.component';
 import { NavigationComponent } from './modules/shared/components/header/navigation.component';
 import { SidebarComponent } from './modules/shared/components/sidebar/sidebar.component';
 //import { AgGridModule } from "@ag-grid-community/angular";
+
+
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 1,
@@ -42,6 +46,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     NgbModule,
     PerfectScrollbarModule,
+    NgbDropdownModule
    // AgGridModule.withComponents([]),
   ],
   providers: [
