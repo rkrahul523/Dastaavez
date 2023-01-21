@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AllModules } from '@ag-grid-enterprise/all-modules';
-import { GridApi, ColumnApi } from '@ag-grid-community/core';
+import { GridApi, ColumnApi, GridOptions, ColDef, SideBarDef } from '@ag-grid-community/core';
+import { AgGridAngular } from '@ag-grid-community/angular';
+import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -13,45 +15,61 @@ export class FileInfoComponent implements OnInit {
 
   gridApi: GridApi
   gridColumnApi: ColumnApi
-  columnDefs = [
-    {
-      headerName: "Product",
-      field: "product",
-    },
-    {
-      headerName: "Country",
-      field: "country"
-    },
-    {
-      headerName: "Current price",
-      colId: 'currentPrice',
-      field: 'currentPrice',
-      /* valueFormatter will not be included in the export file, processCellCallback in exportAsExcel() will handle formatting for this column */
-      valueFormatter:(params: any) => {
-        const currentPrice = params.data.currentPrice;
-        return this.formatWithCurrency(currentPrice.amount, currentPrice.currency);
-      }  
-    },
-    {
-      headerName: "New price",
-      colId: 'newPrice',
-      field: 'newPrice.amount',
-      /* valueFormatter will not be included in the export file */
-      valueFormatter:(params: any) => { 
-        const newPrice = params.data.newPrice;
-        return this.formatWithCurrency(newPrice.amount, newPrice.currency);
-      }  
-    },
-    {
-      /* this column is used only in the export file, it is hidden from the table and all menus */
-      headerName: 'Currency',
-      colId: 'currency',
-      field: 'newPrice.currency',
-      hide: true,
-      suppressColumnsToolPanel: true,
-      suppressFiltersToolPanel: true
-    },
-  ];
+
+  @ViewChild('file-info') grid!: AgGridAngular;
+
+  public defaultColDef: ColDef = {
+    flex: 1,
+    minWidth: 40,
+    // allow every column to be aggregated
+    enableValue: true,
+    // allow every column to be grouped
+    enableRowGroup: true,
+    // allow every column to be pivoted
+    enablePivot: false,
+    sortable: false,
+    suppressMenu: true ,
+    filter: false,
+  };
+  public autoGroupColumnDef: ColDef = {
+    minWidth: 20,
+  };
+  public sideBar: SideBarDef | string | string[] | boolean | null = {
+    toolPanels: [
+        {
+            id: 'columns',
+            labelDefault: 'Columns',
+            labelKey: 'columns',
+            iconKey: 'columns',
+            toolPanel: 'agColumnsToolPanel',
+            toolPanelParams: {
+                suppressRowGroups: true,
+                suppressValues: true,
+                supressSideButtons: false,
+                supressColumnFilter: false,
+                supressColumnSelectAll: false,
+                supressColumnExpandAll: false,
+            }
+        }
+    ]
+}
+gridOptions : GridOptions = {
+    // PROPERTIES
+    // Objects like myRowData and myColDefs would be created in your application
+    
+    pagination: true,
+    rowSelection: 'multiple',
+
+    // EVENTS
+    // Add event handlers
+    onRowClicked: event => console.log('A row was clicked'),
+    onColumnResized: event => console.log('A column was resized'),
+    onGridReady: event => console.log('The grid is now ready'),
+
+    // CALLBACKS
+   // getRowHeight: () => 25
+}
+  columnDefs = FILE_INFO_COLUMS;
 
   rowData = [
     {
