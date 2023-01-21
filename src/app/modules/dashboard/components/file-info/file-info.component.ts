@@ -3,6 +3,8 @@ import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridApi, ColumnApi, GridOptions, ColDef, SideBarDef } from '@ag-grid-community/core';
 import { AgGridAngular } from '@ag-grid-community/angular';
 import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateFileComponent } from '../create-file/create-file.component';
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -93,7 +95,8 @@ gridOptions : GridOptions = {
       country: "Germany"
     }
   ];
-
+constructor( private ngbModal : NgbModal,
+  ) {}
   // constructor( private gridApi: GridApi,
   // private  gridColumnApi: ColumnApi) {}
 
@@ -135,6 +138,14 @@ formatWithCurrency(amount: number, code: string): any {
     case 'EUR': return amount + ' €';
     return amount + '';
   }
+}
+createfile(){
+const modelRef = this.ngbModal.open(CreateFileComponent,{
+  size:"xl",
+  keyboard:false,
+  backdrop:true
+});
+
 }
 
 }
