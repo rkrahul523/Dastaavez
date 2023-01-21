@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-file',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngbModal: NgbActiveModal
+  ) { }
 
   ngOnInit(): void {
   }
-
+  close() {
+    this.ngbModal.close();
+  }
 }

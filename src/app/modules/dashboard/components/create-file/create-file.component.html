@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <header>
-                <div>CREATE FILE</div>
+                <div class="mb-3">CREATE FILE</div>
             </header>
         </div>
         <div class="col-12">
@@ -15,11 +15,11 @@
                         </option>
                     </select>
                 </div>
-                <div class="ml-3">
-                    <label for="address">
+                <div class="col-4">
+                    <label class="mb-0" for="address">
                         Subject/File Name
                     </label>
-                    <input type="text" class="custom-select">
+                    <input type="text" class="form-control">
                 </div>
             </div>
             <div class="row">
@@ -50,6 +50,11 @@
                         </option>
                     </select>
                 </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn ml-3 col-1 btn-primary">Submit</button>
+                
+                <button type="button" class="btn ml-auto col-1 btn-primary" (click) ="close()">Cancel</button>
             </div>
         </div>
     </div>
