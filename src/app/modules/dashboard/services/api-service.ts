@@ -23,6 +23,8 @@ export class ApiService {
    getCreatedFilesURL='get-created-files';
    createFileURL='create-file';
    trackFileURL='track-file';
+   getUerDetailsURL='get-user-details';
+
 
 
 
@@ -42,6 +44,9 @@ export class ApiService {
    trackFile(fts_id: any){
        return this.http.post(this.apiURL+this.trackFileURL, { fts_id })
    }
+
+
+   
 
 
 

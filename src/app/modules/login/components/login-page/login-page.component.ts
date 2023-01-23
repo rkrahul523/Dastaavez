@@ -59,6 +59,9 @@ export class LoginPageComponent implements OnInit {
 
 
 
+    },
+    (err)=>{
+      this.loaderFlag = false;
     });
   }
 

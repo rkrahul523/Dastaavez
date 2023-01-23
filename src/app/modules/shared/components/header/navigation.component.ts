@@ -1,6 +1,8 @@
-import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
+import { ApiService } from 'src/app/modules/dashboard/services/api-service';
 
 declare var $: any;
 
@@ -8,14 +10,21 @@ declare var $: any;
   selector: 'app-navigation',
   templateUrl: './navigation.component.html'
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent implements AfterViewInit, OnInit {
   @Output() toggleSidebar = new EventEmitter<void>();
 
   public config: PerfectScrollbarConfigInterface = {};
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {
+  userDetails= this.authentication.user
+  //{u_id: null, name: '', department :''}
+
+  constructor(
+    private modalService: NgbModal,
+    private authentication: AuthenticationService,
+    private apiService: ApiService
+    ) {
   }
 
   // This is for Notifications
@@ -110,6 +119,29 @@ export class NavigationComponent implements AfterViewInit {
     code: 'de',
     icon: 'de'
   }]
+
+  ngOnInit(){
+    if(localStorage.getItem('token')){
+       this.getUserDetails(localStorage.getItem('token'))
+    }else{
+      this.logout();
+    }
+
+  }
+
+
+  private getUserDetails(token: any){
+    this.authentication.getUserDetails(token).subscribe((res: any)=>{
+      this.authentication.user.next(res.data);
+     //  this.userDetails=res;
+    },(err: any)=>{
+      this.logout();
+    })
+  }
+
+  logout(){
+    this.authentication.logout();
+  }
 
   ngAfterViewInit() { }
 }

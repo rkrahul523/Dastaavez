@@ -4,11 +4,17 @@
 <div class="d-flex justify-content-between">
 <ul class="navbar-nav float-start me-auto">
   <li class="nav-item">
+    <span class="nav-link">
+      Department:  <strong>
+        {{(userDetails | async)?.department}}</strong>
+    </span>
+  </li>
+  <!-- <li class="nav-item">
     <a class="nav-link waves-effect waves-dark" href="/dashboard"> Starter </a>
   </li>
   <li class="nav-item">
     <a class="nav-link waves-effect waves-dark" href="/about"> About </a>
-  </li>
+  </li> -->
   <!-- ============================================================== -->
   <!-- create new -->
   <!-- ============================================================== -->
@@ -52,10 +58,10 @@
       <img
         src="assets/images/users/user4.jpg"
         alt="user"
-        class="rounded-circle"
+        class="rounded-circle mr-2"
         width="31"
       />
-      <span class="ms-2">John Deo</span>
+      <span class="ms-2">{{(userDetails | async)?.name}}</span>
     </a>
     <div class="dropdown-menu-right" ngbDropdownMenu>
       <a class="dropdown-item" href="javascript:void(0)"> My Profile</a>
@@ -64,7 +70,7 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="javascript:void(0)"> Account Setting</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="javascript:void(0)"> Logout</a>
+      <a class="dropdown-item" href="javascript:void(0)" (click)="logout()"> Logout</a>
     </div>
   </li>
   <!-- ============================================================== -->

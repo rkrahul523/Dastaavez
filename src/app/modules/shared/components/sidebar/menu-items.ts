@@ -4,7 +4,7 @@ import { ROUTE_PATH } from '../../models/route-path';
 export const ROUTES: RouteInfo[] = [
  
   {
-    path:  `/${ROUTE_PATH.DASHBOARD}`,
+    path:  `${ROUTE_PATH.DASHBOARD}`,
     title: 'Dashboard',
     icon: 'bi bi-speedometer2',
     class: '',
@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path:  `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.TRACK_FILE}`,
+    path:  `${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.TRACK_FILE}`,
     title: 'Track File',
     icon: 'bi bi-bell',
     class: '',
@@ -20,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.CREATE_FILE}`,
+    path: `${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.CREATE_FILE}`,
     title: 'Create File',
     icon: 'bi bi-pencil-square',
     class: '',
@@ -28,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.RECEIVE_FILE}`,
+    path: `${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.RECEIVE_FILE}`,
     title: 'Receive File',
     icon: 'bi bi-file-text',
     class: '',

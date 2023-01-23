@@ -1,36 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { HttpResponse, HttpClientModule, HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ROUTE_PATH } from '../../shared/models/route-path';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  fakeUsername: string = "username";
-  fakePassword: string = "password";
+ 
   apiURL=!window.location.origin.includes('localhost') ?
   'https://bbtracker.onrender.com/'
   :
   'http://localhost:5000/';;
   loginURL='validate-user-details';
 
-  constructor(private http: HttpClient) { }
+  user=new BehaviorSubject<any>(null);
+  username=null;
+  getUerDetailsURL='get-user-details';
+
+  constructor(
+    private http: HttpClient,
+    private route: Router
+    ) { }
 
   login(loginData: any): Observable<any> {
     // Mock a successful call to an API server.
-
-      return of({ status: true, message: 'Login successful' , token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ1'});
-    
-      return of(new HttpResponse({ status: 401 }));
-    
-
-    return this.http.post(this.apiURL+this.loginURL, { loginData})
+    this.username= loginData.username;
+    return this.http.post(this.apiURL+this.loginURL,  loginData)
  
   }
 
   logout(): void {
     localStorage.removeItem("token");
+    this.route.navigateByUrl(`/${ROUTE_PATH.LOGIN}`)
   }
 
   isUserLoggedIn(): boolean {
@@ -39,4 +43,9 @@ export class AuthenticationService {
     }
     return false;
   }
+
+  getUserDetails(token : any){
+      console.log("in get userdetails", this.username )
+    return this.http.post(this.apiURL+this.getUerDetailsURL, { token, username:this.username })
+   }
 }
