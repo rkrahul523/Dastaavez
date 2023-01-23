@@ -47,7 +47,8 @@
     "ng2-charts": "^2.4.2",
     "@ag-grid-community/angular": "24.0.0",
     "@ag-grid-community/core": "24.0.0",
-    "@ag-grid-enterprise/all-modules": "24.0.0"
+    "@ag-grid-enterprise/all-modules": "24.0.0",
+   "ngx-toastr":"14.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.17",

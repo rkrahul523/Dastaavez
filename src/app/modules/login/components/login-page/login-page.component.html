@@ -15,13 +15,13 @@
                 </div>
                 
                 
-                    <div class="right mt-auto">
+                    <div class="right mt-auto" [formGroup]="loginForm">
                     <h5>Login</h5>
                     <!-- <p>Don't have an account? <a href="#">Creat Your Account</a> it takes less than a minute</p> -->
                     <div class="inputs">
-                        <input type="text" placeholder="user name">
+                        <input type="text" placeholder="Username" formControlName="username" >
                         <br>
-                        <input type="password" placeholder="password">
+                        <input type="password" placeholder="Password" formControlName="password" (keydown.enter)="login()">
                     </div>
                         
                         <br><br>
@@ -32,14 +32,21 @@
                    <input type="checkbox" name="item" checked/> 
                    <span class="text-checkbox">Remember me</span> 
                </label> -->
-                        <p>forgot password?</p>
+                        <p>Forgot Password?</p>
                     </div>
-                        
                         <br>
-                        <button>Login</button>
+                        <div class="login-button">
+                            <button class="btn btn-primary" *ngIf="!loaderFlag" (click)="login()">Login </button>
+                            <div class="spinner-border text-primary loading-spinner" role="status" *ngIf="loaderFlag">
+                                <span class="sr-only">Loading...</span>
+                              </div>
+                        </div>
+                        
                 </div>
                 
             </div>
         </div>
     </div>
     </div>
+
+  

@@ -4,6 +4,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { HeaderComponent } from './components/header/header.component';
 import { FileInfoComponent } from './components/file-info/file-info.component';
 import { ReceiveFileComponent } from './components/receive-file/receive-file.component';
+import { TrackFileComponent } from './components/track-file/track-file.component';
+import { ROUTE_PATH } from '../shared/models/route-path';
 
 const routes: Routes = [
   {
@@ -11,15 +13,15 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
-    path: 'doc-viewer',
-    component: HeaderComponent
+    path: ROUTE_PATH.TRACK_FILE,
+    component: TrackFileComponent
   },
   {
-    path: 'create-file',
+    path: ROUTE_PATH.CREATE_FILE,
     component: FileInfoComponent
   },
   {
-    path: 'receive-file',
+    path: ROUTE_PATH.RECEIVE_FILE,
     component: ReceiveFileComponent
   },
   

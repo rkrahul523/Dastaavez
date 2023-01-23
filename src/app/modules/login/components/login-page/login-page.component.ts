@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
+import { ROUTE_PATH } from 'src/app/modules/shared/models/route-path';
 
 @Component({
   selector: 'app-login-page',
@@ -7,18 +12,72 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  viewer = 'google';
-  selectedType = 'jpg'; //'docx';
-  doc = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-  // doc = 'https://files.fm/down.php?i=axwasezb&n=SSaD.docx';
-  //doc = 'https://files.fm/down.php?i=sdymh2y6';
-//doc='https://picsum.photos/200/300'
-  // https://github.com/guigrpa/docx-templates#readme
 
 
-  constructor() { }
+  loginForm = this.fb.group({
+    username: ['', Validators.required],
+    password:  ['', Validators.required],
+  });
+
+  loaderFlag: boolean;
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private toastr: ToastrService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
+
+  login(): void {
+    this.loaderFlag = true;
+    if (this.loginForm.invalid) {
+      this.toastr.error('Please fill Correct Details', 'Login Error', {
+        timeOut: 3000,
+      });
+      this.loaderFlag = false;
+      return;
+    }
+
+
+    this.authenticationService.login(this.loginForm.value).subscribe((res: any) => {
+      this.loaderFlag = false;
+      if (res && res.status) {
+        localStorage.setItem("token", res.token)
+        this.toastr.success(res.message, 'Login success', {
+          timeOut: 2000,
+        });
+        this.router.navigate([`/${ROUTE_PATH.HOME}`]);
+      } else {
+        this.toastr.error(res.message, 'Login Error', {
+          timeOut: 3000,
+        });
+      }
+
+
+
+
+
+    });
+  }
+
+
+
+
+
+
+
+
+//   if(results.rows[0].password == password) {
+//   res.status(201).json({ status: true, message: 'Login successful' });
+// } else {
+//   res.status(201).json({ status: false, message: 'Wrong Password' });
+// }
+// } else {
+//   res.status(201).json({ status: false, message: 'User doesnot exist' });
+
+
+
 
 }

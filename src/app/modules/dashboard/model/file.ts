@@ -7,10 +7,9 @@ export enum IPriority {
 }
 export enum IDepartment {
     ACADEMIC = 'Academic',
-    FINANCE = 'Finance & Accounts',
+    ACCOUNTS = 'Accounts  & Finance ',
     ESTABLISHMENT = 'Establishment',
-    PURCHASE = 'Purchase and Works',
-    CONSTRUCTION = 'Construction and Maintainance'
+    PROCUREMENT = 'Procurement'
 }
 
 export enum ISubjectArea {
@@ -54,7 +53,8 @@ export interface IFileInfo {
     file_station: IFileStation,
     creation_date: string,
     sent_to?: IDepartment,
-    sent_date?: string
+    sent_date?: string,
+    comments?: string,
 }
 
 

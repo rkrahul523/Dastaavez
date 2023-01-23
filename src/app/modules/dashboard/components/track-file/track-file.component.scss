@@ -1,0 +1,23 @@
+.track-container{
+    height: 500px;
+    overflow: scroll;
+    background: white;
+    padding: 20px;
+    display: inline-block;
+}
+
+
+
+.track-card{
+    width: 550px;
+    height: 140px;
+    border: 1px solid #2f94c4;
+    border-radius: 5px;
+    background: aliceblue;
+}
+
+.card-header{
+    // position: relative;
+    display: flex;
+    justify-content: space-between;
+}

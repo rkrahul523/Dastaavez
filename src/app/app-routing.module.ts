@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FullComponent } from './modules/shared/full/full.component';
+import { ROUTE_PATH } from './modules/shared/models/route-path';
+import { AuthenticationGuard } from './modules/shared/services/authentication.guard';
 
 
 const dastaavezroutes:  Routes = [{
@@ -25,22 +27,30 @@ const dastaavezroutes:  Routes = [{
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: ROUTE_PATH.LOGIN,  
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+    path: ROUTE_PATH.HOME,
+    component: FullComponent,
+    canActivate: [AuthenticationGuard] ,
+    children: [
+      { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
+      {
+        path: ROUTE_PATH.DASHBOARD,
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+    ]
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: ROUTE_PATH.LOGIN,
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(dastaavezroutes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,9 +1,10 @@
 import { RouteInfo } from './sidebar.metadata';
+import { ROUTE_PATH } from '../../models/route-path';
 
 export const ROUTES: RouteInfo[] = [
  
   {
-    path: '/dashboard',
+    path:  `/${ROUTE_PATH.DASHBOARD}`,
     title: 'Dashboard',
     icon: 'bi bi-speedometer2',
     class: '',
@@ -11,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/dashboard/doc-viewer',
+    path:  `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.TRACK_FILE}`,
     title: 'Track File',
     icon: 'bi bi-bell',
     class: '',
@@ -19,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/dashboard/create-file',
+    path: `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.CREATE_FILE}`,
     title: 'Create File',
     icon: 'bi bi-pencil-square',
     class: '',
@@ -27,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/dashboard/receive-file',
+    path: `/${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.RECEIVE_FILE}`,
     title: 'Receive File',
     icon: 'bi bi-file-text',
     class: '',

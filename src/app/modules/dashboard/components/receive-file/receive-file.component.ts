@@ -4,6 +4,7 @@ import { GridApi, ColumnApi, ColDef, SideBarDef, GridOptions } from '@ag-grid-co
 import { AgGridAngular } from '@ag-grid-community/angular';
 import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 import { RECEIVED_FILE_COLUMS } from '../../utils/receive-file.const';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-receive-file',
@@ -95,13 +96,16 @@ gridOptions : GridOptions = {
   }
   ];
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
   searchFTS(){
     console.log(this.ftsId)
-
+    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.toastr.error('everything is broken', 'Major Error', {
+      timeOut: 3000,
+    });
   }
 
 

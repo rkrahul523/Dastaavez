@@ -5,6 +5,7 @@ import { AgGridAngular } from '@ag-grid-community/angular';
 import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateFileComponent } from '../create-file/create-file.component';
+import { ApiService } from '../../services/api-service';
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -94,6 +95,7 @@ gridOptions : GridOptions = {
   }
   ];
 constructor( private ngbModal : NgbModal,
+  private api: ApiService
   ) {}
   // constructor( private gridApi: GridApi,
   // private  gridColumnApi: ColumnApi) {}
@@ -109,8 +111,21 @@ createColumns(){
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-    this.gridColumnApi.autoSizeAllColumns();
-    this.onPageSizeChanged();
+    
+  
+    this.getAllFiles();
+  }
+
+
+
+
+  getAllFiles(){
+this.api.getCreatedFileDetails().subscribe((res: any)=>{
+  this.rowData= res.data;
+  this.gridColumnApi.autoSizeAllColumns();
+  this.onPageSizeChanged();
+})
+    
   }
 
   exportAsExcel(filename?: string): void {
@@ -145,7 +160,7 @@ formatWithCurrency(amount: number, code: string): any {
 }
 createfile(){
 const modelRef = this.ngbModal.open(CreateFileComponent,{
-  size:"xl",
+  size:"lg",
   keyboard:false,
   backdrop:true
 });

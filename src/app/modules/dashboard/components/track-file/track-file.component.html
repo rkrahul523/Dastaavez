@@ -1,0 +1,32 @@
+<div class="form-group">
+    <label for="exampleInputEmail1">FTS ID: </label>
+    <input type="text" class="form-control" placeholder="Enter FTS ID" onkeyup="this.value = this.value.toUpperCase()" [(ngModel)]="ftsID" (keydown.enter)="search()">
+    <small id="emailHelp" class="form-text text-muted">Enter FTS Id to track file.</small>
+</div>
+
+
+<div class="spinner-border text-success" role="status" *ngIf="loaderFlag">
+    <span class="sr-only">Loading...</span>
+  </div>
+<div class="track-container-parent" *ngIf="!loaderFlag && trackingData.length">
+    <div class="records-message mb-2">
+        Showing records for <strong>{{ftsID}}</strong>
+    </div>
+    <div class="track-container">
+        <div *ngFor="let data of trackingData">
+            <div class="track-card mb-2">
+                <div class="card-header">
+                    <div class="card-date">
+                        {{data?.updatedon}}
+                    </div>
+                    <div class="card-edited-by">
+                        {{data?.status | lowercase }} by {{data?.name}}
+                    </div>
+                </div>
+                <div class="card-body text-center">
+                    File {{data?.status | lowercase }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

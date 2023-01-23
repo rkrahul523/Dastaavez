@@ -17,6 +17,8 @@ import { ReceiveFileComponent } from './components/receive-file/receive-file.com
 import { AgGridModule } from '@ag-grid-community/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { TrackFileComponent } from './components/track-file/track-file.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -34,6 +36,7 @@ import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
     FileInfoComponent,
     CreateFileComponent,
     ReceiveFileComponent,
+    TrackFileComponent,
     
   ],
   imports: [
@@ -43,6 +46,7 @@ import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     SharedUtilityModule,
     NgbModule,
+    HttpClientModule,
     NgbDropdownModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]

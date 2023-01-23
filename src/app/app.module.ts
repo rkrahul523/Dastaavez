@@ -6,7 +6,7 @@ import {
   PathLocationStrategy
 } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,9 +18,10 @@ import { FullComponent } from './modules/shared/full/full.component';
 import { NavigationComponent } from './modules/shared/components/header/navigation.component';
 import { SidebarComponent } from './modules/shared/components/sidebar/sidebar.component';
 //import { AgGridModule } from "@ag-grid-community/angular";
-
+import { ToastrModule } from 'ngx-toastr';
 
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorCatchingInterceptor } from './modules/shared/services/error-catching.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -46,7 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     NgbModule,
     PerfectScrollbarModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    ToastrModule.forRoot()
    // AgGridModule.withComponents([]),
   ],
   providers: [
@@ -57,7 +59,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorCatchingInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })
