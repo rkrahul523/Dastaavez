@@ -26,6 +26,8 @@ export class ApiService {
    trackFileURL='track-file';
    getUerDetailsURL='get-user-details';
    sendFileURL='send-files';
+   receiveFileURL='receive-file';//   fts_id, user_id';
+   getReceivedFileURL='get-received-files';//   fts_id, user_id';
 
 
 
@@ -56,6 +58,12 @@ export class ApiService {
    }
    sendFile(file_info: any){
        return this.http.post(this.apiURL+this.sendFileURL, { file_info , u_id: this.getU_id() })
+   }
+   receiveFile(fts_id: any){
+       return this.http.post(this.apiURL+this.receiveFileURL, { fts_id, user_id: this.getU_id() })
+   }
+   getReceivedFileDetails(){
+       return this.http.get(this.apiURL+this.getReceivedFileURL, {params:{  user_id: this.getU_id() }})
    }
 
 

@@ -125,8 +125,10 @@ export class FileInfoComponent implements OnInit {
   getAllFiles() {
     this.api.getCreatedFileDetails().subscribe((res: any) => {
       this.rowData = res.data;
-      this.gridColumnApi.autoSizeAllColumns();
-      this.onPageSizeChanged();
+      setTimeout(()=>{
+        this.gridColumnApi.autoSizeAllColumns();
+        this.onPageSizeChanged();
+      })
     })
 
   }

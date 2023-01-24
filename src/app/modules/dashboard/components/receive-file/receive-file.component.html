@@ -1,12 +1,48 @@
 
 
-<div class="fts-input-container d-flex">
- <div class="fts-text">
+<div class="fts-input-container  d-flex">
+ <div class="fts-text m-2">
     Enter FTS ID:
  </div>
  <div class="fts-field">
-    <input type="text" [(ngModel)]="ftsId" (keydown.enter)="searchFTS()">
+    <input type="text" class="form-control" placeholder="Enter FTS ID" onkeyup="this.value = this.value.toUpperCase()"  [(ngModel)]="ftsId" (keydown.enter)="receiveFile()">
  </div>
+</div>
+
+
+
+<div class="action-container d-flex justify-space-between mb-3">
+    <div class="action-menu ">
+        .<div class="col">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    Action
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <!-- <button ngbDropdownItem><i class="bi bi-pencil mr-1"></i> Edit File</button> -->
+                    <button ngbDropdownItem (click)="sendfile()"><i class="bi bi-send mr-1" ></i>Send File</button>
+                    <!-- <button ngbDropdownItem><i class="bi bi-archive mr-1"></i>Delete File</button>
+                    <button ngbDropdownItem><i class="bi bi-door-closed mr-1"></i>Close File</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="action-items d-flex">
+        <!-- <div class="create-file-container mr-1">
+            <button class="btn btn-success" (click)="createfile()">
+                <i class="bi bi-folder-plus mr-2"></i> Create File
+            </button>
+        </div> -->
+        <div class="export-file-containe mr-1r">
+            <button class="btn btn-secondary" >
+                <i class="bi bi-file-earmark-arrow-down mr-3"></i>
+                Export as Excel
+            </button>
+        </div>
+    </div>
+
+
+
 </div>
 
 

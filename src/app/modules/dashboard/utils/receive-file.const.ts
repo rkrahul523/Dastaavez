@@ -28,8 +28,9 @@ export const RECEIVED_FILE_COLUMS = [
         headerName: "FTS ID",
         field: "fts_id",
         width:200,
-        sortable: true,
-        filter: false,
+        suppressSizeToFit:true
+        // sortable: true,
+        // filter: false,
     },
     {
         headerName: "File Title",
