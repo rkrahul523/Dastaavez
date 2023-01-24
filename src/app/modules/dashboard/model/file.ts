@@ -39,6 +39,10 @@ export enum IFileStation {
     ACROSS = 'Across Department',
     WITHIN = 'Within Department'
 }
+export enum ISendFile {
+    SEND_RECEIVED_FILES = 'send-received-files',
+    // WITHIN = 'Within Department'
+}
 
 
 

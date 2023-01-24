@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
-import { IDepartment } from '../../model/file';
+import { IDepartment, ISendFile } from '../../model/file';
 
 @Component({
   selector: 'app-common-action-template',
@@ -14,10 +14,11 @@ export class CommonActionTemplateComponent implements OnInit {
 
 
   @Input() fileToSend: any;
+  @Input() sendFileIdentifier: any = null;
   @Output() sentFileStatus: EventEmitter<any> = new EventEmitter();
   sendForm: FormGroup;
   items: FormArray;
-  departments=[
+  departments = [
     IDepartment.ACADEMIC,
     IDepartment.ACCOUNTS,
     IDepartment.ESTABLISHMENT,
@@ -58,11 +59,11 @@ export class CommonActionTemplateComponent implements OnInit {
 
     const formValue = this.sendForm.value;
 
-    this.api.sendFile(formValue.fileInfo).subscribe((res: any)=>{
+    this.api.sendFile(formValue.fileInfo,this.sendFileIdentifier).subscribe((res: any) => {
 
-      if(res && res.status){
+      if (res && res.status) {
         this.dismissModal();
-        this.emitSentFile(true,'Sent Successfully');
+        this.emitSentFile(true, 'Sent Successfully');
       }
     })
 
@@ -71,17 +72,31 @@ export class CommonActionTemplateComponent implements OnInit {
   }
 
 
-  get formData() {  return <FormArray>this.sendForm.get('fileInfo') as FormArray;  }
+  get formData() { return <FormArray>this.sendForm.get('fileInfo') as FormArray; }
 
 
 
   createItem(file: any): FormGroup {
-    return this.fb.group({
-      fts_id: [file.fts_id],
-      file_title: [file.file_title],
-      sent_to: ['', [Validators.required]],
-      comments: ['', [Validators.required]]
-    });
+
+    let formData = {}
+    if (this.sendFileIdentifier == ISendFile.SEND_RECEIVED_FILES) {
+      formData = {
+        fts_id: [file.fts_id],
+        file_title: [file.file_title],
+        sent_to: ['', [Validators.required]],
+        comments: ['', [Validators.required]],
+        receive_id: [file.receive_id]
+      }
+    } else {
+      formData = {
+        fts_id: [file.fts_id],
+        file_title: [file.file_title],
+        sent_to: ['', [Validators.required]],
+        comments: ['', [Validators.required]]
+      }
+    }
+
+    return this.fb.group(formData);
   }
 
 

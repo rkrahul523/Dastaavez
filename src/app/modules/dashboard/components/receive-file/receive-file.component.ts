@@ -6,6 +6,9 @@ import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 import { RECEIVED_FILE_COLUMS } from '../../utils/receive-file.const';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../services/api-service';
+import { ISendFile } from '../../model/file';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
 
 @Component({
   selector: 'app-receive-file',
@@ -98,7 +101,8 @@ gridOptions : GridOptions = {
   ];
 
   constructor(private toastr: ToastrService,
-    private api: ApiService
+    private api: ApiService,
+    private ngbModal: NgbModal,
     ) { }
 
   ngOnInit(): void {
@@ -162,8 +166,39 @@ gridOptions : GridOptions = {
       timeOut: 3000,})
   }
 
-  sendfile(){
-    
-  }
+  sendfile() {
+
+    const selectedData = this.gridApi.getSelectedRows();
+    if(selectedData.length){
+         const unsentData=selectedData.filter(res=> !res.sent_to);
+         if(unsentData.length){
+           const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
+             size: "xl",
+             keyboard: false,
+             backdrop: true
+           });
+
+           modalRef.componentInstance.sendFileIdentifier=ISendFile.SEND_RECEIVED_FILES;
+           modalRef.componentInstance.fileToSend=unsentData;
+
+           modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
+             if (sentFileStatus && sentFileStatus.status) {
+               this.getReceivedFileDetails();
+             }
+           })
+
+                
+         }else{
+           this.warnToast('Selected Files are already Sent/Operational');
+         }
+
+         
+
+    }else{
+     this.warnToast('Please select a File');
+    }
+
+
+ }
 
 }
