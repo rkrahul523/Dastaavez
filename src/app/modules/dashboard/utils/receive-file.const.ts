@@ -18,6 +18,7 @@ export const RECEIVED_FILE_COLUMS = [
     {
         headerName: "Docket No",
         field: "docket",
+        colId: "docket",
         filter: 'agTextColumnFilter',
         sortable: true,
         width:350,
@@ -28,7 +29,7 @@ export const RECEIVED_FILE_COLUMS = [
         headerName: "FTS ID",
         field: "fts_id",
         width:200,
-        suppressSizeToFit:true
+       // suppressSizeToFit:true
         // sortable: true,
         // filter: false,
     },

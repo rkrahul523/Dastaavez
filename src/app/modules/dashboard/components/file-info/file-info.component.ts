@@ -133,13 +133,30 @@ export class FileInfoComponent implements OnInit {
 
   }
 
-  exportAsExcel(filename?: string): void {
+  exportAsExcel(onlySelected?: boolean): void {
+
+    const selectedData = this.gridApi.getSelectedRows();
+    if (onlySelected && !selectedData.length) {
+      this.warnToast('Please select a record');
+      return;
+    }
+
+    if (!this.rowData.length) {
+      this.warnToast('Records are empty!!');
+      return;
+    }
+
     this.gridApi.exportDataAsExcel({
+      fileName: 'fts_data',
+      sheetName: 'File Tracking System',
+      rowHeight: 30,
+      headerRowHeight: 40,
+      onlySelected,
       columnKeys: this.generateColumnsForExcel(),
       processCellCallback: function (params) {
-        if (params.column.getColId() === 'currentPrice') {
-          return params.value?.amount + ' ' + params.value?.currency;
-        }
+        // if (params.column.getColId() === 'currentPrice') {
+        //   return params.value?.amount + ' ' + params.value?.currency;
+        // }
         return params.value;
       }
     })
@@ -150,19 +167,12 @@ export class FileInfoComponent implements OnInit {
       .getAllDisplayedColumns()
       .map(column => column.getColId())
 
-    const amountIndex: number = keys.findIndex(column => column === 'newPrice');
-    keys.splice(amountIndex + 1, 0, 'currency');
-
-    return keys;
+    // const amountIndex: number = keys.findIndex(column => column === 'newPrice');
+    // keys.splice(amountIndex + 1, 0, 'currency');
+    return keys.slice(1);
   }
 
-  formatWithCurrency(amount: number, code: string): any {
-    switch (code) {
-      case 'USD': return amount + ' $';
-      case 'EUR': return amount + ' €';
-        return amount + '';
-    }
-  }
+ 
   createfile() {
     const modalRef = this.ngbModal.open(CreateFileComponent, {
       size: "lg",

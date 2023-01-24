@@ -23,10 +23,16 @@ All Files
                 <i class="bi bi-folder-plus mr-2"></i> Create File
             </button>
         </div>
-        <div class="export-file-containe mr-1r">
-            <button class="btn btn-secondary" >
-                <i class="bi bi-file-earmark-arrow-down mr-3"></i>
-                Export as Excel
+        <div class="export-file-container mr-1">
+            <button class="btn btn-secondary" (click)="exportAsExcel(true)">
+                <i class="bi bi-download mr-1"></i>
+                Export Selected
+            </button>
+        </div>
+        <div class="export-file-container mr-1">
+            <button class="btn btn-secondary" (click)="exportAsExcel()">
+                <i class="bi bi-file-earmark-arrow-down mr-1"></i>
+                Export All
             </button>
         </div>
     </div>

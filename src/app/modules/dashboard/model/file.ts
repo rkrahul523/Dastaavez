@@ -7,9 +7,10 @@ export enum IPriority {
 }
 export enum IDepartment {
     ACADEMIC = 'Academic',
-    ACCOUNTS = 'Accounts  & Finance ',
+    ACCOUNTS = 'Accounts & Finance',
     ESTABLISHMENT = 'Establishment',
-    PROCUREMENT = 'Procurement'
+    PROCUREMENT = 'Procurement',
+    CHEMISTRY='Chemistry'
 }
 
 export enum ISubjectArea {
@@ -60,5 +61,14 @@ export interface IFileInfo {
     sent_date?: string,
     comments?: string,
 }
+
+
+export const ActiveDepartments=[
+    IDepartment.ACADEMIC,
+    IDepartment.ACCOUNTS,
+    IDepartment.CHEMISTRY,
+    IDepartment.ESTABLISHMENT,
+    IDepartment.PROCUREMENT
+]
 
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
-import { IDepartment, ISendFile } from '../../model/file';
+import { IDepartment, ISendFile, ActiveDepartments } from '../../model/file';
 
 @Component({
   selector: 'app-common-action-template',
@@ -18,12 +18,7 @@ export class CommonActionTemplateComponent implements OnInit {
   @Output() sentFileStatus: EventEmitter<any> = new EventEmitter();
   sendForm: FormGroup;
   items: FormArray;
-  departments = [
-    IDepartment.ACADEMIC,
-    IDepartment.ACCOUNTS,
-    IDepartment.ESTABLISHMENT,
-    IDepartment.PROCUREMENT,
-  ]
+  departments = ActiveDepartments;
 
   constructor(private fb: FormBuilder,
     private ngbModal: NgbActiveModal,
