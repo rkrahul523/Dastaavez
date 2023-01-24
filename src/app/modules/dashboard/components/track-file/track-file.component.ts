@@ -106,7 +106,8 @@ export class TrackFileComponent implements OnInit {
     this.api.trackFile(this.ftsID).subscribe((res: any) => {
       this.loaderFlag = false;
       if (res && res.status) {
-        this.trackingData = res.data[0].data;
+       const unsorted = res.data[0].data;
+        this.trackingData = unsorted.sort((a: any,b: any)=> b.order- a.order);
       } else {
         this.toastr.info(res.message, 'File Info', {
           timeOut: 3000,

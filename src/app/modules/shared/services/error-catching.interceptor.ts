@@ -22,7 +22,7 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
                         console.log('This is server side error');
                         errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
                     }
-                    this.toastr.error(errorMsg, 'Something went wrong!!!',{ timeOut: 3000});
+                    this.toastr.error('Please try Again', 'Something went wrong!!!',{ timeOut: 3000});
                     return throwError(errorMsg);
                 })
             )

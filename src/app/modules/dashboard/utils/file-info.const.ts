@@ -27,7 +27,7 @@ export const FILE_INFO_COLUMS = [
     {
         headerName: "FTS ID",
         field: "fts_id",
-        width:200,
+        width:350,
         sortable: true,
         filter: false,
     },

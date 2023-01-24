@@ -10,7 +10,7 @@ All Files
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button ngbDropdownItem><i class="bi bi-pencil mr-1"></i> Edit File</button>
-                    <button ngbDropdownItem><i class="bi bi-send mr-1"></i>Send File</button>
+                    <button ngbDropdownItem (click)="sendfile()"><i class="bi bi-send mr-1" ></i>Send File</button>
                     <button ngbDropdownItem><i class="bi bi-archive mr-1"></i>Delete File</button>
                     <button ngbDropdownItem><i class="bi bi-door-closed mr-1"></i>Close File</button>
                 </div>

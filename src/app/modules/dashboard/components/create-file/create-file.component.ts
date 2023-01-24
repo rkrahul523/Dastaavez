@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { IDepartment, ISubjectArea, IDocType, IFileStation, IPriority } from '../../model/file';
@@ -11,6 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-file.component.scss']
 })
 export class CreateFileComponent implements OnInit {
+  
+
+  @Output() createdFileStatus: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private ngbModal: NgbActiveModal,
@@ -55,18 +58,32 @@ export class CreateFileComponent implements OnInit {
       comments: [''],
     })
   }
+ 
 
   submit(){
     console.log(this.createFileForm.value)
     const formValue=this.createFileForm.value;
    this.api.createFile(formValue).subscribe((res: any)=>{
     if(res && res.status){
+      this.dismissModal();
+      this.emitCreatedFile(true, 'File Created');
       this.toastr.success(res.message, 'File Info', {
         timeOut: 3000,
       });
+    }else{
+      this.emitCreatedFile(false, 'Some Error Occurred');
     }
 
    })
+  }
+
+
+  emitCreatedFile(status: boolean, message: string){
+    this.createdFileStatus.emit({status, message})
+  }
+
+  dismissModal(){
+    this.ngbModal.dismiss();
   }
 
 

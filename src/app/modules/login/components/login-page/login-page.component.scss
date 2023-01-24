@@ -13,19 +13,40 @@
   font-size: 105px;
 }
 
+
+@media (max-width: 1330px) {
+  .full-structure {
+    height: 130vh;
+  }
+
+  .app-text{
+    font-size: 90px;
+  }
+}
+
 @media (max-width: 980px) {
   .full-structure {
     height: 130vh;
+  }
+
+  .app-text{
+    font-size: 76px;
   }
 }
 @media (max-width: 667px) {
   .full-structure {
     height: 170vh;
   }
+  .app-text{
+    font-size: 60px;
+  }
 }
 @media (max-width: 851px) {
   .full-structure {
     height: 130vh;
+  }
+  .app-text{
+    font-size: 50px;
   }
 }
 .obey{

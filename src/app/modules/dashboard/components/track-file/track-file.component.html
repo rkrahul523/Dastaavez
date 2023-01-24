@@ -1,6 +1,10 @@
 <div class="form-group">
     <label for="exampleInputEmail1">FTS ID: </label>
-    <input type="text" class="form-control" placeholder="Enter FTS ID" onkeyup="this.value = this.value.toUpperCase()" [(ngModel)]="ftsID" (keydown.enter)="search()">
+    <div class="search-container d-flex">
+        <input type="text" class="form-control" placeholder="Enter FTS ID" onkeyup="this.value = this.value.toUpperCase()" [(ngModel)]="ftsID" (keydown.enter)="search()">
+        <button class="search btn btn-primary" (click)="search()"><i class="bi bi-search"></i></button>
+    </div>
+   
     <small id="emailHelp" class="form-text text-muted">Enter FTS Id to track file.</small>
 </div>
 
@@ -17,14 +21,16 @@
             <div class="track-card mb-2">
                 <div class="card-header">
                     <div class="card-date">
-                        {{data?.updatedon}}
+                        {{data?.updatedon | customdatepipe}}
                     </div>
                     <div class="card-edited-by">
                         {{data?.status | lowercase }} by {{data?.name}}
                     </div>
                 </div>
                 <div class="card-body text-center">
-                    File {{data?.status | lowercase }}
+
+                    <p>File {{data?.status | lowercase }}<span  *ngIf="data?.status =='Created'"> with title :{{data?.filetitle}} </span></p>
+                    <p>Comments: {{data?.comments}}</p>
                 </div>
             </div>
         </div>

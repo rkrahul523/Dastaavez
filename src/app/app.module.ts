@@ -22,6 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorCatchingInterceptor } from './modules/shared/services/error-catching.interceptor';
+import { LoaderComponent } from './modules/shared/components/loader/loader.component';
+import { LoaderInterceptor } from './modules/shared/services/loading.inceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -36,6 +38,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FullComponent,
     NavigationComponent,
     SidebarComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     NgbDropdownModule,
     ToastrModule.forRoot()
-   // AgGridModule.withComponents([]),
+    // AgGridModule.withComponents([]),
   ],
   providers: [
     {
@@ -64,7 +67,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorCatchingInterceptor,
       multi: true
-  }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -6,5 +6,6 @@ export interface ITrackFile{
     comments: string,
     remarks: string, 
     order:number,
-    action_department:string
+    action_department:string,
+    filetitle:string,
 }

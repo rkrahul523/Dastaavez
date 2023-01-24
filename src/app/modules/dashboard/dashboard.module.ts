@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrackFileComponent } from './components/track-file/track-file.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonActionTemplateComponent } from './components/common-action-template/common-action-template.component';
 
 
 
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     CreateFileComponent,
     ReceiveFileComponent,
     TrackFileComponent,
+    CommonActionTemplateComponent,
     
   ],
   imports: [

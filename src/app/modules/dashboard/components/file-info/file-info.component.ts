@@ -6,6 +6,8 @@ import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateFileComponent } from '../create-file/create-file.component';
 import { ApiService } from '../../services/api-service';
+import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -19,7 +21,7 @@ export class FileInfoComponent implements OnInit {
   gridApi: GridApi
   gridColumnApi: ColumnApi
 
-  pageSize=10;
+  pageSize = 10;
 
   @ViewChild('file-info') grid!: AgGridAngular;
 
@@ -33,37 +35,37 @@ export class FileInfoComponent implements OnInit {
     // allow every column to be pivoted
     enablePivot: false,
     sortable: false,
-    suppressMenu: true ,
+    suppressMenu: true,
     resizable: true,
     filter: false,
-    
+
   };
   public autoGroupColumnDef: ColDef = {
     minWidth: 20,
   };
   public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
-        {
-            id: 'columns',
-            labelDefault: 'Columns',
-            labelKey: 'columns',
-            iconKey: 'columns',
-            toolPanel: 'agColumnsToolPanel',
-            toolPanelParams: {
-                suppressRowGroups: true,
-                suppressValues: true,
-                supressSideButtons: false,
-                supressColumnFilter: false,
-                supressColumnSelectAll: false,
-                supressColumnExpandAll: false,
-            }
+      {
+        id: 'columns',
+        labelDefault: 'Columns',
+        labelKey: 'columns',
+        iconKey: 'columns',
+        toolPanel: 'agColumnsToolPanel',
+        toolPanelParams: {
+          suppressRowGroups: true,
+          suppressValues: true,
+          supressSideButtons: false,
+          supressColumnFilter: false,
+          supressColumnSelectAll: false,
+          supressColumnExpandAll: false,
         }
+      }
     ]
-}
-gridOptions : GridOptions = {
+  }
+  gridOptions: GridOptions = {
     // PROPERTIES
     // Objects like myRowData and myColDefs would be created in your application
-    
+
     pagination: true,
     rowSelection: 'multiple',
 
@@ -73,17 +75,17 @@ gridOptions : GridOptions = {
     onColumnResized: event => console.log('A column was resized'),
     onGridReady: event => console.log('The grid is now ready'),
     suppressHorizontalScroll: false,
-    suppressColumnVirtualisation:true
+    suppressColumnVirtualisation: true
     // CALLBACKS
-   // getRowHeight: () => 25
-}
+    // getRowHeight: () => 25
+  }
   columnDefs = FILE_INFO_COLUMS;
 
   rowData = [
     {
-      docket:'NITP/ee',
+      docket: 'NITP/ee',
       fts_id: 'FTS01',
-      file_title:'Project Purchase',
+      file_title: 'Project Purchase',
       file_status: 'created',
       document_type: 'Envelope',
       subject_area: 'EE',
@@ -92,11 +94,12 @@ gridOptions : GridOptions = {
       creation_date: '25/01/2023 17:53',
       sent_to: 'EE',
       sent_date: '26/01/2023 17:53'
-  }
+    }
   ];
-constructor( private ngbModal : NgbModal,
-  private api: ApiService
-  ) {}
+  constructor(private ngbModal: NgbModal,
+    private api: ApiService,
+    private toast:ToastrService
+  ) { }
   // constructor( private gridApi: GridApi,
   // private  gridColumnApi: ColumnApi) {}
 
@@ -104,28 +107,28 @@ constructor( private ngbModal : NgbModal,
   }
 
 
-createColumns(){
+  createColumns() {
 
-}
+  }
 
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-    
-  
+
+
     this.getAllFiles();
   }
 
 
 
 
-  getAllFiles(){
-this.api.getCreatedFileDetails().subscribe((res: any)=>{
-  this.rowData= res.data;
-  this.gridColumnApi.autoSizeAllColumns();
-  this.onPageSizeChanged();
-})
-    
+  getAllFiles() {
+    this.api.getCreatedFileDetails().subscribe((res: any) => {
+      this.rowData = res.data;
+      this.gridColumnApi.autoSizeAllColumns();
+      this.onPageSizeChanged();
+    })
+
   }
 
   exportAsExcel(filename?: string): void {
@@ -147,30 +150,78 @@ this.api.getCreatedFileDetails().subscribe((res: any)=>{
 
     const amountIndex: number = keys.findIndex(column => column === 'newPrice');
     keys.splice(amountIndex + 1, 0, 'currency');
- 
-  return keys;
-}
 
-formatWithCurrency(amount: number, code: string): any {
-  switch (code) {
-    case 'USD': return amount + ' $';
-    case 'EUR': return amount + ' €';
-    return amount + '';
+    return keys;
   }
-}
-createfile(){
-const modelRef = this.ngbModal.open(CreateFileComponent,{
-  size:"lg",
-  keyboard:false,
-  backdrop:true
-});
 
-}
+  formatWithCurrency(amount: number, code: string): any {
+    switch (code) {
+      case 'USD': return amount + ' $';
+      case 'EUR': return amount + ' €';
+        return amount + '';
+    }
+  }
+  createfile() {
+    const modalRef = this.ngbModal.open(CreateFileComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
 
 
-onPageSizeChanged() {
-  this.gridApi.paginationSetPageSize(Number(this.pageSize));
-}
+    modalRef.componentInstance.createdFileStatus.subscribe((createdFileStatus: any) => {
+      if (createdFileStatus && createdFileStatus.status) {
+        this.getAllFiles();
+      }
+    })
+
+  }
+
+  sendfile() {
+
+     const selectedData = this.gridApi.getSelectedRows();
+     if(selectedData.length){
+          const unsentData=selectedData.filter(res=> !res.sent_to);
+          if(unsentData.length){
+            const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
+              size: "xl",
+              keyboard: false,
+              backdrop: true
+            });
+
+            modalRef.componentInstance.fileToSend=unsentData;
+
+            modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
+              if (sentFileStatus && sentFileStatus.status) {
+                this.getAllFiles();
+              }
+            })
+
+                 
+          }else{
+            this.warnToast('Selected Files are already Sent/Operational');
+          }
+
+          
+
+     }else{
+      this.warnToast('Please select a File');
+     }
+
+
+  }
+
+
+  onPageSizeChanged() {
+    this.gridApi.paginationSetPageSize(Number(this.pageSize));
+  }
+
+
+  private warnToast(message: any){
+    this.toast.info(message, 'File Info', {
+      timeOut: 3000,
+    });
+  }
 
 
 
