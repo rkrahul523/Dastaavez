@@ -30,7 +30,7 @@ export class ApiService {
     receiveFileURL = 'receive-file';//   fts_id, user_id';
     getReceivedFileURL = 'get-received-files';//   fts_id, user_id';
     sendReceivedFileURL = 'send-received-files';//   fts_id, user_id';
-
+    getDashboardDataUrl='get-dasboard-data';
 
 
 
@@ -50,6 +50,9 @@ export class ApiService {
 
     getCreatedFileDetails() {
         return this.http.get(this.apiURL + this.getCreatedFilesURL, { params: { user_id: this.getU_id() } })
+    }
+    getDashboardData() {
+        return this.http.get(this.apiURL + this.getDashboardDataUrl)
     }
 
     createFile(data: any) {
