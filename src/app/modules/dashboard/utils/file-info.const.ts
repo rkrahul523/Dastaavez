@@ -1,20 +1,5 @@
 export const FILE_INFO_COLUMS = [
-    {
-        headerName: '',
-        width: 10,
-        checkboxSelection: true,
-        headerCheckboxSelection: true,
-        supressSorting: true,
-        supressToolPanel: true,
-        pinned: true,
-        supressMenu: true,
-        filter: false,
-        lockPosition: true,
-        lockVisibile: true,
-        suppressSizeToFit : false,
-        colId: 'action',
-        field: "checkbox",
-    },
+    
     {
         headerName: "Docket No",
         field: "docket",

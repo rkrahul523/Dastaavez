@@ -21,6 +21,7 @@ import { TrackFileComponent } from './components/track-file/track-file.component
 import { HttpClientModule } from '@angular/common/http';
 import { CommonActionTemplateComponent } from './components/common-action-template/common-action-template.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActionRendererComponent } from './components/action-renderer/action-renderer.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
     ReceiveFileComponent,
     TrackFileComponent,
     CommonActionTemplateComponent,
+    ActionRendererComponent,
     
   ],
   imports: [

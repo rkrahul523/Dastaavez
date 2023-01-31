@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { AllModules, ColumnsToolPanelModule } from '@ag-grid-enterprise/all-modules';
 import { GridApi, ColumnApi, GridOptions, ColDef, SideBarDef } from '@ag-grid-community/core';
 import { AgGridAngular } from '@ag-grid-community/angular';
 import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
@@ -8,6 +8,7 @@ import { CreateFileComponent } from '../create-file/create-file.component';
 import { ApiService } from '../../services/api-service';
 import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
 import { ToastrService } from 'ngx-toastr';
+import { ActionRendererComponent } from '../action-renderer/action-renderer.component';
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -20,6 +21,9 @@ export class FileInfoComponent implements OnInit {
 
   stepperIndex = 1;
 
+  frameworkComponents = {
+    actionControlRenderer: ActionRendererComponent,
+  }
   components: any;
   formcontent = null;
   createdFileData: any
@@ -35,7 +39,7 @@ export class FileInfoComponent implements OnInit {
     flex: 1,
     minWidth: 40,
     // allow every column to be aggregated
-    enableValue: true,
+    //enableValue: true,
     // allow every column to be grouped
     enableRowGroup: true,
     // allow every column to be pivoted
@@ -47,7 +51,7 @@ export class FileInfoComponent implements OnInit {
 
   };
   public autoGroupColumnDef: ColDef = {
-    minWidth: 20,
+    minWidth: 40,
   };
   public sideBar: SideBarDef | string | string[] | boolean | null = {
     toolPanels: [
@@ -81,11 +85,11 @@ export class FileInfoComponent implements OnInit {
     onColumnResized: event => console.log('A column was resized'),
     onGridReady: event => console.log('The grid is now ready'),
     suppressHorizontalScroll: false,
-    suppressColumnVirtualisation: true
+    suppressColumnVirtualisation: true,
     // CALLBACKS
-    // getRowHeight: () => 25
+    getRowHeight: () => 45
   }
-  columnDefs = FILE_INFO_COLUMS;
+  columnDefs: any[] = [];
 
   rowData = [
     {
@@ -110,11 +114,56 @@ export class FileInfoComponent implements OnInit {
   // private  gridColumnApi: ColumnApi) {}
 
   ngOnInit(): void {
+    this.createColumns();
   }
 
 
   createColumns() {
 
+
+    const columns = [
+      {
+        headerName: '',
+        width: 40,
+        checkboxSelection: true,
+        headerCheckboxSelection: true,
+        supressSorting: true,
+        supressToolPanel: true,
+        pinned: true,
+        supressMenu: true,
+        filter: false,
+        lockPosition: true,
+        lockVisibile: true,
+        suppressSizeToFit: false,
+        colId: 'check',
+        field: "checkbox",
+      },
+      {
+        headerName: 'File Action',
+        colId: 'action',
+        width: 300,
+        pinned: true,
+        filter: false,
+        cellRenderer: 'actionControlRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'Click oo'
+        }
+      },
+    ]
+
+    const finalColumn = [...columns, ...FILE_INFO_COLUMS]
+    this.columnDefs = finalColumn;
+  }
+
+  onBtnClick1(fileEvent: any) {
+    if (fileEvent.event == "Send") {
+      this.sendfile([fileEvent.rowData]);
+    }
+
+
+
+    //  this.rowDataClicked1 = e.rowData;
   }
 
   onGridReady(params: any) {
@@ -179,7 +228,7 @@ export class FileInfoComponent implements OnInit {
 
     // const amountIndex: number = keys.findIndex(column => column === 'newPrice');
     // keys.splice(amountIndex + 1, 0, 'currency');
-    return keys.slice(1);
+    return keys.slice(2);
   }
 
 
@@ -199,11 +248,11 @@ export class FileInfoComponent implements OnInit {
 
   }
 
-  sendfile() {
+  sendfile(rowdata: any = null) {
 
-    const selectedData = this.gridApi.getSelectedRows();
+    const selectedData = rowdata ? rowdata : this.gridApi.getSelectedRows();
     if (selectedData.length) {
-      const unsentData = selectedData.filter(res => !res.sent_to);
+      const unsentData = selectedData.filter((res: any) => !res.sent_to);
       if (unsentData.length) {
         const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
           size: "xl",
@@ -251,7 +300,7 @@ export class FileInfoComponent implements OnInit {
     if (message && message.status) {
       this.createdFileData = message.data[0];
       this.route(3);
-     
+
     }
   }
 
