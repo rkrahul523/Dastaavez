@@ -16,7 +16,13 @@ import { ToastrService } from 'ngx-toastr';
 export class FileInfoComponent implements OnInit {
 
   modules = AllModules;
+  active = 1;
+
+  stepperIndex = 1;
+
   components: any;
+  formcontent = null;
+  createdFileData: any
 
   gridApi: GridApi
   gridColumnApi: ColumnApi
@@ -98,7 +104,7 @@ export class FileInfoComponent implements OnInit {
   ];
   constructor(private ngbModal: NgbModal,
     private api: ApiService,
-    private toast:ToastrService
+    private toast: ToastrService
   ) { }
   // constructor( private gridApi: GridApi,
   // private  gridColumnApi: ColumnApi) {}
@@ -120,12 +126,16 @@ export class FileInfoComponent implements OnInit {
   }
 
 
+  saveFormValue(formcontent: any) {
+    this.formcontent = formcontent
+  }
+
 
 
   getAllFiles() {
     this.api.getCreatedFileDetails().subscribe((res: any) => {
       this.rowData = res.data;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.gridColumnApi.autoSizeAllColumns();
         this.onPageSizeChanged();
       })
@@ -172,7 +182,7 @@ export class FileInfoComponent implements OnInit {
     return keys.slice(1);
   }
 
- 
+
   createfile() {
     const modalRef = this.ngbModal.open(CreateFileComponent, {
       size: "lg",
@@ -191,34 +201,34 @@ export class FileInfoComponent implements OnInit {
 
   sendfile() {
 
-     const selectedData = this.gridApi.getSelectedRows();
-     if(selectedData.length){
-          const unsentData=selectedData.filter(res=> !res.sent_to);
-          if(unsentData.length){
-            const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
-              size: "xl",
-              keyboard: false,
-              backdrop: true
-            });
+    const selectedData = this.gridApi.getSelectedRows();
+    if (selectedData.length) {
+      const unsentData = selectedData.filter(res => !res.sent_to);
+      if (unsentData.length) {
+        const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
+          size: "xl",
+          keyboard: false,
+          backdrop: true
+        });
 
-            modalRef.componentInstance.fileToSend=unsentData;
+        modalRef.componentInstance.fileToSend = unsentData;
 
-            modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
-              if (sentFileStatus && sentFileStatus.status) {
-                this.getAllFiles();
-              }
-            })
-
-                 
-          }else{
-            this.warnToast('Selected Files are already Sent/Operational');
+        modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
+          if (sentFileStatus && sentFileStatus.status) {
+            this.getAllFiles();
           }
+        })
 
-          
 
-     }else{
+      } else {
+        this.warnToast('Selected Files are already Sent/Operational');
+      }
+
+
+
+    } else {
       this.warnToast('Please select a File');
-     }
+    }
 
 
   }
@@ -229,12 +239,39 @@ export class FileInfoComponent implements OnInit {
   }
 
 
-  private warnToast(message: any){
+  private warnToast(message: any) {
     this.toast.info(message, 'File Info', {
       timeOut: 3000,
     });
   }
 
 
+
+  fileStatus(message: any) {
+    if (message && message.status) {
+      this.createdFileData = message.data[0];
+      this.route(3);
+     
+    }
+  }
+
+  route(index: any, direct = false) {
+    if (direct) {
+      if (this.stepperIndex == 3 && (index == 1 || index == 2)) {
+        this.stepperIndex = 1;
+        return;
+      }
+
+      if (index < this.stepperIndex)
+        this.stepperIndex = index;
+    } else {
+      this.stepperIndex = index;
+    }
+  }
+
+
+  viewCreatedFileTab() {
+    this.active = 2;
+  }
 
 }

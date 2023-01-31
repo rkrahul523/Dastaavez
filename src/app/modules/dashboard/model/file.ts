@@ -12,6 +12,13 @@ export enum IDepartment {
     PROCUREMENT = 'Procurement',
     CHEMISTRY='Chemistry'
 }
+export enum IShortDepartment {
+    ACADEMIC = 'AC',
+    ACCOUNTS = 'AF',
+    ESTABLISHMENT = 'ES',
+    PROCUREMENT = 'PR',
+    CHEMISTRY='CH'
+}
 
 export enum ISubjectArea {
     ACADEMIC = 'Academic',
@@ -70,5 +77,14 @@ export const ActiveDepartments=[
     IDepartment.ESTABLISHMENT,
     IDepartment.PROCUREMENT
 ]
+export const shortNameDepartment=[
+    IShortDepartment.ACADEMIC,
+    IShortDepartment.ACCOUNTS,
+    IShortDepartment.CHEMISTRY,
+    IShortDepartment.ESTABLISHMENT,
+    IShortDepartment.PROCUREMENT
+]
+
+
 
 

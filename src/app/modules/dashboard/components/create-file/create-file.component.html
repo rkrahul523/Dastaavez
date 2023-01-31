@@ -1,12 +1,41 @@
 <div class="container-fluid p-5">
     <div class="row">
-        <div class="col-12">
+        <!-- <div class="col-12">
             <header>
                 <h3 class="mb-3">CREATE FILE</h3>
             </header>
-        </div>
+        </div> -->
         <div class="col-12" [formGroup]="createFileForm">
-            <div class="row">
+            <div class="row mb-3">
+                <div class="col-10">
+                    <label class="mb-0" for="address">
+                        Docket Number
+                    </label>
+                    <div class="multiple-inputs d-flex">
+
+                        <strong class="my-auto">NITP/</strong>
+                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                       formControlName='d_department'>
+                            <option *ngFor="let names of d_department" [value]="names">{{names}} </option>
+                        </select>
+                        <strong class="my-auto">/</strong>
+                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                       formControlName='d_year'>
+                            <option *ngFor="let names of d_year" [value]="names">{{names}} </option>
+                        </select>
+                        <strong class="my-auto">/</strong>
+                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                       formControlName='d_fileType'>
+                            <option *ngFor="let names of d_fileType" [value]="names">{{names}} </option>
+                        </select>
+                        <strong class="my-auto">/ Auto Generated</strong>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mb-3">
+
                 <!-- <div class="col-4">
                     <div>Docket No</div>
                     <select class="custom-select mb-3" formControlName=>
@@ -19,53 +48,59 @@
                     <label class="mb-0" for="address">
                         Subject/File Name
                     </label>
-                    <input type="text" class="form-control" formControlName='file_title'>
+                    <input type="text" [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'" [readOnly]="actionType== 'Modify'" formControlName='file_title' >
                 </div>
                 <div class="col-4">
                     <div>File Priority</div>
-                    <select class="custom-select mb-3" formControlName='priority'>
+                    <select  [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='priority' >
                         <option value="">Choose Priority</option>
                         <option *ngFor="let names of priority" [value]="names">{{names}} </option>
                     </select>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
 
                 <div class="col-4">
                     <div>Subject Area</div>
-                    <select class="custom-select mb-3" formControlName='subject_area'>
+                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='subject_area'>
                         <option value="">Choose Subject Area</option>
                         <option *ngFor="let names of subjectAreas" [value]="names">{{names}} </option>
                     </select>
                 </div>
                 <div class="col-4">
                     <div>Document Type</div>
-                    <select class="custom-select mb-3" formControlName='document_type'>
+                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='document_type'>
                         <option value="">Choose Document Type</option>
                         <option *ngFor="let names of documentTypes" [value]="names">{{names}} </option>
                     </select>
                 </div>
-              
-                
+
+
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-4">
                     <div>File Station</div>
-                    <select class="custom-select mb-3" formControlName='file_station'>
+                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='file_station'>
                         <option value="">Choose File Station</option>
                         <option *ngFor="let names of fileStations" [value]="names">{{names}} </option>
                     </select>
                 </div>
                 <div class="col-4">
                     <div>Comments</div>
-                    <textarea formControlName='comments'>
+                    <textarea formControlName='comments' [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'" >
 
                     </textarea>
                 </div>
             </div>
             <div class="row">
-                <button type="button" class="btn ml-3 col-2 btn-success" (click)="submit()">Submit</button>
-                <button type="button" class="btn ml-auto col-2 btn-danger" (click) ="close()">Cancel</button>
+                <button type="button" class="btn ml-3 col-2 btn-success" (click)="next()"
+                    *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Next</button>
+                <button type="button" class="btn ml-3 col-2 btn-success" (click)="confirm()"
+                    *ngIf="actionType== 'Modify'"><i class="bi bi-check-square mr-3"></i>Confirm</button>
+                <button type="button" class="btn ml-3 col-2 btn-warning" (click)="modify()"
+                    *ngIf="actionType== 'Modify'"><i class="bi bi-pencil mr-3"></i>Modify</button>
+                <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
+                    (click)="clear()"><i class="bi bi-x-square  mr-3"></i>Clear Form</button>
             </div>
         </div>
     </div>

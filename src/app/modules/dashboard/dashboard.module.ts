@@ -20,7 +20,7 @@ import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrackFileComponent } from './components/track-file/track-file.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonActionTemplateComponent } from './components/common-action-template/common-action-template.component';
-
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -50,6 +50,7 @@ import { CommonActionTemplateComponent } from './components/common-action-templa
     NgbModule,
     HttpClientModule,
     NgbDropdownModule,
+    NgbNavModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]
 })
