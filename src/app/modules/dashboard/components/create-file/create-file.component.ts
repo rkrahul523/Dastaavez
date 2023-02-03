@@ -1,19 +1,24 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IDepartment, ISubjectArea, IDocType, IFileStation, IPriority, shortNameDepartment } from '../../model/file';
+import { IDepartment, ISubjectArea, IDocType, IFileStation, IPriority, shortNameDepartment, IFileInfo } from '../../model/file';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-file',
   templateUrl: './create-file.component.html',
-  styleUrls: ['./create-file.component.scss']
+  styleUrls: ['./create-file.component.scss'],
+  providers: [
+    NgbActiveModal,
+]
 })
 export class CreateFileComponent implements OnInit {
 
   @Input() actionType='Create';
   @Input() formValue=null;
+  @Input() openedViaModal=false;
+  @Input() openedViaModalData : IFileInfo;
 
   d_year=[2023]
   d_department=shortNameDepartment;
@@ -26,7 +31,7 @@ export class CreateFileComponent implements OnInit {
   @Output() routeTo: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    // private ngbModal: NgbActiveModal,
+    private ngbModal: NgbActiveModal,
     private fb: FormBuilder,
     private api: ApiService,
     private toastr: ToastrService
@@ -71,6 +76,8 @@ export class CreateFileComponent implements OnInit {
       d_fileType: ['M', [Validators.required]],
     })
 
+
+    console.log(this.formValue)
     if(this.formValue){
       this.createFileForm.patchValue(this.formValue as any)
     }
@@ -101,7 +108,10 @@ export class CreateFileComponent implements OnInit {
   }
 
   dismissModal(){
-    // this.ngbModal.dismiss();
+    this.ngbModal.dismiss();
+  }
+  modifyFile(){
+    
   }
 
   next(){

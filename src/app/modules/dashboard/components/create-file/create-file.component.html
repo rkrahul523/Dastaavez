@@ -5,9 +5,21 @@
                 <h3 class="mb-3">CREATE FILE</h3>
             </header>
         </div> -->
+
+        
+        <div class="modify-file col-12 text-center" *ngIf="openedViaModal">
+            <h3>Modify file</h3>
+            <p class="">
+           FTS ID: {{ openedViaModalData?.fts_id}}
+            </p>
+            <p class="">
+            DOCKET : {{ openedViaModalData?.docket}}
+            </p>
+        </div>
+
         <div class="col-12" [formGroup]="createFileForm">
             <div class="row mb-3">
-                <div class="col-10">
+                <div class="col-10" *ngIf="!openedViaModal">
                     <label class="mb-0" for="address">
                         Docket Number
                     </label>
@@ -92,7 +104,7 @@
                     </textarea>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="!openedViaModal">
                 <button type="button" class="btn ml-3 col-2 btn-success" (click)="next()"
                     *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Next</button>
                 <button type="button" class="btn ml-3 col-2 btn-success" (click)="confirm()"
@@ -102,6 +114,16 @@
                 <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
                     (click)="clear()"><i class="bi bi-x-square  mr-3"></i>Clear Form</button>
             </div>
+
+            <div class="row"  *ngIf="openedViaModal">
+            <button>
+                <button type="button" class="btn ml-3 col-2 btn-success" (click)="modifyFile()"
+                *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Confirm</button>
+                <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
+                (click)="dismissModal()"><i class="bi bi-x-square  mr-3"></i>Cancel</button>
+            </button>
+            </div>
+
         </div>
     </div>
 </div>

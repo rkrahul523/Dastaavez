@@ -16,12 +16,15 @@ import { CreateFileComponent } from './components/create-file/create-file.compon
 import { ReceiveFileComponent } from './components/receive-file/receive-file.component';
 import { AgGridModule } from '@ag-grid-community/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDropdownModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrackFileComponent } from './components/track-file/track-file.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonActionTemplateComponent } from './components/common-action-template/common-action-template.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActionRendererComponent } from './components/action-renderer/action-renderer.component';
+import { ManageRolesComponent } from './components/manage-roles/manage-roles.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -41,6 +44,9 @@ import { ActionRendererComponent } from './components/action-renderer/action-ren
     TrackFileComponent,
     CommonActionTemplateComponent,
     ActionRendererComponent,
+    ManageRolesComponent,
+    ManageUsersComponent,
+    ProfileComponent,
     
   ],
   imports: [
@@ -53,6 +59,7 @@ import { ActionRendererComponent } from './components/action-renderer/action-ren
     HttpClientModule,
     NgbDropdownModule,
     NgbNavModule,
+    NgbModalModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]
 })

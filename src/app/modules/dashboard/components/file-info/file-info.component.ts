@@ -160,6 +160,9 @@ export class FileInfoComponent implements OnInit {
     if (fileEvent.event == "Send") {
       this.sendfile([fileEvent.rowData]);
     }
+    if (fileEvent.event == "Modify") {
+      this.modifyfile([fileEvent.rowData]);
+    }
 
 
 
@@ -232,13 +235,32 @@ export class FileInfoComponent implements OnInit {
   }
 
 
-  createfile() {
+  modifyfile(data: any) {
     const modalRef = this.ngbModal.open(CreateFileComponent, {
       size: "lg",
       keyboard: false,
       backdrop: true
     });
 
+    const formValue = {
+      file_title: data[0].file_title,
+      document_type: data[0].document_type,
+      subject_area: data[0].subject_area,
+      priority: data[0].priority,
+      file_station: data[0].file_station,
+      comments: data[0].docket,
+      d_department: data[0].docket,
+      d_year: data[0].docket,
+      d_fileType: data[0].docket
+    }
+
+
+    modalRef.componentInstance.formValue = formValue;
+    modalRef.componentInstance.openedViaModal = true;
+    modalRef.componentInstance.openedViaModalData = data[0];
+
+    //   @Input() actionType='Create';
+    // @Input() formValue=null;
 
     modalRef.componentInstance.createdFileStatus.subscribe((createdFileStatus: any) => {
       if (createdFileStatus && createdFileStatus.status) {
@@ -320,6 +342,7 @@ export class FileInfoComponent implements OnInit {
 
 
   viewCreatedFileTab() {
+    this.stepperIndex=1;
     this.active = 2;
   }
 

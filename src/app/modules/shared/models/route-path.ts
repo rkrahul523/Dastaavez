@@ -4,5 +4,6 @@ export const ROUTE_PATH={
     TRACK_FILE:'track-file',
     CREATE_FILE:'create-file',
     RECEIVE_FILE:'receive-file',
-    LOGIN:'login'
+    LOGIN:'login',
+    MANAGE_ROLES:'roles'
 }

@@ -5,11 +5,13 @@ import { LoginRoutingModule } from './login.routing.module';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 @NgModule({
   declarations: [
-    LoginPageComponent
+    LoginPageComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
