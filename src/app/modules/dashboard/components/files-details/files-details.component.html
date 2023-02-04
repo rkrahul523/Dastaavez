@@ -1,0 +1,65 @@
+<section style="background-color: #eee;">
+    <div class="container p-4">
+        <div class="top-header mb-2 d-flex">
+            <div class="header-text">
+                Manage files
+            </div>
+            <div class="cross-icon ml-auto" (click)="dismissModal()">
+                <button type="button" class="close text-danger" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <ng-container *ngFor="let data of details;let i=index;let last=last">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">{{data?.key}}</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{data?.value}}</p>
+                                </div>
+                            </div>
+                            <hr *ngIf="!last">
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="action-menu">
+                    <div class="row mb-2">
+                        <div class="col-sm-6 form-group" [formGroup]="assignForm">
+                            <label for="assignTo">Assign To Desk:</label>
+                            <select class="custom-select" formControlName="assignedUser">
+                                <option value="">Choose User</option>
+                                <option *ngFor="let names of users" [ngValue]="names.u_id">{{names.name}} </option>
+                            </select>
+                            <small class="d-block text-danger" *ngIf="receiveButtonPressed && assignForm.invalid">Assign
+                                To Desk is required </small>
+                        </div>
+                        <div class="col-sm-6" [formGroup]="commentsForm">
+                            <label for="w3review">Remarks:</label>
+                            <textarea name="w3review" rows="3" cols="50" class="form-control"
+                                formControlName="comments">
+
+                        </textarea>
+                            <small class="d-block text-danger"
+                                *ngIf="rejectButtonPressed && commentsForm.invalid">Remarks is required </small>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons d-flex">
+                        <button class="btn btn-success" (click)="receiveFiles()">
+                            Receive
+                        </button>
+                        <button class="btn btn-danger ml-auto" (click)="rejectFiles()">
+                            Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

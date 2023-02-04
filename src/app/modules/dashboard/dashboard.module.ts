@@ -26,6 +26,8 @@ import { ManageRolesComponent } from './components/manage-roles/manage-roles.com
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 import { ProfileComponent } from '../shared/components/profile/profile.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { DepartmentFilesComponent } from './components/department-files/department-files.component';
+import { FilesDetailsComponent } from './components/files-details/files-details.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     ActionRendererComponent,
     ManageRolesComponent,
     ManageUsersComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    DepartmentFilesComponent,
+    FilesDetailsComponent
     
   ],
   imports: [

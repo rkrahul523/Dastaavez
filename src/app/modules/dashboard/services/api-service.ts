@@ -36,6 +36,7 @@ export class ApiService {
     getManageRoleUrl = 'get-manage-roles';
     getAllUserDetailsUrl = 'get-all-user-details';
     approveUsersUrl = 'approve-users';
+    checkFileUrl = 'check-file-to-receive';
 
     
     
@@ -94,6 +95,9 @@ export class ApiService {
     approveUsers(data: any) {
         return this.http.post(this.apiURL + this.approveUsersUrl, data)
     }
+    checkFile(data: any) {
+        return this.http.post(this.apiURL + this.checkFileUrl, { ...data,  user_id: this.getU_id()} )
+    }
 
 
 
@@ -113,6 +117,11 @@ export class ApiService {
       }
      successToast(message: any, subtext='File Info') {
         this.toastr.success(message, subtext, {
+          timeOut: 3000,
+        });
+      }
+     errorToast(message: any, subtext='File Info') {
+        this.toastr.error(message, subtext, {
           timeOut: 3000,
         });
       }

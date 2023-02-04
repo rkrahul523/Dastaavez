@@ -9,6 +9,8 @@ import { ApiService } from '../../services/api-service';
 import { ISendFile } from '../../model/file';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
+import { d } from './xt';
+import { FilesDetailsComponent } from '../files-details/files-details.component';
 
 @Component({
   selector: 'app-receive-file',
@@ -16,6 +18,8 @@ import { CommonActionTemplateComponent } from '../common-action-template/common-
   styleUrls: ['./receive-file.component.scss']
 })
 export class ReceiveFileComponent implements OnInit {
+
+  active = 1;
   ftsId: any
 
   modules = AllModules;
@@ -84,7 +88,8 @@ export class ReceiveFileComponent implements OnInit {
   }
   columnDefs = RECEIVED_FILE_COLUMS;
 
-  rowData = [
+  rowData = d
+  bbb = [
     //   {
     //     docket:'NITP/ee',
     //     fts_id: 'FTS01',
@@ -129,7 +134,7 @@ export class ReceiveFileComponent implements OnInit {
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-    this.getReceivedFileDetails();
+    //  this.getReceivedFileDetails();
 
     //this.onPageSizeChanged();
   }
@@ -243,6 +248,68 @@ export class ReceiveFileComponent implements OnInit {
     }
 
 
+  }
+
+
+
+  formulateRecords(comments: string, previousStatus: string, fileData: any) {
+    let file = [
+      {
+        key: `File ${previousStatus} with Message`,
+        value: comments
+      }
+    ]
+
+    Object.keys(fileData).forEach((key: string) => {
+      let fileKey = {
+        key: key,
+        value: fileData[key]
+      }
+
+      file.push(fileKey)
+    })
+    return file;
+  }
+
+
+  openModal() {
+    if (this.ftsId.length) {
+      const ftsId = { fts_id: this.ftsId }
+      this.api.checkFile(ftsId).subscribe((res: any) => {
+        if (res && res.status) {
+          this.api.successToast(res.message, 'File Status');
+          const checkedFileData = res.data;
+          const viewFileData = this.formulateRecords(checkedFileData.comments, checkedFileData.previousStatus, checkedFileData.fileData)
+
+          const modalRef = this.ngbModal.open(FilesDetailsComponent, {
+            size: "lg",
+            keyboard: false,
+            backdrop: true
+          });    
+          modalRef.componentInstance.details = viewFileData;
+          modalRef.componentInstance.users = checkedFileData.availableUser;
+
+        } else {
+          this.api.errorToast(res.message, 'Unauthorised')
+        }
+      })
+
+
+
+
+
+      // modalRef.componentInstance.fileToSend = unsentData;
+
+      // modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
+      //   if (sentFileStatus && sentFileStatus.status) {
+      //     this.getAllFiles();
+      //   }
+      // })
+
+
+    } else {
+      this.warnToast('Selected Files are already Sent/Operational');
+    }
   }
 
 }
