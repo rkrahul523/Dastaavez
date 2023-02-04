@@ -24,6 +24,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorCatchingInterceptor } from './modules/shared/services/error-catching.interceptor';
 import { LoaderComponent } from './modules/shared/components/loader/loader.component';
 import { LoaderInterceptor } from './modules/shared/services/loading.inceptor';
+import { ProfileComponent } from './modules/shared/components/profile/profile.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,6 +40,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     SidebarComponent,
     LoaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

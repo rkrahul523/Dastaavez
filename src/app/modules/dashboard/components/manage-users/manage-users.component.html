@@ -1,1 +1,93 @@
-<p>manage-users works!</p>
+<div class="container">
+  <h2 class="mb-3">Manage Users</h2>
+  <p class="font-italic">
+    Approve , Reject and Delete a User.
+  </p>
+
+  <div class="top-pannel mb-2 flex-wrap">
+    <div class="form-group has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+    </div>
+    <div class="button-pannel ">
+      <!-- <button class="btn btn-success">
+            SAVE
+        </button> -->
+    </div>
+  </div>
+
+
+  <div class="table-responsive table-container">
+
+    <table class="table table-striped custom-table">
+      <thead class="table-header-sticky">
+        <tr>
+          <!-- <th scope="col">
+              <label class="control control--checkbox">
+                <input type="checkbox"  class="js-check-all"/>
+                <div class="control__indicator"></div>
+              </label>
+            </th> -->
+          <th scope="col">User ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">status</th>
+          <th scope="col">Action</th>
+          <!-- <th scope="col"></th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr scope="row" *ngFor="let data of userData | searchFilter: searchText ;let i=index">
+
+          <td>
+            {{data?.u_id}}
+          </td>
+         
+          <td>
+            {{data?.name}}
+            <small class="d-block"> {{data?.user_name}}</small>
+          </td>
+          <td>
+            {{data?.department}}
+          </td>
+          <td class="pl-0">
+            <div
+              [ngClass]=" data?.status == statusText.Approved ? 'text-success font-weight-bold':  data?.status == statusText.Created ?  'text-warning font-weight-bold':  'text-danger font-weight-bold'">
+              <span *ngIf="data?.status == statusText.Created;else otherstatus">
+                <p class="mb-0">
+                  Waiting For
+                </p>
+                <p>
+                  Approval
+                </p>
+              </span>
+              <ng-template #otherstatus>
+                {{data?.status}}
+              </ng-template>
+            </div>
+          </td>
+
+          <td>
+            <div class="d-flex align-items-center" *ngIf="data?.status == statusText.Created">
+              <span class="approve mr-2 " (click)="approve(data?.u_id)">
+                <i class="bi bi-check2"></i>
+                Approve</span>
+              <span class="reject"  (click)="reject(data?.u_id)">
+                <i class="bi bi-x-lg"></i>
+                Reject</span>
+            </div>
+            <div class="d-flex align-items-center" *ngIf="data?.status == (statusText.Approved || statusText.Rejected ) ">
+              <button class="btn btn-danger"  ><i class="bi bi-trash mr-1"></i>Delete User</button>
+            </div>
+          </td>
+
+        </tr>
+
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

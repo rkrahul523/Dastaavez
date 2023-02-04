@@ -1,1 +1,100 @@
-<p>manage-roles works!</p>
+<div class="container">
+    <h2 class="mb-3">Manage Roles</h2>
+    <p>
+        After updating User's department,roles ,status click on <strong>SAVE</strong> button to save the details.
+    </p>
+
+
+    <div class="top-pannel mb-2 flex-wrap">
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText">
+        </div>
+        <div class="button-pannel ">
+            <!-- <button class="btn btn-success">
+                SAVE
+            </button> -->
+        </div>
+    </div>
+
+    <div class="table-responsive table-container">
+
+        <table class="table table-striped custom-table">
+            <thead class="table-header-sticky">
+                <tr>
+                    <!-- <th scope="col">
+              <label class="control control--checkbox">
+                <input type="checkbox"  class="js-check-all"/>
+                <div class="control__indicator"></div>
+              </label>
+            </th> -->
+                    <th scope="col">User ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row" *ngFor="let data of userData | searchFilter: searchText ;let i=index">
+
+                    <!-- <td>
+              <label class="control control--checkbox">
+              <input type="checkbox" />
+              <div class="control__indicator"></div>
+              </label>
+            </td> -->
+                    <td>
+                        {{data?.u_id}}
+                    </td>
+                    <td>
+                        {{data?.name}}
+                        <small class="d-block"> {{data?.user_name}}</small>
+                    </td>
+                    <td>
+                       <ng-container *ngIf="!data?.issave"> {{data?.department}}</ng-container>
+                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].department" *ngIf="data?.issave">
+                            <!-- <option value="">Choose Deparment</option> -->
+                            <option *ngFor="let names of departments" [value]="names">{{names}} </option>
+                        </select>
+                    </td>
+                    <td>
+                        <!-- {{data?.role}} -->
+
+                        <ng-container *ngIf="!data?.issave"> {{data?.role}}</ng-container>
+                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role" *ngIf="data?.issave">
+                            <!-- <option value="">Choose Deparment</option> -->
+                            <option *ngFor="let names of roles" [value]="names">{{names}} </option>
+                        </select>
+                    </td>
+                    <td class="pl-0">
+                        <div class="d-flex align-items-center">
+                            <div *ngIf="!data?.issave" [ngClass]="data?.is_active ?'text-success': 'text-danger'"> {{data?.is_active ? statusText.active : statusText.inactive}}</div>
+                            <ng-container *ngIf="data?.issave"> 
+                            <label class="custom-control ios-switch">
+                                <input type="checkbox" class="ios-switch-control-input"
+                                 [(ngModel)]="userData[userIndex(data?.u_id)].is_active">
+                                <span class="ios-switch-control-indicator"></span>
+                            </label>
+                        </ng-container>
+
+                            <!-- <a href="#">James Yates</a> -->
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <span class="approve mr-2 d-inline-bblock" (click)="edit(data?.u_id)" *ngIf="!data?.issave">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit Details
+                            </span>
+                            <button class="btn btn-success" (click)="save(data?.u_id)" *ngIf="data?.issave">
+                                Save
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

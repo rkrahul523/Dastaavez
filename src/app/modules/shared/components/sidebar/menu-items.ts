@@ -43,6 +43,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  {
+    path: `${ROUTE_PATH.DASHBOARD}/${ROUTE_PATH.MANAGE_USERS}`,
+    title: 'Manage Users',
+    icon: 'bi bi-people',
+    class: '',
+    extralink: false,
+    submenu: []
+  },
   // {
   //   path: '/component/card',
   //   title: 'Card',

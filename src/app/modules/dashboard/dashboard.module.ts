@@ -24,7 +24,8 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActionRendererComponent } from './components/action-renderer/action-renderer.component';
 import { ManageRolesComponent } from './components/manage-roles/manage-roles.component';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from '../shared/components/profile/profile.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ActionRendererComponent,
     ManageRolesComponent,
     ManageUsersComponent,
-    ProfileComponent,
+    SearchFilterPipe
     
   ],
   imports: [

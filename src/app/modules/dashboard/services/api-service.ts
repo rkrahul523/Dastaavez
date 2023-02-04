@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthenticationService } from '../../login/services/authentication.service';
 import { ISendFile } from '../model/file';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
     providedIn: 'root'
@@ -30,12 +31,19 @@ export class ApiService {
     receiveFileURL = 'receive-file';//   fts_id, user_id';
     getReceivedFileURL = 'get-received-files';//   fts_id, user_id';
     sendReceivedFileURL = 'send-received-files';//   fts_id, user_id';
-    getDashboardDataUrl='get-dasboard-data';
+    getDashboardDataUrl = 'get-dasboard-data';
+    updateManageRoleUrl = 'update-manage-roles';
+    getManageRoleUrl = 'get-manage-roles';
+    getAllUserDetailsUrl = 'get-all-user-details';
+    approveUsersUrl = 'approve-users';
 
+    
+    
 
-
-    constructor(private http: HttpClient,
-        private authentication: AuthenticationService
+    constructor(
+        private http: HttpClient,
+        private authentication: AuthenticationService,
+        private toastr: ToastrService
     ) {
 
     }
@@ -74,6 +82,40 @@ export class ApiService {
     getReceivedFileDetails() {
         return this.http.get(this.apiURL + this.getReceivedFileURL, { params: { user_id: this.getU_id() } })
     }
+    getManagedRoles() {
+        return this.http.get(this.apiURL + this.getManageRoleUrl, { params: { user_id: this.getU_id() } })
+    }
+    updateManagedRoles(data: any) {
+        return this.http.post(this.apiURL + this.updateManageRoleUrl, data)
+    }
+    getAllUserDetails() {
+        return this.http.get(this.apiURL + this.getAllUserDetailsUrl, { params: { user_id: this.getU_id() } })
+    }
+    approveUsers(data: any) {
+        return this.http.post(this.apiURL + this.approveUsersUrl, data)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+     warnToast(message: any, subtext='File Info') {
+        this.toastr.info(message, subtext, {
+          timeOut: 3000,
+        });
+      }
+     successToast(message: any, subtext='File Info') {
+        this.toastr.success(message, subtext, {
+          timeOut: 3000,
+        });
+      }
 
 
 

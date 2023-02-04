@@ -35,6 +35,10 @@
                         <p>Forgot Password?</p>
                     </div>
                         <br>
+
+                        <span>
+                            New User ? <a routerLink="/login/signup">Signup here</a>
+                        </span>
                         <div class="login-button">
                             <button class="btn btn-primary" *ngIf="!loaderFlag" (click)="login()">Login </button>
                             <div class="spinner-border text-primary loading-spinner" role="status" *ngIf="loaderFlag">
