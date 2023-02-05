@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
+import { IUiAction } from '../../model/action';
 
 @Component({
   selector: 'app-files-details',
@@ -11,47 +12,50 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FilesDetailsComponent implements OnInit {
 
-   @Input() details: {key: string, value: string}[]=[]
-   @Input() users: any=[]
-  d=[
+  @Input() details: { key: string, value: string }[] = [];
+  @Input() fts_id: string;
+  @Output() fileStatus: EventEmitter<any> = new EventEmitter();
+
+  @Input() users: any = []
+  d = [
     {
-     key: 'Docket Number',
-     value: 'NITP/doododo/dkdk'
+      key: 'Docket Number',
+      value: 'NITP/doododo/dkdk'
     },
     {
-     key: 'Docket Number',
-     value: 'NITP/doododo/dkdk'
+      key: 'Docket Number',
+      value: 'NITP/doododo/dkdk'
     },
     {
-     key: 'Docket Number',
-     value: 'NITP/doododo/dkdk'
+      key: 'Docket Number',
+      value: 'NITP/doododo/dkdk'
     },
     {
-     key: 'Docket Number',
-     value: 'NITP/doododo/dkdk'
+      key: 'Docket Number',
+      value: 'NITP/doododo/dkdk'
     },
     {
-     key: 'Docket Number',
-     value: 'NITP/doododo/dkdk'
+      key: 'Docket Number',
+      value: 'NITP/doododo/dkdk'
     },
   ]
 
   assignForm: FormGroup;
   commentsForm: FormGroup;
 
-  receiveButtonPressed:boolean;
-  rejectButtonPressed:boolean;
+  receiveButtonPressed: boolean;
+  rejectButtonPressed: boolean;
 
-//   users=[ 
-//     {
-//     name: 'Rahul kumar',
-//     u_id: 2
-//   },
-//     {
-//     name: 'suresh kumar',
-//     u_id: 4
-//   },
-// ];
+  //   users=[ 
+  //     {
+  //     name: 'Rahul kumar',
+  //     u_id: 2
+  //   },
+  //     {
+  //     name: 'suresh kumar',
+  //     u_id: 4
+  //   },
+  // ];
 
   constructor(
     private ngbModal: NgbActiveModal,
@@ -63,43 +67,71 @@ export class FilesDetailsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.assignForm= this.fb.group({
+    this.assignForm = this.fb.group({
       assignedUser: ['', [Validators.required]]
     })
-    this.commentsForm= this.fb.group({
+    this.commentsForm = this.fb.group({
       comments: ['', [Validators.required]]
     })
 
   }
 
 
-  receiveFiles(){
-    this.receiveButtonPressed= true;
+  receiveFiles() {
+    this.receiveButtonPressed = true;
 
-    if(this.assignForm.invalid){
+    if (this.assignForm.invalid) {
       return;
     }
 
-    if(this.commentsForm.invalid){
-      this.rejectButtonPressed= true;
+    if (this.commentsForm.invalid) {
+      this.rejectButtonPressed = true;
       return;
     }
-    
+    this.commonActionFunc(IUiAction.RECEIVED);
   }
 
 
-  rejectFiles(){
-    this.rejectButtonPressed= true;
 
-    if(this.commentsForm.invalid){
-      return;
+  commonActionFunc(action: IUiAction) {
+    const receiveFileData = {
+      fts_id: this.fts_id,
+      comments: this.commentsForm.value.comments,
+      assignedUser: this.assignForm.value.assignedUser,
+      action
     }
-
+    this.api.receiveFile(receiveFileData).subscribe((res: any) => {
+      if (res) {
+        if (res.status) {
+          this.api.successToast(res.message, 'File Info');
+          this.emitFileStatus(res.status, res.message, action);
+          this.dismissModal();
+        } else {
+          this.api.errorToast(res.message, 'Receive File');
+        }
+      }
+    })
   }
 
 
-  dismissModal(){
+  rejectFiles() {
+    this.rejectButtonPressed = true;
+
+    if (this.commentsForm.invalid) {
+      return;
+    }
+    return;
+    this.commonActionFunc(IUiAction.REJECTED);
+  }
+
+
+  dismissModal() {
     this.ngbModal.dismiss();
+  }
+
+
+  emitFileStatus(status: boolean, message: string, action: string) {
+    this.fileStatus.emit({ status, message, action })
   }
 
 

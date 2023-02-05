@@ -9,9 +9,9 @@
                 <div class="fts-field d-flex ">
                     <input type="text" class="form-control" placeholder="Enter FTS ID"
                         onkeyup="this.value = this.value.toUpperCase()" [(ngModel)]="ftsId"
-                        (keydown.enter)="receiveFile()">
+                        (keydown.enter)="openReceiveModal()">
 
-                       <button class="btn btn-primary d-flex ml-2" (click)="openModal()">
+                       <button class="btn btn-primary d-flex ml-2" (click)="openReceiveModal()">
                         <i class="bi bi-search mr-1"></i> Fetch
                        </button>
                 </div>
@@ -52,11 +52,21 @@
                     </div>
                 </div>
             </div>
-            <ag-grid-angular id='receive-file-info' [gridOptions]="gridOptions" style="width: 100%; height: 700px"
+            <ag-grid-angular id='receive-file-info' [gridOptions]="gridOptions" style="width: 100%; height: 550px"
                 class="ag-theme-alpine" [sideBar]='sideBar' [defaultColDef]="defaultColDef"
                 [autoGroupColumnDef]="autoGroupColumnDef" [rowData]="rowData" [columnDefs]="columnDefs"
                 [modules]="modules" [components]="components" (gridReady)="onGridReady($event)">
             </ag-grid-angular>
+            <div class="pag-page-size">
+                Page Size:
+                <select (change)="onPageSizeChanged()" id="page-size" [(ngModel)]="pageSize" class="page-select">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
         </ng-template>
     </li>
     <li [ngbNavItem]="2">

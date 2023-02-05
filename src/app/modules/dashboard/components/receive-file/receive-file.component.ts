@@ -88,7 +88,7 @@ export class ReceiveFileComponent implements OnInit {
   }
   columnDefs = RECEIVED_FILE_COLUMS;
 
-  rowData = d
+  rowData = []; //d
   bbb = [
     //   {
     //     docket:'NITP/ee',
@@ -115,28 +115,14 @@ export class ReceiveFileComponent implements OnInit {
 
 
 
-  receiveFile() {
-    this.api.receiveFile(this.ftsId).subscribe((res: any) => {
-      if (res) {
-        if (res.status) {
-          this.successToast(res.message);
-          this.getReceivedFileDetails();
-        } else {
-          this.errorToast(res.message);
-        }
-      }
-    }
-    )
 
-  }
 
 
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-    //  this.getReceivedFileDetails();
-
-    //this.onPageSizeChanged();
+    this.getReceivedFileDetails();
+   // this.onPageSizeChanged();
   }
 
 
@@ -188,7 +174,7 @@ export class ReceiveFileComponent implements OnInit {
         this.rowData = res.data;
         setTimeout(() => {
           this.gridColumnApi.autoSizeAllColumns();
-          // this.onPageSizeChanged();
+          this.onPageSizeChanged();
         })
 
       } else {
@@ -272,7 +258,7 @@ export class ReceiveFileComponent implements OnInit {
   }
 
 
-  openModal() {
+  openReceiveModal() {
     if (this.ftsId.length) {
       const ftsId = { fts_id: this.ftsId }
       this.api.checkFile(ftsId).subscribe((res: any) => {
@@ -285,17 +271,26 @@ export class ReceiveFileComponent implements OnInit {
             size: "lg",
             keyboard: false,
             backdrop: true
-          });    
+          });
           modalRef.componentInstance.details = viewFileData;
           modalRef.componentInstance.users = checkedFileData.availableUser;
+          modalRef.componentInstance.fts_id = this.ftsId;
+
+          modalRef.componentInstance.sentFileStatus.subscribe((fileStatus: any) => {
+            if (fileStatus && fileStatus.status) {
+              if (fileStatus.action == 'Received') {
+                //this.active =1;
+                this.getReceivedFileDetails();
+                // this.getAllFiles();
+              }
+
+            }
+          })
 
         } else {
           this.api.errorToast(res.message, 'Unauthorised')
         }
       })
-
-
-
 
 
       // modalRef.componentInstance.fileToSend = unsentData;
@@ -310,6 +305,10 @@ export class ReceiveFileComponent implements OnInit {
     } else {
       this.warnToast('Selected Files are already Sent/Operational');
     }
+  }
+
+  onPageSizeChanged() {
+    this.gridApi.paginationSetPageSize(Number(this.pageSize));
   }
 
 }

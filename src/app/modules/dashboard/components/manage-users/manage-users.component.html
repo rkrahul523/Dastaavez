@@ -50,7 +50,7 @@
           <td>
             {{data?.department}}
           </td>
-          <td class="pl-0">
+          <td class="">
             <div
               [ngClass]=" data?.status == statusText.Approved ? 'text-success font-weight-bold':  data?.status == statusText.Created ?  'text-warning font-weight-bold':  'text-danger font-weight-bold'">
               <span *ngIf="data?.status == statusText.Created;else otherstatus">

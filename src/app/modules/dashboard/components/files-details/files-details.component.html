@@ -43,7 +43,6 @@
                             <label for="w3review">Remarks:</label>
                             <textarea name="w3review" rows="3" cols="50" class="form-control"
                                 formControlName="comments">
-
                         </textarea>
                             <small class="d-block text-danger"
                                 *ngIf="rejectButtonPressed && commentsForm.invalid">Remarks is required </small>
@@ -52,7 +51,7 @@
 
                     <div class="action-buttons d-flex">
                         <button class="btn btn-success" (click)="receiveFiles()">
-                            Receive
+                            Send to Desk
                         </button>
                         <button class="btn btn-danger ml-auto" (click)="rejectFiles()">
                             Reject

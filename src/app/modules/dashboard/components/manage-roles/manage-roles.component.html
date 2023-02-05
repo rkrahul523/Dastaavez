@@ -68,7 +68,7 @@
                             <option *ngFor="let names of roles" [value]="names">{{names}} </option>
                         </select>
                     </td>
-                    <td class="pl-0">
+                    <td class="">
                         <div class="d-flex align-items-center">
                             <div *ngIf="!data?.issave" [ngClass]="data?.is_active ?'text-success': 'text-danger'"> {{data?.is_active ? statusText.active : statusText.inactive}}</div>
                             <ng-container *ngIf="data?.issave"> 

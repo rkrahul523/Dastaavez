@@ -77,8 +77,8 @@ export class ApiService {
             return this.http.post(this.apiURL + this.sendFileURL, { file_info, u_id: this.getU_id() })
         }
     }
-    receiveFile(fts_id: any) {
-        return this.http.post(this.apiURL + this.receiveFileURL, { fts_id, user_id: this.getU_id() })
+    receiveFile(data: any) {
+        return this.http.post(this.apiURL + this.receiveFileURL, { ...data, user_id: this.getU_id() })
     }
     getReceivedFileDetails() {
         return this.http.get(this.apiURL + this.getReceivedFileURL, { params: { user_id: this.getU_id() } })
