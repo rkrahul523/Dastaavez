@@ -285,8 +285,14 @@ export class FileInfoComponent implements OnInit {
         modalRef.componentInstance.fileToSend = unsentData;
 
         modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
-          if (sentFileStatus && sentFileStatus.status) {
-            this.getAllFiles();
+          if (sentFileStatus) {
+            if(sentFileStatus.status){
+              this.api.successToast(sentFileStatus.message, 'Send File')
+              this.getAllFiles();
+            }else{
+              this.api.errorToast(sentFileStatus.message, 'Send File')
+            }
+           
           }
         })
 

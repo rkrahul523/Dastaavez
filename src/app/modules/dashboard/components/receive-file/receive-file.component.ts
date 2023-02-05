@@ -276,30 +276,24 @@ export class ReceiveFileComponent implements OnInit {
           modalRef.componentInstance.users = checkedFileData.availableUser;
           modalRef.componentInstance.fts_id = this.ftsId;
 
-          modalRef.componentInstance.sentFileStatus.subscribe((fileStatus: any) => {
-            if (fileStatus && fileStatus.status) {
+          modalRef.componentInstance.fileStatus.subscribe((fileStatus: any) => {
+            if (fileStatus) {
+              if(fileStatus.status){
               if (fileStatus.action == 'Received') {
                 //this.active =1;
+                this.api.successToast(fileStatus.message, 'Receive File')
                 this.getReceivedFileDetails();
                 // this.getAllFiles();
               }
-
+            }else{
+              this.api.errorToast(fileStatus.message, 'Receive File')
+            }
             }
           })
-
         } else {
           this.api.errorToast(res.message, 'Unauthorised')
         }
       })
-
-
-      // modalRef.componentInstance.fileToSend = unsentData;
-
-      // modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
-      //   if (sentFileStatus && sentFileStatus.status) {
-      //     this.getAllFiles();
-      //   }
-      // })
 
 
     } else {
