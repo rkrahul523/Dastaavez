@@ -11,7 +11,8 @@ import { ITrackFile } from '../../model/track-file';
 export class TrackFileComponent implements OnInit {
 
 
-  ftsID = ''
+  ftsID = '';
+  showingTrackingData=''
 
 
   trackingData: ITrackFile[] = []
@@ -102,11 +103,13 @@ export class TrackFileComponent implements OnInit {
 
   search() {
     this.loaderFlag = true;
+    this.showingTrackingData='';
     this.trackingData=[];
     this.api.trackFile(this.ftsID).subscribe((res: any) => {
       this.loaderFlag = false;
       if (res && res.status) {
        const unsorted = res.data[0].data;
+       this.showingTrackingData= this.ftsID;
         this.trackingData = unsorted.sort((a: any,b: any)=> b.order- a.order);
       } else {
         this.toastr.info(res.message, 'File Info', {

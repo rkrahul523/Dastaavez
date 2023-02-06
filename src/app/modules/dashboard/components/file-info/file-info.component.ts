@@ -172,6 +172,9 @@ export class FileInfoComponent implements OnInit {
     if (fileEvent.event == "View") {
       this.viewFileStatus(fileEvent.rowData);
     }
+    if (fileEvent.event == "Delete") {
+      this.deleteFile(fileEvent.rowData);
+    }
 
 
 
@@ -206,7 +209,7 @@ export class FileInfoComponent implements OnInit {
     });
 
     modalRef.componentInstance.details = this.formulateRecords(details, lastComment);
-    modalRef.componentInstance.receiveId = lastComment && 'receiveId' in lastComment ? lastComment.receiveId: null;
+    modalRef.componentInstance.receiveId = lastComment && 'receiveId' in lastComment ? lastComment.receiveId : null;
     modalRef.componentInstance.modalActionType = IModalAction.VIEW;
   }
 
@@ -366,7 +369,7 @@ export class FileInfoComponent implements OnInit {
   fileStatus(message: any) {
     if (message && message.status) {
       this.createdFileData = message.data[0];
-      this.formcontent= null;
+      this.formcontent = null;
       this.route(3);
     }
   }
@@ -425,5 +428,20 @@ export class FileInfoComponent implements OnInit {
     })
     return file;
   }
+
+
+  deleteFile(fileData: any) {
+    const fts = { fts_id: fileData.fts_id }
+    this.api.deleteFile(fts).subscribe((res: any) => {
+      if (res && res.status) {
+        // const lastCommentData = res.data.lastComment;
+        this.api.successToast(res.message, 'Delete File');
+        this.getAllFiles();
+      } else {
+        this.api.errorToast(res.message, 'Delete File Error')
+      }
+    })
+  }
+
 
 }

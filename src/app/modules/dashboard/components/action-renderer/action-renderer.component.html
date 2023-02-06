@@ -13,8 +13,8 @@
         Send
     </button>
     <button class="btn btn-danger mr-2" (click)="onClick('Delete')"
-    *ngIf="data?.file_status == fileStatusText.CREATED ">
-        <i class="bi bi-trash3"></i>
+    *ngIf="data?.file_status == fileStatusText.CREATED || data?.file_status == fileStatusText.REJECTED || data?.file_status == fileStatusText.SENT"  >
+    <i class="bi bi-trash3"></i>
         Delete
     </button>
     <!-- <button class="btn btn-danger mr-2" (click)="onClick('Store')">

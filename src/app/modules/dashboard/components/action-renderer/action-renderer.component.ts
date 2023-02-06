@@ -8,20 +8,20 @@ import { fileStatusText } from '../../model/file';
   templateUrl: './action-renderer.component.html',
   styleUrls: ['./action-renderer.component.scss']
 })
-export class ActionRendererComponent  implements ICellRendererAngularComp  {
+export class ActionRendererComponent implements ICellRendererAngularComp {
 
   params: any;
   label: string;
   data: any;
-  
- fileStatusText= fileStatusText;
 
-  fileSection: any =fileSectionText;
+  fileStatusText = fileStatusText;
+
+  fileSection: any = fileSectionText;
 
   agInit(params: any): void {
     this.params = params;
     this.label = this.params.label || null;
-    this.data= params.data;
+    this.data = params.data;
   }
 
   refresh(params?: any): boolean {
@@ -29,9 +29,9 @@ export class ActionRendererComponent  implements ICellRendererAngularComp  {
   }
 
   onClick($event: any) {
-    if(!$event)
-    return;
-    
+    if (!$event)
+      return;
+
     if (this.params.onClick instanceof Function) {
       // put anything into params u want pass into parents component
       const params = {

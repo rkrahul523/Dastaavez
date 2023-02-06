@@ -38,6 +38,7 @@ export class ApiService {
     approveUsersUrl = 'approve-users';
     checkFileUrl = 'check-file-to-receive';
     getLastCommentUrl = 'get-last-comment';
+    deleteFileUrl = 'delete-file';
 
     
     
@@ -102,6 +103,9 @@ export class ApiService {
 
     getLastComment(data: any) {
         return this.http.post(this.apiURL + this.getLastCommentUrl, { ...data,  user_id: this.getU_id()} )
+    }
+    deleteFile(data: any) {
+        return this.http.post(this.apiURL + this.deleteFileUrl, { ...data,  user_id: this.getU_id()} )
     }
 
 
