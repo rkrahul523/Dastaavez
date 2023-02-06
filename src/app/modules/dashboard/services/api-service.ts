@@ -96,7 +96,7 @@ export class ApiService {
         return this.http.get(this.apiURL + this.getAllUserDetailsUrl, { params: { user_id: this.getU_id() } })
     }
     approveUsers(data: any) {
-        return this.http.post(this.apiURL + this.approveUsersUrl, data)
+        return this.http.post(this.apiURL + this.approveUsersUrl,  { ...data,  user_id: this.getU_id()})
     }
     checkFile(data: any) {
         return this.http.post(this.apiURL + this.checkFileUrl, { ...data,  user_id: this.getU_id()} )

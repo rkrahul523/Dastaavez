@@ -8,6 +8,8 @@ import { TrackFileComponent } from './components/track-file/track-file.component
 import { ROUTE_PATH } from '../shared/models/route-path';
 import { ManageRolesComponent } from './components/manage-roles/manage-roles.component';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { ManageUserGuard } from './services/manage-user.guard';
+import { ManageRoleGuard } from './services/manage-role.guard';
 
 const routes: Routes = [
   {
@@ -28,11 +30,13 @@ const routes: Routes = [
   },
   {
     path: ROUTE_PATH.MANAGE_ROLES,
-    component: ManageRolesComponent
+    component: ManageRolesComponent,
+    canActivate: [ManageRoleGuard] ,
   },
   {
     path: ROUTE_PATH.MANAGE_USERS,
-    component: ManageUsersComponent
+    component: ManageUsersComponent,
+    canActivate: [ManageUserGuard] ,
   },
   
 ];

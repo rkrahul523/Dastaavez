@@ -3,7 +3,6 @@
     <p>
         After updating User's department,roles ,status click on <strong>SAVE</strong> button to save the details.
     </p>
-    {{(currentUser | async) | json}}
 
 
     <div class="top-pannel mb-2 flex-wrap">
@@ -61,20 +60,37 @@
                             <option *ngFor="let names of departments" [value]="names">{{names}} </option>
                         </select> -->
                         <span *ngIf="data?.issave">
-                            <ng-select [items]="departments" [selectOnTab]="true" placeholder="Select Deparment"
-                            [(ngModel)]="userData[userIndex(data?.u_id)].department">
-                            </ng-select>
+                            <span
+                                *ngIf="(currentUser | async) && updateDepartmentAccess.includes(((currentUser | async)?.role)) else onlyViewDepartment">
+                                <ng-select [items]="departments" [selectOnTab]="true" placeholder="Select Deparment"
+                                    [(ngModel)]="userData[userIndex(data?.u_id)].department">
+                                </ng-select>
+                            </span>
+                            <ng-template #onlyViewDepartment>
+                                {{data?.status}}
+                            </ng-template>
                         </span>
                     </td>
                     <td>
                         <!-- {{data?.role}} -->
 
                         <ng-container *ngIf="!data?.issave"> {{data?.role}}</ng-container>
-                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role"
-                            *ngIf="data?.issave">
-                            <!-- <option value="">Choose Deparment</option> -->
-                            <option *ngFor="let names of roles" [value]="names">{{names}} </option>
-                        </select>
+                        <span *ngIf="data?.issave">
+                            <span
+                                *ngIf="(currentUser | async) && (currentUser | async)?.role == allRolesText.DIRECTOR ">
+                                <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role">
+                                    <option *ngFor="let names of fundedRoleForDirector" [value]="names">{{names}}
+                                    </option>
+                                </select>
+                            </span>
+                            <span
+                                *ngIf="(currentUser | async) && (currentUser | async)?.role == allRolesText.SUPERVISOR ">
+                                <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role">
+                                    <option *ngFor="let names of fundedRoleForSupervisor" [value]="names">{{names}}
+                                    </option>
+                                </select>
+                            </span>
+                        </span>
                     </td>
                     <td class="">
                         <div class="d-flex align-items-center">

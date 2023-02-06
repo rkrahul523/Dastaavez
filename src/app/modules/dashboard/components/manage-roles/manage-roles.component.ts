@@ -3,6 +3,7 @@ import { IManageRoles, normalRoles, IUserStatus } from '../../model/user';
 import { ApiService } from '../../services/api-service';
 import { ActiveDepartments } from '../../model/file';
 import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
+import { accessToEditDepartment, avlRolesForDirector, avlRolesForSupervisor, activeRoleText } from '../../utils/manage-role-access';
 
 @Component({
   selector: 'app-manage-roles',
@@ -22,9 +23,13 @@ export class ManageRolesComponent implements OnInit {
 
 
   currentUser= this.authentication.user;
+  allRolesText=activeRoleText
+
+  updateDepartmentAccess= accessToEditDepartment;
+  fundedRoleForDirector= avlRolesForDirector;
+  fundedRoleForSupervisor= avlRolesForSupervisor;
 
 
-  roles = normalRoles;
 
 
   userData: IManageRoles[] = [
@@ -56,22 +61,26 @@ export class ManageRolesComponent implements OnInit {
     if (found > -1) {
       this.userData[found].issave = true
     }
-
-
-
   }
+
+
+
   save(index: any) {
     const found = this.userData.findIndex(r => r.u_id == index);
     if (found > -1) {
-      this.userData[found].issave = false;
-      this.api.updateManagedRoles(this.userData[found]).subscribe((res: any) => {
-        if (res && res.status) {
-          this.api.successToast(res.message, 'Manage Roles');
-          this.getManageRolesData();
-        }else{
-          this.api.warnToast(res.message, 'Manage Roles');
-        }
-      })
+      if(this.checkNull(this.userData[found])){
+        this.userData[found].issave = false;
+        this.api.updateManagedRoles(this.userData[found]).subscribe((res: any) => {
+          if (res && res.status) {
+            this.api.successToast(res.message, 'Manage Roles');
+            this.getManageRolesData();
+          }else{
+            this.api.warnToast(res.message, 'Manage Roles');
+          }
+        })
+      }else{
+        this.api.errorToast('Department and Role can\'t be Empty', 'Error');
+      }
     }
   }
 
@@ -95,6 +104,11 @@ export class ManageRolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getManageRolesData();
+  }
+
+
+  checkNull(data: any){
+    return data.role  && data.department;
   }
 
 }

@@ -42,7 +42,7 @@
           <td>
             {{data?.u_id}}
           </td>
-         
+
           <td>
             {{data?.name}}
             <small class="d-block"> {{data?.user_name}}</small>
@@ -72,19 +72,19 @@
               <span class="approve mr-2 " (click)="approve(data?.u_id)">
                 <i class="bi bi-check2"></i>
                 Approve</span>
-              <span class="reject"  (click)="reject(data?.u_id)">
+              <span class="reject" (click)="reject(data?.u_id)">
                 <i class="bi bi-x-lg"></i>
                 Reject</span>
             </div>
-            <div class="d-flex align-items-center" *ngIf="data?.status == (statusText.Approved || statusText.Rejected ) ">
-              <button class="btn btn-danger"  ><i class="bi bi-trash mr-1"></i>Delete User</button>
-            </div>
+            <span *ngIf="(currentUser | async) && deleteAccess.includes(((currentUser | async)?.role))">
+              <div class="d-flex align-items-center"
+                *ngIf="data?.status == statusText.Approved || data?.status == statusText.Rejected  ">
+                <button class="btn btn-danger" (click)="deleteUser(data?.u_id)"><i class="bi bi-trash mr-1"></i>Delete
+                  User</button>
+              </div>
+            </span>
           </td>
-
         </tr>
-
-
-
       </tbody>
     </table>
   </div>

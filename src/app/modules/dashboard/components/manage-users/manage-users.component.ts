@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IManageRoles, IRegisteredStatus } from '../../model/user';
 import { ApiService } from '../../services/api-service';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
+import { accessToDelete } from '../../utils/manage-user-access';
 
 @Component({
   selector: 'app-manage-users',
@@ -13,11 +15,18 @@ export class ManageUsersComponent implements OnInit {
     Created: IRegisteredStatus.CREATED,
     Approved: IRegisteredStatus.APPROVED,
     Rejected: IRegisteredStatus.REJECTED,
+    Deleted: IRegisteredStatus.DELETED
   }
+
+ // { "u_id": 1, "name": "Rahul kumar", "department": "Academic", "user_name": "test", "role": "Director" }
+
+ deleteAccess= accessToDelete;
+
+  currentUser= this.authentication.user;
 
   searchText: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private authentication: AuthenticationService) { }
 
   userData: IManageRoles[] = [
     {
