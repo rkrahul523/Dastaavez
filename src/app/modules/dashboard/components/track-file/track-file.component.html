@@ -24,7 +24,7 @@
                         {{data?.updatedon | customdatepipe}}
                     </div>
                     <div class="card-edited-by">
-                        {{data?.status | lowercase }} by {{data?.name}} ( {{data?.department}} )
+                        {{data?.status | lowercase }} {{data?.status =='Assigned' ? 'to': 'by'}} {{data?.name}} ( {{data?.department}} )
                     </div>
                 </div>
                 <div class="card-body text-center">
@@ -33,6 +33,7 @@
                         <span  *ngIf="data?.status =='Created'"> with title :{{data?.filetitle}} </span>
                         <span  *ngIf="data?.status =='Sent'"> to department:{{data?.action_department}} </span>
                         <span  *ngIf="data?.status =='Received'"> by department:{{data?.department}} </span>
+                        <span  *ngIf="data?.status =='Assigned'"> to department:{{data?.department}} </span>
                     </p>
                     <p>Comments: {{data?.comments}}</p>
                 </div>

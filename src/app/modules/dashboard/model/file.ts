@@ -39,8 +39,11 @@ export enum IFileStatus {
     CREATED = 'Created',
     SENT = 'Sent',
     CLOSED = 'Closed',
+    RECEIVED= 'Received',
     OPERATIONAL = 'Operational',
-    STORED = 'Stored'
+    STORED = 'Stored',
+    REJECTED = 'Rejected',
+    DECLINED = 'Declined',
 }
 
 export enum IFileStation {
@@ -52,6 +55,16 @@ export enum ISendFile {
     // WITHIN = 'Within Department'
 }
 
+export const fileStatusText={
+    CREATED : 'Created',
+    SENT : 'Sent',
+    CLOSED : 'Closed',
+    OPERATIONAL : 'Operational',
+    STORED : 'Stored',
+    REJECTED : 'Rejected',
+    RECEIVED: 'Received',
+    DECLINED :'Declined',
+}
 
 
 export interface IFileInfo {

@@ -9,6 +9,12 @@ import { ApiService } from '../../services/api-service';
 import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
 import { ToastrService } from 'ngx-toastr';
 import { ActionRendererComponent } from '../action-renderer/action-renderer.component';
+import { IFileSection } from '../../model/section';
+import { FilesDetailsComponent } from '../files-details/files-details.component';
+import { IModalAction } from '../../model/action';
+import { getMeaningFullNames, viewingAllowedCreation } from '../../model/created-file';
+import { IFileStatus } from '../../model/file';
+
 @Component({
   selector: 'app-file-info',
   templateUrl: './file-info.component.html',
@@ -147,7 +153,7 @@ export class FileInfoComponent implements OnInit {
         cellRenderer: 'actionControlRenderer',
         cellRendererParams: {
           onClick: this.onBtnClick1.bind(this),
-          label: 'Click oo'
+          label: IFileSection.CREATE
         }
       },
     ]
@@ -163,17 +169,50 @@ export class FileInfoComponent implements OnInit {
     if (fileEvent.event == "Modify") {
       this.modifyfile([fileEvent.rowData]);
     }
+    if (fileEvent.event == "View") {
+      this.viewFileStatus(fileEvent.rowData);
+    }
 
 
 
     //  this.rowDataClicked1 = e.rowData;
   }
 
+
+  viewFileStatus(rowData: any) {
+    if (rowData.file_status == IFileStatus.REJECTED) {
+      // fetch last comments
+      const fts = { fts_id: rowData.fts_id }
+      this.api.getLastComment(fts).subscribe((res: any) => {
+        if (res && res.status) {
+          const lastCommentData = res.data.lastComment;
+          this.openViewModal(rowData, lastCommentData)
+        } else {
+          this.api.errorToast(res.message, 'View File Error')
+        }
+      })
+    } else {
+      this.openViewModal(rowData)
+    }
+  }
+
+
+
+  openViewModal(details: any, lastComment: any = null) {
+    const modalRef = this.ngbModal.open(FilesDetailsComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+
+    modalRef.componentInstance.details = this.formulateRecords(details, lastComment);
+    modalRef.componentInstance.receiveId = lastComment && 'receiveId' in lastComment ? lastComment.receiveId: null;
+    modalRef.componentInstance.modalActionType = IModalAction.VIEW;
+  }
+
   onGridReady(params: any) {
     this.gridColumnApi = params.columnApi;
     this.gridApi = params.api;
-
-
     this.getAllFiles();
   }
 
@@ -274,7 +313,7 @@ export class FileInfoComponent implements OnInit {
 
     const selectedData = rowdata ? rowdata : this.gridApi.getSelectedRows();
     if (selectedData.length) {
-      const unsentData = selectedData.filter((res: any) => !res.sent_to);
+      const unsentData = selectedData.filter((res: any) => res.file_status == IFileStatus.CREATED || res.file_status == IFileStatus.REJECTED);
       if (unsentData.length) {
         const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
           size: "xl",
@@ -286,13 +325,13 @@ export class FileInfoComponent implements OnInit {
 
         modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
           if (sentFileStatus) {
-            if(sentFileStatus.status){
+            if (sentFileStatus.status) {
               this.api.successToast(sentFileStatus.message, 'Send File')
               this.getAllFiles();
-            }else{
+            } else {
               this.api.errorToast(sentFileStatus.message, 'Send File')
             }
-           
+
           }
         })
 
@@ -327,8 +366,8 @@ export class FileInfoComponent implements OnInit {
   fileStatus(message: any) {
     if (message && message.status) {
       this.createdFileData = message.data[0];
+      this.formcontent= null;
       this.route(3);
-
     }
   }
 
@@ -348,8 +387,43 @@ export class FileInfoComponent implements OnInit {
 
 
   viewCreatedFileTab() {
-    this.stepperIndex=1;
+    this.stepperIndex = 1;
     this.active = 2;
+  }
+
+
+
+  formulateRecords(fileData: any, lastComment: any = null) {
+    let file: any = [];
+    if (lastComment && lastComment.status == IFileStatus.REJECTED) {
+      file = [
+        {
+          key: `File ${lastComment.status} with Message`,
+          value: lastComment.comments
+        },
+        {
+          key: 'Rejected By',
+          value: `${lastComment.name} (${lastComment.department})`
+        },
+        {
+          key: 'Rejected Date',
+          value: `${lastComment.updatedon}`
+        }
+      ]
+    }
+
+
+    Object.keys(fileData).forEach((key: string) => {
+      if (viewingAllowedCreation.includes(key)) {
+        let fileKey = {
+          key: getMeaningFullNames(key),
+          value: fileData[key]
+        }
+
+        file.push(fileKey)
+      }
+    })
+    return file;
   }
 
 }

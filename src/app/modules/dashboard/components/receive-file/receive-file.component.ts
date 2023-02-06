@@ -6,11 +6,16 @@ import { FILE_INFO_COLUMS } from '../../utils/file-info.const';
 import { RECEIVED_FILE_COLUMS } from '../../utils/receive-file.const';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../services/api-service';
-import { ISendFile } from '../../model/file';
+import { ISendFile, IFileStatus } from '../../model/file';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CommonActionTemplateComponent } from '../common-action-template/common-action-template.component';
 import { d } from './xt';
 import { FilesDetailsComponent } from '../files-details/files-details.component';
+import { IFileSection } from '../../model/section';
+import { IModalAction } from '../../model/action';
+import { ActionRendererComponent } from '../action-renderer/action-renderer.component';
+import { viewingAllowedFetched } from '../../model/received-file';
+import { getMeaningFullNames } from '../../model/created-file';
 
 @Component({
   selector: 'app-receive-file',
@@ -31,6 +36,10 @@ export class ReceiveFileComponent implements OnInit {
   pageSize = 10;
 
   @ViewChild('receive-file-info') grid!: AgGridAngular;
+
+  frameworkComponents = {
+    actionControlRenderer: ActionRendererComponent,
+  }
 
   public defaultColDef: ColDef = {
     flex: 1,
@@ -82,11 +91,11 @@ export class ReceiveFileComponent implements OnInit {
     onColumnResized: event => console.log('A column was resized'),
     onGridReady: event => console.log('The grid is now ready'),
     suppressHorizontalScroll: false,
-    suppressColumnVirtualisation: true
+    suppressColumnVirtualisation: true,
     // CALLBACKS
-    // getRowHeight: () => 25
+    getRowHeight: () => 45
   }
-  columnDefs = RECEIVED_FILE_COLUMS;
+  columnDefs: any = [];
 
   rowData = []; //d
   bbb = [
@@ -111,6 +120,7 @@ export class ReceiveFileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.createColumns();
   }
 
 
@@ -201,11 +211,11 @@ export class ReceiveFileComponent implements OnInit {
     })
   }
 
-  sendfile() {
+  sendfile(data: any) {
 
-    const selectedData = this.gridApi.getSelectedRows();
+    const selectedData = data;
     if (selectedData.length) {
-      const unsentData = selectedData.filter(res => !res.sent_to);
+      const unsentData = selectedData.filter((res: any) => res.file_status == IFileStatus.CREATED || res.file_status == IFileStatus.REJECTED);
       if (unsentData.length) {
         const modalRef = this.ngbModal.open(CommonActionTemplateComponent, {
           size: "xl",
@@ -218,17 +228,15 @@ export class ReceiveFileComponent implements OnInit {
 
         modalRef.componentInstance.sentFileStatus.subscribe((sentFileStatus: any) => {
           if (sentFileStatus && sentFileStatus.status) {
+            this.api.successToast(sentFileStatus.message, 'Send Fileß')
             this.getReceivedFileDetails();
+          }else{
+            this.api.errorToast(sentFileStatus.message, 'Send File Error');
           }
         })
-
-
       } else {
         this.warnToast('Selected Files are already Sent/Operational');
       }
-
-
-
     } else {
       this.warnToast('Please select a File');
     }
@@ -238,23 +246,118 @@ export class ReceiveFileComponent implements OnInit {
 
 
 
-  formulateRecords(comments: string, previousStatus: string, fileData: any) {
-    let file = [
-      {
-        key: `File ${previousStatus} with Message`,
-        value: comments
-      }
-    ]
+  formulateRecords(fileData: any, lastComment: any = null) {
+    let file: any = [];
+    if (lastComment) {
+      file = [
+        {
+          key: `File ${lastComment.status} with Message`,
+          value: lastComment.comments
+        },
+        {
+          key: `${lastComment.status} By`,
+          value: `${lastComment.name} (${lastComment.department})`
+        },
+        {
+          key: `${lastComment.status} Date`,
+          value: `${lastComment.updatedon}`
+        }
+      ]
+    }
 
     Object.keys(fileData).forEach((key: string) => {
+      if(viewingAllowedFetched.includes(key))
+      {
       let fileKey = {
-        key: key,
+        key: getMeaningFullNames(key),
         value: fileData[key]
       }
 
       file.push(fileKey)
+    }
     })
     return file;
+  }
+
+
+
+  createColumns() {
+
+
+    const columns = [
+      {
+        headerName: '',
+        width: 40,
+        checkboxSelection: true,
+        headerCheckboxSelection: true,
+        supressSorting: true,
+        supressToolPanel: true,
+        pinned: true,
+        supressMenu: true,
+        filter: false,
+        lockPosition: true,
+        lockVisibile: true,
+        suppressSizeToFit: false,
+        colId: 'check',
+        field: "checkbox",
+      },
+      {
+        headerName: 'File Action',
+        colId: 'action',
+        width: 300,
+        pinned: true,
+        filter: false,
+        cellRenderer: 'actionControlRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick.bind(this),
+          label: IFileSection.RECEIVE
+        }
+      },
+    ]
+
+    const finalColumn = [...columns, ...RECEIVED_FILE_COLUMS]
+    this.columnDefs = finalColumn;
+  }
+
+  onBtnClick(fileEvent: any) {
+    if (fileEvent.event == "Send") {
+      this.sendfile([fileEvent.rowData]);
+    }
+    // if (fileEvent.event == "Modify") {
+    //   this.modifyfile([fileEvent.rowData]);
+    // }
+    if (fileEvent.event == "View") {
+      this.viewFileStatus(fileEvent.rowData);
+    }
+    //  this.rowDataClicked1 = e.rowData;
+  }
+
+
+  viewFileStatus(rowData: any) {
+    if (rowData.file_status == IFileStatus.REJECTED || rowData.file_status == IFileStatus.RECEIVED) {
+      // fetch last comments
+      const fts = { fts_id: rowData.fts_id }
+      this.api.getLastComment(fts).subscribe((res: any) => {
+        if (res && res.status) {
+          const lastCommentData = res.data.lastComment;
+          this.openViewModal(rowData, lastCommentData)
+        } else {
+          this.api.errorToast(res.message, 'View File Error')
+        }
+      })
+    } else {
+      this.openViewModal(rowData)
+    }
+  }
+
+  openViewModal(details: any, lastComment = null){
+    const modalRef = this.ngbModal.open(FilesDetailsComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+    modalRef.componentInstance.details = this.formulateRecords(details, lastComment);
+    modalRef.componentInstance.modalActionType =IModalAction.VIEW;
   }
 
 
@@ -265,7 +368,9 @@ export class ReceiveFileComponent implements OnInit {
         if (res && res.status) {
           this.api.successToast(res.message, 'File Status');
           const checkedFileData = res.data;
-          const viewFileData = this.formulateRecords(checkedFileData.comments, checkedFileData.previousStatus, checkedFileData.fileData)
+          const formatted=  checkedFileData.lastComment;
+
+          const viewFileData = this.formulateRecords(checkedFileData.fileData, formatted)
 
           const modalRef = this.ngbModal.open(FilesDetailsComponent, {
             size: "lg",
@@ -274,14 +379,17 @@ export class ReceiveFileComponent implements OnInit {
           });
           modalRef.componentInstance.details = viewFileData;
           modalRef.componentInstance.users = checkedFileData.availableUser;
+          modalRef.componentInstance.receiveId = formatted && 'receiveId' in formatted ? formatted.receiveId: null;
+   
+          
           modalRef.componentInstance.fts_id = this.ftsId;
 
           modalRef.componentInstance.fileStatus.subscribe((fileStatus: any) => {
             if (fileStatus) {
               if(fileStatus.status){
-              if (fileStatus.action == 'Received') {
+              if (fileStatus.action == 'Received' || fileStatus.action == 'Rejected') {
                 //this.active =1;
-                this.api.successToast(fileStatus.message, 'Receive File')
+             //   this.api.successToast(fileStatus.message, 'File Info')
                 this.getReceivedFileDetails();
                 // this.getAllFiles();
               }

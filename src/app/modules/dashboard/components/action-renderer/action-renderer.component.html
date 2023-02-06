@@ -1,20 +1,39 @@
 <!-- <button type="button" (click)="onClick($event)">{{label}}</button> -->
 
-<div class="button-container d-flex ">
-    <button class="btn btn-success mr-2" (click)="onClick('Modify')">
+<!-- {{data?.file_status}} -->
+<div class="button-container d-flex " *ngIf="label== fileSection.CREATE">
+    <button class="btn btn-success mr-2" (click)="onClick('Modify')" 
+     *ngIf="data?.file_status == fileStatusText.CREATED ">
         <i class="bi bi-pencil"></i>
         Modify
     </button>
-    <button class="btn btn-primary mr-2" (click)="onClick('Send')">
+    <button class="btn btn-primary mr-2" (click)="onClick('Send')" 
+    *ngIf="data?.file_status == fileStatusText.CREATED || data?.file_status == fileStatusText.REJECTED"  >
         <i class="bi bi-send"></i>
         Send
     </button>
-    <button class="btn btn-danger mr-2" (click)="onClick('Delete')">
+    <button class="btn btn-danger mr-2" (click)="onClick('Delete')"
+    *ngIf="data?.file_status == fileStatusText.CREATED ">
         <i class="bi bi-trash3"></i>
-        delete
+        Delete
     </button>
     <!-- <button class="btn btn-danger mr-2" (click)="onClick('Store')">
         <i class="bi bi-trash3"></i>
         Store
     </button> -->
+    <button class="btn btn-info mr-2" (click)="onClick('View')">
+        <i class="bi bi-card-text"></i>
+        View
+    </button>
+</div>
+<div class="button-container d-flex " *ngIf="label== fileSection.RECEIVE">
+    <button class="btn btn-primary mr-2" (click)="onClick('Send')" 
+    *ngIf="data?.file_status == fileStatusText.RECEIVED || data?.file_status == fileStatusText.REJECTED"  >
+    <i class="bi bi-send"></i>
+        Send
+    </button>
+    <button class="btn btn-info mr-2" (click)="onClick('View')">
+        <i class="bi bi-card-text"></i>
+        View
+    </button>
 </div>

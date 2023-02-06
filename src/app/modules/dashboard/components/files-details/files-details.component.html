@@ -2,7 +2,7 @@
     <div class="container p-4">
         <div class="top-header mb-2 d-flex">
             <div class="header-text">
-                Manage files
+                File Details
             </div>
             <div class="cross-icon ml-auto" (click)="dismissModal()">
                 <button type="button" class="close text-danger" aria-label="Close">
@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="card mb-4">
+                <div [ngClass]="modalActionType== allModalActions.RECEIVED ? 'card card-small mb-4': 'card card-full mb-4'">
                     <div class="card-body">
                         <ng-container *ngFor="let data of details;let i=index;let last=last">
                             <div class="row">
@@ -24,11 +24,11 @@
                                     <p class="text-muted mb-0">{{data?.value}}</p>
                                 </div>
                             </div>
-                            <hr *ngIf="!last">
+                            <hr>
                         </ng-container>
                     </div>
                 </div>
-                <div class="action-menu">
+                <div class="action-menu" *ngIf="modalActionType== allModalActions.RECEIVED">
                     <div class="row mb-2">
                         <div class="col-sm-6 form-group" [formGroup]="assignForm">
                             <label for="assignTo">Assign To Desk:</label>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="action-buttons d-flex">
+                    <div class="action-buttons d-flex" >
                         <button class="btn btn-success" (click)="receiveFiles()">
                             Send to Desk
                         </button>

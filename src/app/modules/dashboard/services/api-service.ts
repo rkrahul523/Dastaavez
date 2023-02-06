@@ -37,6 +37,7 @@ export class ApiService {
     getAllUserDetailsUrl = 'get-all-user-details';
     approveUsersUrl = 'approve-users';
     checkFileUrl = 'check-file-to-receive';
+    getLastCommentUrl = 'get-last-comment';
 
     
     
@@ -97,6 +98,10 @@ export class ApiService {
     }
     checkFile(data: any) {
         return this.http.post(this.apiURL + this.checkFileUrl, { ...data,  user_id: this.getU_id()} )
+    }
+
+    getLastComment(data: any) {
+        return this.http.post(this.apiURL + this.getLastCommentUrl, { ...data,  user_id: this.getU_id()} )
     }
 
 

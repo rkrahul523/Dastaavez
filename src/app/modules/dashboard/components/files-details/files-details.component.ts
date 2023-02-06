@@ -3,7 +3,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
-import { IUiAction } from '../../model/action';
+import { IUiAction, IModalAction, allModalActionText } from '../../model/action';
+import { df } from '../receive-file/xt';
 
 @Component({
   selector: 'app-files-details',
@@ -12,33 +13,16 @@ import { IUiAction } from '../../model/action';
 })
 export class FilesDetailsComponent implements OnInit {
 
-  @Input() details: { key: string, value: string }[] = [];
+  @Input() details: { key: string, value: string }[] =[];
   @Input() fts_id: string;
+  @Input() receiveId=null;
+  @Input() modalActionType: IModalAction = IModalAction.RECEIVED;
   @Output() fileStatus: EventEmitter<any> = new EventEmitter();
 
+  allModalActions= allModalActionText;
+
   @Input() users: any = []
-  d = [
-    {
-      key: 'Docket Number',
-      value: 'NITP/doododo/dkdk'
-    },
-    {
-      key: 'Docket Number',
-      value: 'NITP/doododo/dkdk'
-    },
-    {
-      key: 'Docket Number',
-      value: 'NITP/doododo/dkdk'
-    },
-    {
-      key: 'Docket Number',
-      value: 'NITP/doododo/dkdk'
-    },
-    {
-      key: 'Docket Number',
-      value: 'NITP/doododo/dkdk'
-    },
-  ]
+  
 
   assignForm: FormGroup;
   commentsForm: FormGroup;
@@ -98,7 +82,8 @@ export class FilesDetailsComponent implements OnInit {
       fts_id: this.fts_id,
       comments: this.commentsForm.value.comments,
       assignedUser: this.assignForm.value.assignedUser,
-      action
+      action,
+      receiveId : this.receiveId
     }
     this.api.receiveFile(receiveFileData).subscribe((res: any) => {
       if (res) {
@@ -116,11 +101,9 @@ export class FilesDetailsComponent implements OnInit {
 
   rejectFiles() {
     this.rejectButtonPressed = true;
-
     if (this.commentsForm.invalid) {
       return;
     }
-    return;
     this.commonActionFunc(IUiAction.REJECTED);
   }
 
@@ -133,7 +116,5 @@ export class FilesDetailsComponent implements OnInit {
   emitFileStatus(status: boolean, message: string, action: string) {
     this.fileStatus.emit({ status, message, action })
   }
-
-
 
 }

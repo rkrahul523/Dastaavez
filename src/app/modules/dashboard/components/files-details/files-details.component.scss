@@ -10,7 +10,11 @@
     font-weight: bolder;
 }
 
-.card{
+.card-small{
+    max-height: 450px;
+    overflow: scroll;
+}
+.card-full{
     max-height: 450px;
     overflow: scroll;
 }
