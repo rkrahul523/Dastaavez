@@ -28,6 +28,7 @@ import { ProfileComponent } from '../shared/components/profile/profile.component
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { DepartmentFilesComponent } from './components/department-files/department-files.component';
 import { FilesDetailsComponent } from './components/files-details/files-details.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { FilesDetailsComponent } from './components/files-details/files-details.
     NgbDropdownModule,
     NgbNavModule,
     NgbModalModule,
+    NgSelectModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]
 })

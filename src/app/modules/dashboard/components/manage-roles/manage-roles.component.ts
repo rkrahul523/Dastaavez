@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IManageRoles, normalRoles, IUserStatus } from '../../model/user';
 import { ApiService } from '../../services/api-service';
 import { ActiveDepartments } from '../../model/file';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 
 @Component({
   selector: 'app-manage-roles',
@@ -19,6 +20,8 @@ export class ManageRolesComponent implements OnInit {
     inactive: IUserStatus.INACTIVE,
   };
 
+
+  currentUser= this.authentication.user;
 
 
   roles = normalRoles;
@@ -88,7 +91,7 @@ export class ManageRolesComponent implements OnInit {
 
   }
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private authentication: AuthenticationService) { }
 
   ngOnInit(): void {
     this.getManageRolesData();

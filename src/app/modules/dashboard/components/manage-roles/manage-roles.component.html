@@ -3,12 +3,14 @@
     <p>
         After updating User's department,roles ,status click on <strong>SAVE</strong> button to save the details.
     </p>
+    {{(currentUser | async) | json}}
 
 
     <div class="top-pannel mb-2 flex-wrap">
         <div class="form-group has-search">
             <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="Search by Name, Email, Role Department" [(ngModel)]="searchText">
+            <input type="text" class="form-control" placeholder="Search by Name, Email, Role Department"
+                [(ngModel)]="searchText">
         </div>
         <div class="button-pannel ">
             <!-- <button class="btn btn-success">
@@ -53,31 +55,38 @@
                         <small class="d-block"> {{data?.user_name}}</small>
                     </td>
                     <td>
-                       <ng-container *ngIf="!data?.issave"> {{data?.department}}</ng-container>
-                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].department" *ngIf="data?.issave">
-                            <!-- <option value="">Choose Deparment</option> -->
+                        <ng-container *ngIf="!data?.issave"> {{data?.department}}</ng-container>
+                        <!-- <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].department"
+                            *ngIf="data?.issave">
                             <option *ngFor="let names of departments" [value]="names">{{names}} </option>
-                        </select>
+                        </select> -->
+                        <span *ngIf="data?.issave">
+                            <ng-select [items]="departments" [selectOnTab]="true" placeholder="Select Deparment"
+                            [(ngModel)]="userData[userIndex(data?.u_id)].department">
+                            </ng-select>
+                        </span>
                     </td>
                     <td>
                         <!-- {{data?.role}} -->
 
                         <ng-container *ngIf="!data?.issave"> {{data?.role}}</ng-container>
-                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role" *ngIf="data?.issave">
+                        <select class="custom-select " [(ngModel)]="userData[userIndex(data?.u_id)].role"
+                            *ngIf="data?.issave">
                             <!-- <option value="">Choose Deparment</option> -->
                             <option *ngFor="let names of roles" [value]="names">{{names}} </option>
                         </select>
                     </td>
                     <td class="">
                         <div class="d-flex align-items-center">
-                            <div *ngIf="!data?.issave" [ngClass]="data?.is_active ?'text-success': 'text-danger'"> {{data?.is_active ? statusText.active : statusText.inactive}}</div>
-                            <ng-container *ngIf="data?.issave"> 
-                            <label class="custom-control ios-switch">
-                                <input type="checkbox" class="ios-switch-control-input"
-                                 [(ngModel)]="userData[userIndex(data?.u_id)].is_active">
-                                <span class="ios-switch-control-indicator"></span>
-                            </label>
-                        </ng-container>
+                            <div *ngIf="!data?.issave" [ngClass]="data?.is_active ?'text-success': 'text-danger'">
+                                {{data?.is_active ? statusText.active : statusText.inactive}}</div>
+                            <ng-container *ngIf="data?.issave">
+                                <label class="custom-control ios-switch">
+                                    <input type="checkbox" class="ios-switch-control-input"
+                                        [(ngModel)]="userData[userIndex(data?.u_id)].is_active">
+                                    <span class="ios-switch-control-indicator"></span>
+                                </label>
+                            </ng-container>
 
                             <!-- <a href="#">James Yates</a> -->
                         </div>

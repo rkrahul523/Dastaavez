@@ -6,6 +6,7 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     ReactiveFormsModule,
     HttpClientModule,
     LoginRoutingModule,
+    NgSelectModule,
     
   ]
 })
