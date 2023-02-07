@@ -41,6 +41,10 @@ export class TopCardsComponent implements OnInit {
               topcard[1].title = element.count;
               sumAllFiles += parseInt(element.count)
               break;
+            case 'Deleted':
+              topcard[2].title = element.count;
+              // sumAllFiles += parseInt(element.count)
+              break;
 
             default:
               sumAllFiles += parseInt(element.count)

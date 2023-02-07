@@ -20,12 +20,17 @@
                         <td><input formControlName="fts_id" readonly class="read-only-field"></td>
                         <td><input formControlName="file_title" readonly class="read-only-field"></td>
                         <td>
-                            <select class="custom-select " formControlName='sent_to'>
+                            <!-- <select class="custom-select " formControlName='sent_to'>
                                 <option value="">Choose Deparment</option>
                                 <option *ngFor="let names of departments" [value]="names">{{names}} </option>
-                            </select>
+                            </select> -->
+
+                            <ng-select class=" " [items]="departments" [selectOnTab]="true"
+                                placeholder="Select Deparment" formControlName="sent_to">
+                            </ng-select>
                         </td>
-                        <td> <input formControlName="comments" type="text" class="form-control" placeholder="Enter Comments" class='formcontrol'></td>
+                        <td> <input formControlName="comments" type="text" class="form-control"
+                                placeholder="Enter Comments" class='formcontrol'></td>
                     </ng-container>
                 </tr>
             </tbody>

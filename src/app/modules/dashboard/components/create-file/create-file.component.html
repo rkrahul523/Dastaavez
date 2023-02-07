@@ -6,14 +6,14 @@
             </header>
         </div> -->
 
-        
+
         <div class="modify-file col-12 text-center" *ngIf="openedViaModal">
             <h3>Modify file</h3>
             <p class="">
-           FTS ID: {{ openedViaModalData?.fts_id}}
+                FTS ID: {{ openedViaModalData?.fts_id}}
             </p>
             <p class="">
-            DOCKET : {{ openedViaModalData?.docket}}
+                DOCKET : {{ openedViaModalData?.docket}}
             </p>
         </div>
 
@@ -26,18 +26,21 @@
                     <div class="multiple-inputs d-flex">
 
                         <strong class="my-auto">NITP/</strong>
-                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
-                       formControlName='d_department'>
+                        <select
+                            [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                            formControlName='d_department'>
                             <option *ngFor="let names of d_department" [value]="names">{{names}} </option>
                         </select>
                         <strong class="my-auto">/</strong>
-                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
-                       formControlName='d_year'>
+                        <select
+                            [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                            formControlName='d_year'>
                             <option *ngFor="let names of d_year" [value]="names">{{names}} </option>
                         </select>
                         <strong class="my-auto">/</strong>
-                        <select   [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
-                       formControlName='d_fileType'>
+                        <select
+                            [ngClass]="actionType== 'Modify' ? 'custom-select docket-select read-only-field': 'custom-select docket-select'"
+                            formControlName='d_fileType'>
                             <option *ngFor="let names of d_fileType" [value]="names">{{names}} </option>
                         </select>
                         <strong class="my-auto">/ Auto Generated</strong>
@@ -60,11 +63,15 @@
                     <label class="mb-0" for="address">
                         Subject/File Name
                     </label>
-                    <input type="text" [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'" [readOnly]="actionType== 'Modify'" formControlName='file_title' >
+                    <input type="text"
+                        [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'"
+                        [readOnly]="actionType== 'Modify'" formControlName='file_title'>
                 </div>
                 <div class="col-4">
                     <div>File Priority</div>
-                    <select  [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='priority' >
+                    <select
+                        [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'"
+                        formControlName='priority'>
                         <option value="">Choose Priority</option>
                         <option *ngFor="let names of priority" [value]="names">{{names}} </option>
                     </select>
@@ -74,14 +81,23 @@
 
                 <div class="col-4">
                     <div>Subject Area</div>
-                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='subject_area'>
+                    <!-- <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='subject_area'>
                         <option value="">Choose Subject Area</option>
                         <option *ngFor="let names of subjectAreas" [value]="names">{{names}} </option>
-                    </select>
+                    </select> -->
+
+
+                    <ng-select
+                        [ngClass]="actionType== 'Modify' ? 'mb-3 read-only-field': 'mb-3'"
+                        [items]="subjectAreas" [selectOnTab]="true" placeholder="Select Subject Area"
+                        formControlName="subject_area">
+                    </ng-select>
                 </div>
                 <div class="col-4">
                     <div>Document Type</div>
-                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='document_type'>
+                    <select
+                        [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'"
+                        formControlName='document_type'>
                         <option value="">Choose Document Type</option>
                         <option *ngFor="let names of documentTypes" [value]="names">{{names}} </option>
                     </select>
@@ -92,14 +108,17 @@
             <div class="row mb-3">
                 <div class="col-4">
                     <div>File Station</div>
-                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='file_station'>
+                    <select
+                        [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'"
+                        formControlName='file_station'>
                         <option value="">Choose File Station</option>
                         <option *ngFor="let names of fileStations" [value]="names">{{names}} </option>
                     </select>
                 </div>
                 <div class="col-4">
                     <div>Comments</div>
-                    <textarea formControlName='comments' [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'" >
+                    <textarea formControlName='comments'
+                        [ngClass]="actionType== 'Modify' ? 'form-control read-only-field': 'form-control'">
 
                     </textarea>
                 </div>
@@ -115,13 +134,13 @@
                     (click)="clear()"><i class="bi bi-x-square  mr-3"></i>Clear Form</button>
             </div>
 
-            <div class="row"  *ngIf="openedViaModal">
-            <button>
-                <button type="button" class="btn ml-3 col-2 btn-success" (click)="modifyFile()"
-                *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Confirm</button>
-                <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
-                (click)="dismissModal()"><i class="bi bi-x-square  mr-3"></i>Cancel</button>
-            </button>
+            <div class="row" *ngIf="openedViaModal">
+                <button>
+                    <button type="button" class="btn ml-3 col-2 btn-success" (click)="modifyFile()"
+                        *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Confirm</button>
+                    <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
+                        (click)="dismissModal()"><i class="bi bi-x-square  mr-3"></i>Cancel</button>
+                </button>
             </div>
 
         </div>

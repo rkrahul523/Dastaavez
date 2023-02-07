@@ -62,11 +62,11 @@ export class CreateFileComponent implements OnInit {
      this.createFileForm= this.fb.group({
       file_title:['', [Validators.required]],
       document_type: ['', [Validators.required]],
-      subject_area:['', [Validators.required]],
+      subject_area:[null, [Validators.required]],
       priority:['', [Validators.required]],
       file_station: ['', [Validators.required]],
       comments: ['', [Validators.required]],
-      d_department: ['AC', [Validators.required]],
+      d_department: ['CL', [Validators.required]],
       d_year: [2023, [Validators.required]],
       d_fileType: ['M', [Validators.required]],
     })

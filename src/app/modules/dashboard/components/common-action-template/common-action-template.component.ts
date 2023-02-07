@@ -79,7 +79,7 @@ export class CommonActionTemplateComponent implements OnInit {
       formData = {
         fts_id: [file.fts_id],
         file_title: [file.file_title],
-        sent_to: ['', [Validators.required]],
+        sent_to: [null, [Validators.required]],
         comments: ['', [Validators.required]],
         receive_id: [file.receive_id]
       }
@@ -87,7 +87,7 @@ export class CommonActionTemplateComponent implements OnInit {
       formData = {
         fts_id: [file.fts_id],
         file_title: [file.file_title],
-        sent_to: ['', [Validators.required]],
+        sent_to: [null, [Validators.required]],
         comments: ['', [Validators.required]]
       }
     }

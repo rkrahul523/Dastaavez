@@ -46,6 +46,7 @@ export class ReceiveFileComponent implements OnInit {
     minWidth: 40,
     // allow every column to be aggregated
     enableValue: true,
+    floatingFilter: true,
     // allow every column to be grouped
     enableRowGroup: true,
     // allow every column to be pivoted

@@ -33,6 +33,7 @@ export enum IFileStatus {
     STORED = 'Stored',
     REJECTED = 'Rejected',
     DECLINED = 'Declined',
+    DELETED='Deleted'
 }
 
 export enum IFileStation {

@@ -14,6 +14,7 @@ import { FilesDetailsComponent } from '../files-details/files-details.component'
 import { IModalAction } from '../../model/action';
 import { getMeaningFullNames, viewingAllowedCreation } from '../../model/created-file';
 import { IFileStatus } from '../../model/file';
+import { d } from '../receive-file/xt';
 
 @Component({
   selector: 'app-file-info',
@@ -48,6 +49,7 @@ export class FileInfoComponent implements OnInit {
     //enableValue: true,
     // allow every column to be grouped
     enableRowGroup: true,
+    floatingFilter: true,
     // allow every column to be pivoted
     enablePivot: false,
     sortable: false,
@@ -97,21 +99,22 @@ export class FileInfoComponent implements OnInit {
   }
   columnDefs: any[] = [];
 
-  rowData = [
-    {
-      docket: 'NITP/ee',
-      fts_id: 'FTS01',
-      file_title: 'Project Purchase',
-      file_status: 'created',
-      document_type: 'Envelope',
-      subject_area: 'EE',
-      priority: 'Normal',
-      file_station: 'Across Department',
-      creation_date: '25/01/2023 17:53',
-      sent_to: 'EE',
-      sent_date: '26/01/2023 17:53'
-    }
-  ];
+  rowData = []//d;
+  // [
+    // {
+    //   docket: 'NITP/ee',
+    //   fts_id: 'FTS01',
+    //   file_title: 'Project Purchase',
+    //   file_status: 'created',
+    //   document_type: 'Envelope',
+    //   subject_area: 'EE',
+    //   priority: 'Normal',
+    //   file_station: 'Across Department',
+    //   creation_date: '25/01/2023 17:53',
+    //   sent_to: 'EE',
+    //   sent_date: '26/01/2023 17:53'
+    // }
+  // ];
   constructor(private ngbModal: NgbModal,
     private api: ApiService,
     private toast: ToastrService
@@ -140,7 +143,7 @@ export class FileInfoComponent implements OnInit {
         filter: false,
         lockPosition: true,
         lockVisibile: true,
-        suppressSizeToFit: false,
+        suppressSizeToFit: true,
         colId: 'check',
         field: "checkbox",
       },

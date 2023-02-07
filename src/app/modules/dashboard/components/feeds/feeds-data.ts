@@ -10,32 +10,32 @@ export const Feeds: Feed[] = [
     {
         class: 'bg-info',
         icon: 'bi bi-bell',
-        task: 'You have 4 pending tasks.',
-        time: 'Just Now'
+        task: 'Create, Edit, Send, Delete a File',
+        time: ''
     },
     {
         class: 'bg-success',
         icon: 'bi bi-hdd',
-        task: 'Server #1 overloaded.',
-        time: '2 Hours ago'
+        task: 'Track a File using FTS ID',
+        time: ''
     },
     {
         class: 'bg-warning',
         icon: 'bi bi-bag-check',
-        task: 'New order received.',
-        time: '31 May'
+        task: 'See your Profile in My Profile section',
+        time: ''
     },
     {
         class: 'bg-danger',
         icon: 'bi bi-person',
-        task: 'New user registered.',
-        time: '30 May'
+        task: 'Manage roles of Users by Manage Roles Section',
+        time: ''
     },
     {
         class: 'bg-primary',
         icon: 'bi bi-person',
-        task: 'You have new password.',
-        time: '21 May'
+        task: 'Manage user by Manage Users Section',
+        time: ''
     },
 
 ] 

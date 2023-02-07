@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 import { ApiService } from 'src/app/modules/dashboard/services/api-service';
+import { ProfileComponent } from '../profile/profile.component';
 
 declare var $: any;
 
@@ -142,6 +143,24 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   logout(){
     this.authentication.logout();
   }
+
+  openProfileModal() {
+    const modalRef = this.modalService.open( ProfileComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+
+    // modalRef.componentInstance.details = this.formulateRecords(details, lastComment);
+    // modalRef.componentInstance.receiveId = lastComment && 'receiveId' in lastComment ? lastComment.receiveId : null;
+    // modalRef.componentInstance.modalActionType = IModalAction.VIEW;
+  }
+
+
+
+
+
+
 
   ngAfterViewInit() { }
 }
