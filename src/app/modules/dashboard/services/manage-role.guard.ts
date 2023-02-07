@@ -22,11 +22,17 @@ export class ManageRoleGuard implements CanActivate {
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         return new Promise((resolve, reject) => {
             const currentUser = this.authService.user.getValue();
-            if (currentUser && routeAccessToManageRoles.includes(currentUser.role)) {
-                resolve(true);
+            if (currentUser) {
+                if (routeAccessToManageRoles.includes(currentUser.role)) {
+                    resolve(true);
+                } else {
+                    this.api.errorToast('You are not authorised to access Manage Roles', 'Unauthorised')
+                    reject(true);
+                }
             } else {
-                this.api.errorToast('You are not authorised to access Manage Roles', 'Unauthorised')
-                reject(true);
+                this.authService.logout();
+                // this.api.errorToast('You are not authorised to access Manage Users', 'Unauthorised')
+                resolve(false);
             }
         });
     }

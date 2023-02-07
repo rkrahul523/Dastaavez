@@ -25,7 +25,8 @@ export class LoginPageComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private router: Router,
     private toastr: ToastrService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,10 +46,14 @@ export class LoginPageComponent implements OnInit {
       this.loaderFlag = false;
       if (res && res.status) {
         localStorage.setItem("token", res.token)
+        this.authenticationService.user.next(res.data);
         this.toastr.success(res.message, 'Login success', {
           timeOut: 2000,
         });
-        this.router.navigate([`/${ROUTE_PATH.HOME}`]);
+        setTimeout(()=>{
+          this.router.navigate([`/${ROUTE_PATH.HOME}`]);
+        })
+      
       } else {
         this.toastr.error(res.message, 'Login Error', {
           timeOut: 3000,

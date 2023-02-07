@@ -26,6 +26,7 @@ import { ErrorCatchingInterceptor } from './modules/shared/services/error-catchi
 import { LoaderComponent } from './modules/shared/components/loader/loader.component';
 import { LoaderInterceptor } from './modules/shared/services/loading.inceptor';
 import { ProfileComponent } from './modules/shared/components/profile/profile.component';
+import { APIInterceptor } from './modules/shared/services/api.interceptor';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -75,6 +76,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
       multi: true,
     },
   ],

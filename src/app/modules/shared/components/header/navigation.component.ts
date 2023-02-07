@@ -121,11 +121,11 @@ export class NavigationComponent implements AfterViewInit, OnInit {
   }]
 
   ngOnInit(){
-    if(localStorage.getItem('token')){
-       this.getUserDetails(localStorage.getItem('token'))
-    }else{
-      this.logout();
-    }
+    // if(localStorage.getItem('token')){
+    //    this.getUserDetails(localStorage.getItem('token'))
+    // }else{
+    //   this.logout();
+    // }
 
   }
 

@@ -29,22 +29,22 @@ export class ManageUsersComponent implements OnInit {
   constructor(private api: ApiService, private authentication: AuthenticationService) { }
 
   userData: IManageRoles[] = [
-    {
-      u_id: 1,
-      user_name: 'rk@gmail.com',
-      name: "Rahul kumar",
-      role: "Supervisor",
-      department: "Procurement",
-      status: 'Approved'
-    },
-    {
-      u_id: 1,
-      user_name: 'rk@gmail.com',
-      name: "Rahul kumar",
-      role: "Supervisor",
-      department: "Procurement",
-      status: 'Created'
-    },
+    // {
+    //   u_id: 1,
+    //   user_name: 'rk@gmail.com',
+    //   name: "Rahul kumar",
+    //   role: "Supervisor",
+    //   department: "Procurement",
+    //   status: 'Approved'
+    // },
+    // {
+    //   u_id: 1,
+    //   user_name: 'rk@gmail.com',
+    //   name: "Rahul kumar",
+    //   role: "Supervisor",
+    //   department: "Procurement",
+    //   status: 'Created'
+    // },
 
   ]
 

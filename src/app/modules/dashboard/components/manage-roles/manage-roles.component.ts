@@ -33,25 +33,22 @@ export class ManageRolesComponent implements OnInit {
 
 
   userData: IManageRoles[] = [
-    {
-      u_id: 1,
-      user_name: 'rk@gmail.com',
-      name: "Rahul kumar",
-      role: "Supervisor",
-      department: "Procurement",
-      is_active: true,
-    },
-    {
-      u_id: 2,
-      user_name: 'rk@gmail.com',
-      name: "rohit kumar",
-      role: "Supervisor",
-      department: "Procurement",
-      is_active: false,
-    },
-
-
-
+    // {
+    //   u_id: 1,
+    //   user_name: 'rk@gmail.com',
+    //   name: "Rahul kumar",
+    //   role: "Supervisor",
+    //   department: "Procurement",
+    //   is_active: true,
+    // },
+    // {
+    //   u_id: 2,
+    //   user_name: 'rk@gmail.com',
+    //   name: "rohit kumar",
+    //   role: "Supervisor",
+    //   department: "Procurement",
+    //   is_active: false,
+    // },
   ]
 
 
