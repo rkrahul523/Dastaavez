@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IManageRoles, normalRoles, IUserStatus } from '../../model/user';
 import { ApiService } from '../../services/api-service';
-import { ActiveDepartments } from '../../model/file';
 import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 import { accessToEditDepartment, avlRolesForDirector, avlRolesForSupervisor, activeRoleText } from '../../utils/manage-role-access';
+import { ActiveDepartments } from '../../model/all-departments';
 
 @Component({
   selector: 'app-manage-roles',

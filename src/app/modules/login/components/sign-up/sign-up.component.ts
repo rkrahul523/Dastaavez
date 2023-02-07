@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActiveDepartments } from 'src/app/modules/dashboard/model/file';
 import { ApiService } from 'src/app/modules/dashboard/services/api-service';
 import { Router } from '@angular/router';
+import { ActiveDepartments } from 'src/app/modules/dashboard/model/all-departments';
 
 @Component({
   selector: 'app-sign-up',

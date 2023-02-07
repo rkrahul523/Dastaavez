@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IDepartment, ISubjectArea, IDocType, IFileStation, IPriority, shortNameDepartment, IFileInfo } from '../../model/file';
+import {  ISubjectArea, IDocType, IFileStation, IPriority, IFileInfo } from '../../model/file';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
+import { shortNameDepartment, ActiveDepartments } from '../../model/all-departments';
 
 @Component({
   selector: 'app-create-file',
@@ -42,13 +43,7 @@ export class CreateFileComponent implements OnInit {
     IPriority.NORMAL,
     IPriority.URGENT,
   ]
-  subjectAreas=[
-    ISubjectArea.ACADEMIC,
-    ISubjectArea.CONSTRUCTION,
-    ISubjectArea.ESTABLISHMENT,
-    ISubjectArea.FINANCE,
-    ISubjectArea.PURCHASE,
-  ]
+  subjectAreas=ActiveDepartments;
   documentTypes=[
     IDocType.DOCUMENT,
     IDocType.ENVELOPE,

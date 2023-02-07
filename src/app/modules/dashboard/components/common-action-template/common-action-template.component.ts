@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../../services/api-service';
 import { ToastrService } from 'ngx-toastr';
-import { IDepartment, ISendFile, ActiveDepartments } from '../../model/file';
+import { ISendFile, } from '../../model/file';
+import { ActiveDepartments } from '../../model/all-departments';
 
 @Component({
   selector: 'app-common-action-template',

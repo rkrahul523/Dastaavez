@@ -54,7 +54,7 @@ export class ApiService {
 
     getU_id() {
         const userId: any = this.authentication.user.getValue();
-        return userId.u_id;
+        return userId.u_id;   
     }
 
 

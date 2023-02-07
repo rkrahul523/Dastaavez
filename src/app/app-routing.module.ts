@@ -34,10 +34,12 @@ const routes: Routes = [
     path: ROUTE_PATH.HOME,
     component: FullComponent,
     canActivate: [AuthenticationGuard] ,
+   
     children: [
       { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
       {
         path: ROUTE_PATH.DASHBOARD,
+        canLoad:[AuthenticationGuard],
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
     ]

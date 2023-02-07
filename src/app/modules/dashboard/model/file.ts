@@ -1,3 +1,4 @@
+import { IDepartment } from './all-departments';
 
 
 export enum IPriority {
@@ -5,20 +6,8 @@ export enum IPriority {
     URGENT = 'Urgent',
     IMMEDIATE = 'Immediate'
 }
-export enum IDepartment {
-    ACADEMIC = 'Academic',
-    ACCOUNTS = 'Accounts & Finance',
-    ESTABLISHMENT = 'Establishment',
-    PROCUREMENT = 'Procurement',
-    CHEMISTRY='Chemistry'
-}
-export enum IShortDepartment {
-    ACADEMIC = 'AC',
-    ACCOUNTS = 'AF',
-    ESTABLISHMENT = 'ES',
-    PROCUREMENT = 'PR',
-    CHEMISTRY='CH'
-}
+
+
 
 export enum ISubjectArea {
     ACADEMIC = 'Academic',
@@ -39,7 +28,7 @@ export enum IFileStatus {
     CREATED = 'Created',
     SENT = 'Sent',
     CLOSED = 'Closed',
-    RECEIVED= 'Received',
+    RECEIVED = 'Received',
     OPERATIONAL = 'Operational',
     STORED = 'Stored',
     REJECTED = 'Rejected',
@@ -55,15 +44,15 @@ export enum ISendFile {
     // WITHIN = 'Within Department'
 }
 
-export const fileStatusText={
-    CREATED : 'Created',
-    SENT : 'Sent',
-    CLOSED : 'Closed',
-    OPERATIONAL : 'Operational',
-    STORED : 'Stored',
-    REJECTED : 'Rejected',
+export const fileStatusText = {
+    CREATED: 'Created',
+    SENT: 'Sent',
+    CLOSED: 'Closed',
+    OPERATIONAL: 'Operational',
+    STORED: 'Stored',
+    REJECTED: 'Rejected',
     RECEIVED: 'Received',
-    DECLINED :'Declined',
+    DECLINED: 'Declined',
 }
 
 
@@ -83,20 +72,6 @@ export interface IFileInfo {
 }
 
 
-export const ActiveDepartments=[
-    IDepartment.ACADEMIC,
-    IDepartment.ACCOUNTS,
-    IDepartment.CHEMISTRY,
-    IDepartment.ESTABLISHMENT,
-    IDepartment.PROCUREMENT
-]
-export const shortNameDepartment=[
-    IShortDepartment.ACADEMIC,
-    IShortDepartment.ACCOUNTS,
-    IShortDepartment.CHEMISTRY,
-    IShortDepartment.ESTABLISHMENT,
-    IShortDepartment.PROCUREMENT
-]
 
 
 
