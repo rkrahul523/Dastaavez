@@ -44,7 +44,6 @@ export enum IDepartment {
 
 
 
-
 export enum IShortDepartment {
     // ACADEMIC = 'AC',
     // ACCOUNTS = 'AF',
@@ -99,23 +98,23 @@ export const ActiveDepartments = [
 
 
     IDepartment.CENTRAL_LIBRARY,
-     IDepartment.ELECTRICAL_MAINTENANCE,
-     IDepartment.ESTATE,
-     IDepartment.FINANCE,
-     IDepartment.REGISTRAR_OFFICE,
-     IDepartment.DEAN_REASEARCH,
-     IDepartment.DEAN_STUDENT,
-     IDepartment.DEAN_PLANNING,
-     IDepartment.DEAN_ACADEMIC,
-     IDepartment.DEAN_FACULTY,
-     IDepartment.DIRECTOR,
-     IDepartment.ESTABLISHMENT,
-     IDepartment.DEPT_CIVIL,
-     IDepartment.DEPT_ARCHITECTURE,
-     IDepartment.HOSTEL_MANAGEMENT,
-     IDepartment.WEBSITE_MIS,
-     IDepartment.IT_SERVICE,
-     IDepartment.TRANING_PLACEMENT,
+    IDepartment.ELECTRICAL_MAINTENANCE,
+    IDepartment.ESTATE,
+    IDepartment.FINANCE,
+    IDepartment.REGISTRAR_OFFICE,
+    IDepartment.DEAN_REASEARCH,
+    IDepartment.DEAN_STUDENT,
+    IDepartment.DEAN_PLANNING,
+    IDepartment.DEAN_ACADEMIC,
+    IDepartment.DEAN_FACULTY,
+    IDepartment.DIRECTOR,
+    IDepartment.ESTABLISHMENT,
+    IDepartment.DEPT_CIVIL,
+    IDepartment.DEPT_ARCHITECTURE,
+    IDepartment.HOSTEL_MANAGEMENT,
+    IDepartment.WEBSITE_MIS,
+    IDepartment.IT_SERVICE,
+    IDepartment.TRANING_PLACEMENT,
     IDepartment.HEALTH_CENTRE,
     IDepartment.SECURITY,
     IDepartment.E_ICT,
@@ -129,7 +128,9 @@ export const ActiveDepartments = [
     IDepartment.DEPT_ELECTRONICS,
     IDepartment.DEPT_ELECTRICAL,
     IDepartment.DEPT_COMPUTER,
-    
+    IDepartment.PROCUREMENT,
+    IDepartment.EXAM_SECTION,
+
 ]
 export const shortNameDepartment = [
     IShortDepartment.CENTRAL_LIBRARY,
@@ -163,4 +164,6 @@ export const shortNameDepartment = [
     IShortDepartment.DEPT_ELECTRONICS,
     IShortDepartment.DEPT_ELECTRICAL,
     IShortDepartment.DEPT_COMPUTER,
+    IShortDepartment.PROCUREMENT,
+    IShortDepartment.EXAM_SECTION,
 ]

@@ -12,7 +12,7 @@ import { ROUTE_PATH } from 'src/app/modules/shared/models/route-path';
 })
 export class LoginPageComponent implements OnInit {
 
-
+  fieldTextType: boolean;
 
   loginForm = this.fb.group({
     username: ['', Validators.required],
@@ -85,7 +85,9 @@ export class LoginPageComponent implements OnInit {
 // } else {
 //   res.status(201).json({ status: false, message: 'User doesnot exist' });
 
-
+toggleFieldTextType() {
+  this.fieldTextType = !this.fieldTextType;
+}
 
 
 }

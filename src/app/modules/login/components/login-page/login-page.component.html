@@ -21,7 +21,24 @@
                     <div class="inputs">
                         <input type="text" placeholder="Email" formControlName="username" >
                         <br>
-                        <input type="password" placeholder="Password" formControlName="password" (keydown.enter)="login()">
+                        <div class="password-field d-flex justify-content-between">
+                            <div class="password-input">
+                                <input [type]="fieldTextType ? 'text' : 'password'"  placeholder="Password" formControlName="password" (keydown.enter)="login()">
+                            </div>
+                            <div class="input-group-append ">
+                                <span class="input-group-text input-eye-width">
+                                  <i
+                                    class="fa"
+                                    [ngClass]="{
+                                      'fa-eye-slash': !fieldTextType,
+                                      'fa-eye': fieldTextType
+                                    }"
+                                    (click)="toggleFieldTextType()"
+                                  ></i>
+                                </span>
+                              </div>
+                        </div>
+                        
                     </div>
                         
                         <br><br>

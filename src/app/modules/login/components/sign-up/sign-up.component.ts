@@ -12,6 +12,8 @@ import { ActiveDepartments } from 'src/app/modules/dashboard/model/all-departmen
 export class SignUpComponent implements OnInit {
   departments = ActiveDepartments;
 
+
+  fieldTextType: boolean;
   signupForm = this.fb.group({
     username: ['', Validators.required],
     password:  ['', Validators.required],
@@ -46,6 +48,10 @@ export class SignUpComponent implements OnInit {
         }
       }
     })
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
 }
