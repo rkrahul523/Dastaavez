@@ -29,6 +29,9 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { DepartmentFilesComponent } from './components/department-files/department-files.component';
 import { FilesDetailsComponent } from './components/files-details/files-details.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DateRangeFilterComponent } from './components/date-range-filter/date-range-filter.component';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -52,7 +55,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ManageUsersComponent,
     SearchFilterPipe,
     DepartmentFilesComponent,
-    FilesDetailsComponent
+    FilesDetailsComponent,
+    DateRangeFilterComponent
     
   ],
   imports: [
@@ -67,6 +71,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgbNavModule,
     NgbModalModule,
     NgSelectModule,
+    NgbDatepickerModule,
     AgGridModule.withComponents([FileInfoComponent]),
      ]
 })

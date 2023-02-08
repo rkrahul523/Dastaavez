@@ -1,0 +1,53 @@
+<div class="container pt-2" style="display: inline-block;">
+    <p class="text-center pb-0">Select Date Range to view files</p>
+    <div class="message d-flex">
+        <div class="from-context">
+            Date From:
+            <span
+                *ngIf="fromDate else emptyTemp"><strong>{{fromDate?.day}}/{{fromDate?.month}}/{{fromDate?.year}}</strong>
+            </span>
+        </div>
+        <div class="from-context ml-4">
+            Date To:
+            <span *ngIf="fromDate else emptyTemp"><strong>{{toDate?.day}}/{{toDate?.month}}/{{toDate?.year}}</strong>
+            </span>
+        </div>
+        <ng-template #emptyTemp>
+            ---
+        </ng-template>
+    </div>
+    <hr>
+    <div class="date-range">
+        <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+            outsideDays="hidden">
+        </ngb-datepicker>
+
+        <ng-template #t let-date let-focused="focused">
+            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+                (mouseleave)="hoveredDate = null">
+                {{ date.day }}
+            </span>
+        </ng-template>
+    </div>
+    <!-- <hr> -->
+    <div class="button-container d-flex pb-4 mt-2">
+        <button (click)="apply()" class="btn btn-primary">Apply</button>
+        <button (click)="clear()" class="btn btn-danger ml-auto">Clear</button>
+    </div>
+</div>
+
+
+<!-- <hr />
+    <div style="padding: 10px; background-color: #d3d3d3; text-align: center;">
+        This is a very wide filter
+    </div>
+    <label style="margin: 10px; padding: 50px; display: inline-block; background-color: #999999">
+        <input type="radio" name="year" [(ngModel)]="year" (ngModelChange)="updateFilter()" [value]="'All'" />
+        All
+    </label>
+    <label style="margin: 10px; padding: 50px; display: inline-block; background-color: #999999">
+        <input type="radio" name="year" [(ngModel)]="year" (ngModelChange)="updateFilter()" [value]="'2010'" />
+        Since 2010
+    </label>
+    <hr /> -->

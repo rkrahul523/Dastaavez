@@ -15,6 +15,7 @@ import { IModalAction } from '../../model/action';
 import { getMeaningFullNames, viewingAllowedCreation } from '../../model/created-file';
 import { IFileStatus } from '../../model/file';
 import { d } from '../receive-file/xt';
+import { DateRangeFilterComponent } from '../date-range-filter/date-range-filter.component';
 
 @Component({
   selector: 'app-file-info',
@@ -30,6 +31,7 @@ export class FileInfoComponent implements OnInit {
 
   frameworkComponents = {
     actionControlRenderer: ActionRendererComponent,
+    customDateRange: DateRangeFilterComponent
   }
   components: any;
   formcontent = null;
