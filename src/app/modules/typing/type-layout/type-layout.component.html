@@ -9,14 +9,15 @@
                             <div>
                                 <label>Select Test</label>
                                 <select [(ngModel)]="selectedPassage" (ngModelChange)="updatePassage()">
-                                <option value="">Choose Test</option>
-                                <option *ngFor="let names of passages" [ngValue]="names.location">{{names.name}} </option>
-                            </select>
+                                    <option value="">Choose Test</option>
+                                    <option *ngFor="let names of passages" [ngValue]="names.location">{{names.name}}
+                                    </option>
+                                </select>
                             </div>
                         </div>
                         <div class="badge badge-primary alert-sm mb-3" id="time" role="alert">
                             Time Left:
-                            {{ display }} 
+                            {{ display }}
                         </div>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
     </div>
     <header>
         <div class="row m-0">
-           
+
             <div class="col-md-3 d-flex my-auto mx-auto m-5 text-center">
             </div>
         </div>
@@ -56,25 +57,32 @@
                                         <div style="height: auto; font-size: 18px; overflow-y: hidden; width: 700px;"
                                             class="w-100 text-justify text-font">
                                             <span class="yellowcurrent">
-                                               {{passage}}
+                                                {{passage}}
                                             </span>
-                                             </div>
+                                        </div>
                                     </h5>
                                     <div>
                                         <div class="form-group mt-3">
-                                            <label for="exampleFormControlTextarea1" class="text-Normal" >Type Here</label>
-                                            <textarea spellcheck="false" class="form-control textarea-height" rows="3" (ngModelChange)="execute()"
-                                                name="users_paragraph" ng-paste="preventPaste($event)" [(ngModel)]="typedWords"
-                                                id="counter-text"></textarea>
+                                            <label for="exampleFormControlTextarea1" class="text-Normal">Type
+                                                Here</label>
+                                            <textarea spellcheck="false" class="form-control textarea-height" rows="3"
+                                                (ngModelChange)="execute()" name="users_paragraph"
+                                                ng-paste="preventPaste($event)" [(ngModel)]="typedWords"
+                                                id="counter-text" *ngIf="!showResultFlag"></textarea>
+
+                                            <div class="typedResults" *ngIf="showResultFlag">
+                                                <div [innerHTML]="typedoutput"></div>
+                                            </div>
 
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-100 ">
 
-                                  
+
                                     <button type="submit" class="btn btn-success btn-lg" name="test_submit"
-                                        id="end_exam" style="float:right" (click)="time < 601 ? stopTest() : startTimer()">{{time < 601 ? 'Stop Test' :'Start Test'}}</button>
+                                        id="end_exam" style="float:right"
+                                        (click)="time < 601 ? stopTest() : startTimer()">{{time < 601 ? 'Stop Test' :'Start Test'}}</button>
                                 </div>
                             </form>
                         </div>
@@ -84,7 +92,7 @@
             </div>
             <div class="col-md-4">
                 <div class="d-flex justify-content-between mb-2">
-                    <span>Word Count</span> 
+                    <span>Word Count</span>
                     <!-- <button (click)="calculateResult()">cal</button> -->
                 </div>
                 <div class="bg-white panel-count h-100 p-4">
@@ -99,12 +107,12 @@
                         </div>
                     </div>
 
-                <div class="result-container" *ngIf="showResultFlag">
-                    <h5 class="text-center">Typing Result</h5>
-                    <div class="vi">Accuracy : <strong>{{accuracy}}%</strong></div>
-                    <div class="vi">Speed : <strong>{{wpm}} WPM</strong></div>
-                    <div class="vi">Key Deppression : <strong>{{typedWords?.length}}</strong></div>
-                </div>
+                    <div class="result-container" *ngIf="showResultFlag">
+                        <h5 class="text-center">Typing Result</h5>
+                        <div class="vi">Accuracy : <strong>{{accuracy}}%</strong></div>
+                        <div class="vi">Speed : <strong>{{wpm}} WPM</strong></div>
+                        <div class="vi">Key Deppression : <strong>{{typedWords?.length}}</strong></div>
+                    </div>
                 </div>
             </div>
         </div>

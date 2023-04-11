@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiLocalService } from 'src/app/api-load.service';
 import { Passages } from './Ipassages';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-type-layout',
@@ -21,11 +22,15 @@ export class TypeLayoutComponent implements OnInit {
   selectedPassage: any;
   selectedPassageName: any;
 
+  
+
+  typedoutput=this.sanitizer.bypassSecurityTrustHtml(`${this.getcorrectTemplate(34)}${this.getIncorrectTemplate('the')}`)
+
   accuracy: any;
   wpm: number;
   passages: any[]=Passages;
 
-  constructor(private api: ApiLocalService) { }
+  constructor(private api: ApiLocalService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.download()
@@ -74,6 +79,7 @@ export class TypeLayoutComponent implements OnInit {
     this.pauseTimer();
     this.display= '10:00';
     this.typedWords='';
+    this.typedWordsLength=0;
   }
 
   stopTest() {
@@ -87,14 +93,21 @@ export class TypeLayoutComponent implements OnInit {
      const originalPassage= this.passage.split(/\s/);
 
      var correct=0;
-     var incorrect=0
+     var incorrect=0;
+     var typedoutput='';
      typedPassage.forEach((ele,index)=>{
        if(ele=== originalPassage[index]){
+        typedoutput+=this.getcorrectTemplate(ele)
         correct++;
        }else{
         incorrect++;
+        typedoutput+=this.getIncorrectTemplate(ele)
+       
        }
      })
+
+
+     this.typedoutput=  this.sanitizer.bypassSecurityTrustHtml(typedoutput);
 
      const total=(correct/(correct+incorrect))*100;
      this.accuracy= Math.round(total).toFixed(2);
@@ -113,7 +126,12 @@ export class TypeLayoutComponent implements OnInit {
   }
 
 
-  
+  getcorrectTemplate(message:any){
+    return "<span style='margin-left: 6px; color:#a1f886'>"+message+'</span>';
+  }
+  getIncorrectTemplate(message:any){
+    return "<span style='margin-left: 6px; color:#f32424'>"+message+'</span>';
+  }
 
 
 
