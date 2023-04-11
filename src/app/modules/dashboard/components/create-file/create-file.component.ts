@@ -39,7 +39,7 @@ export class CreateFileComponent implements OnInit {
   ) { }
 
   priority=[
-    IPriority.IMMEDIATE,
+    // IPriority.IMMEDIATE,
     IPriority.NORMAL,
     IPriority.URGENT,
   ]

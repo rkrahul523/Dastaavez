@@ -80,11 +80,11 @@
             <div class="row mb-3">
 
                 <div class="col-4">
-                    <div>Subject Area</div>
-                    <!-- <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='subject_area'>
+                    <div>Department Name</div>
+                    <select [ngClass]="actionType== 'Modify' ? 'custom-select mb-3 read-only-field': 'custom-select mb-3'" formControlName='subject_area'>
                         <option value="">Choose Subject Area</option>
                         <option *ngFor="let names of subjectAreas" [value]="names">{{names}} </option>
-                    </select> -->
+                    </select>
 
 
                     <ng-select
@@ -135,12 +135,10 @@
             </div>
 
             <div class="row" *ngIf="openedViaModal">
-                <button>
                     <button type="button" class="btn ml-3 col-2 btn-success" (click)="modifyFile()"
                         *ngIf="actionType== 'Create'"><i class="bi bi-arrow-right-square mr-3"></i>Confirm</button>
                     <button type="button" class="btn ml-auto col-2 btn-danger" *ngIf="actionType== 'Create'"
                         (click)="dismissModal()"><i class="bi bi-x-square  mr-3"></i>Cancel</button>
-                </button>
             </div>
 
         </div>
