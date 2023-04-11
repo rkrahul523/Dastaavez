@@ -1,0 +1,118 @@
+<div class="bg-light">
+    <div class="container-fluid border-bottom pt-2 pb-2 text-dark">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-between ">
+                        <div>
+                            Passage: <b>{{selectedPassageName}}</b>
+                            <div>
+                                <label>Select Test</label>
+                                <select [(ngModel)]="selectedPassage" (ngModelChange)="updatePassage()">
+                                <option value="">Choose Test</option>
+                                <option *ngFor="let names of passages" [ngValue]="names.location">{{names.name}} </option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="badge badge-primary alert-sm mb-3" id="time" role="alert">
+                            Time Left:
+                            {{ display }} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                <img src="/assets/images/logos/boy.png" alt="Admin" class="rounded" width="70px">
+                <h6 class="float-right">
+                    <h6 class="card-title">rahul</h6>
+                    <p class="text-secondary"></p>
+                    <p class="text-muted font-size-sm"></p>
+                </h6>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="row m-0">
+           
+            <div class="col-md-3 d-flex my-auto mx-auto m-5 text-center">
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card border-primary rounded-0 border-0 ">
+                    <div class="card-header border-primary bg-primary text-white">
+                        KVS Test Language:
+                        english
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <form class="w-100 row">
+                                <div class="col-md-12">
+                                    <h5 class="card-text" id="p_d"
+                                        style="height: 250px; 
+    font-weight: normal;text-align: justify;color:black; overflow: auto;padding-left: 10px; padding-top: 10px;padding-right: 10px;border:solid 1px #ddd;">
+                                        <div style="height: auto; font-size: 18px; overflow-y: hidden; width: 700px;"
+                                            class="w-100 text-justify text-font">
+                                            <span class="yellowcurrent">
+                                               {{passage}}
+                                            </span>
+                                             </div>
+                                    </h5>
+                                    <div>
+                                        <div class="form-group mt-3">
+                                            <label for="exampleFormControlTextarea1" class="text-Normal" >Type Here</label>
+                                            <textarea spellcheck="false" class="form-control textarea-height" rows="3" (ngModelChange)="execute()"
+                                                name="users_paragraph" ng-paste="preventPaste($event)" [(ngModel)]="typedWords"
+                                                id="counter-text"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100 ">
+
+                                  
+                                    <button type="submit" class="btn btn-success btn-lg" name="test_submit"
+                                        id="end_exam" style="float:right" (click)="time < 601 ? stopTest() : startTimer()">{{time < 601 ? 'Stop Test' :'Start Test'}}</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Word Count</span> 
+                    <!-- <button (click)="calculateResult()">cal</button> -->
+                </div>
+                <div class="bg-white panel-count h-100 p-4">
+                    <div class="alert alert-info mb-3">
+                        <div class="count">
+                            Typed Word Count: <span class="words">{{typedWordsLength}}</span>
+                            <br> Typed Characters: <span class="characters">{{typedWords?.length}}</span>
+                            <br> Total words: <span class="remaining-words">500</span>
+                            <br> Total Characters: <span class="remaining-characters">{{passage?.length}}</span>
+                        </div>
+                        <div class="pre-count">
+                        </div>
+                    </div>
+
+                <div class="result-container" *ngIf="showResultFlag">
+                    <h5 class="text-center">Typing Result</h5>
+                    <div class="vi">Accuracy : <strong>{{accuracy}}%</strong></div>
+                    <div class="vi">Speed : <strong>{{wpm}} WPM</strong></div>
+                    <div class="vi">Key Deppression : <strong>{{typedWords?.length}}</strong></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="copyright-text w-100 p-2 text-center bg-light mt-4">
+        <p>Copyright © dastaavez</p>
+    </div>
+
+</div>

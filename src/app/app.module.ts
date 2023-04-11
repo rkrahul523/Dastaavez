@@ -27,6 +27,7 @@ import { LoaderComponent } from './modules/shared/components/loader/loader.compo
 import { LoaderInterceptor } from './modules/shared/services/loading.inceptor';
 import { ProfileComponent } from './modules/shared/components/profile/profile.component';
 import { APIInterceptor } from './modules/shared/services/api.interceptor';
+import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -42,7 +43,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     SidebarComponent,
     LoaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    TypeLayoutComponent
   ],
   imports: [
     BrowserModule,

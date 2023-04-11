@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FullComponent } from './modules/shared/full/full.component';
 import { ROUTE_PATH } from './modules/shared/models/route-path';
 import { AuthenticationGuard } from './modules/shared/services/authentication.guard';
+import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 
 
 const dastaavezroutes:  Routes = [{
@@ -18,6 +19,13 @@ const dastaavezroutes:  Routes = [{
 }
 
   ]
+
+  const typingRoutes:  Routes = [{
+    path: '',
+    component: TypeLayoutComponent
+  }]
+
+
 
 
 
@@ -52,7 +60,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(typingRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
