@@ -81,8 +81,8 @@
 
 
                                     <button type="submit" class="btn btn-success btn-lg" name="test_submit"
-                                        id="end_exam" style="float:right"
-                                        (click)="time < 601 ? stopTest() : startTimer()">{{time < 601 ? 'Stop Test' :'Start Test'}}</button>
+                                        id="end_exam" style="float:right" *ngIf="time == 601"
+                                        (click)="startTimer()">Start Test</button>
                                 </div>
                             </form>
                         </div>
@@ -93,7 +93,7 @@
             <div class="col-md-4">
                 <div class="d-flex justify-content-between mb-2">
                     <span>Word Count</span>
-                    <!-- <button (click)="calculateResult()">cal</button> -->
+                    <button (click)="calculateResult()">cal</button>
                 </div>
                 <div class="bg-white panel-count h-100 p-4">
                     <div class="alert alert-info mb-3">

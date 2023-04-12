@@ -24,7 +24,7 @@ export class TypeLayoutComponent implements OnInit {
 
   
 
-  typedoutput=this.sanitizer.bypassSecurityTrustHtml(`${this.getcorrectTemplate(34)}${this.getIncorrectTemplate('the')}`)
+  typedoutput=this.sanitizer.bypassSecurityTrustHtml(`${this.getcorrectTemplate('The')}${this.getIncorrectTemplate('Indian Meteorological Department IMD has issued a heat wave alert in several parts of the country, including')}`)
 
   accuracy: any;
   wpm: number;
@@ -127,10 +127,10 @@ export class TypeLayoutComponent implements OnInit {
 
 
   getcorrectTemplate(message:any){
-    return "<span style='margin-left: 6px; color:#a1f886'>"+message+'</span>';
+    return "<span style='margin-left: 6px; color:#266d10; font-size: 20px'>"+message+'</span>';
   }
   getIncorrectTemplate(message:any){
-    return "<span style='margin-left: 6px; color:#f32424'>"+message+'</span>';
+    return "<span style='margin-left: 6px; color:#f32424 ;font-size: 20px '>"+message+'</span>';
   }
 
 
