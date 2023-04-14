@@ -19,11 +19,14 @@ export class TypeLayoutComponent implements OnInit {
 
   showResultFlag:boolean;
 
-  selectedPassage: any;
+  selectedPassage: any='feb';
   selectedPassageName: any;
 
   
+  isHiglight:boolean;
+  currentTextCounter=0;
 
+ 
   typedoutput=this.sanitizer.bypassSecurityTrustHtml(`${this.getcorrectTemplate('The')}${this.getIncorrectTemplate('Indian Meteorological Department IMD has issued a heat wave alert in several parts of the country, including')}`)
 
   accuracy: any;
@@ -33,10 +36,15 @@ export class TypeLayoutComponent implements OnInit {
   constructor(private api: ApiLocalService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.download()
+    this.download();
+
+    setTimeout(()=>{
+      this.isHiglight=true;
+    },200)
   }
 
   download(){
+    this.isHiglight= false;
     this.api.downloadpassage(this.selectedPassage).subscribe((res: any)=>{
       this.passage=res.passage;
     })
@@ -80,6 +88,7 @@ export class TypeLayoutComponent implements OnInit {
     this.display= '10:00';
     this.typedWords='';
     this.typedWordsLength=0;
+    this.currentTextCounter=0;
   }
 
   stopTest() {
@@ -124,6 +133,21 @@ export class TypeLayoutComponent implements OnInit {
     var words = count.split(/\s/);
     return words.length;
   }
+
+  inc(){
+    if(this.isHiglight){
+      this.typedWordsLength = this.countWords(this.typedWords);
+
+
+      // console.log("this.typedWordsLength", this.typedWordsLength);
+      // console.log("his.currentTextCounter", this.currentTextCounter);
+
+      if(this.typedWordsLength-1 ==  this.currentTextCounter)
+       this.currentTextCounter++;
+    }
+    
+  }
+
 
 
   getcorrectTemplate(message:any){

@@ -18,14 +18,17 @@
                         <div class="badge badge-primary alert-sm mb-3" id="time" role="alert">
                             Time Left:
                             {{ display }}
+
+                           
                         </div>
+                       
                     </div>
                 </div>
             </div>
             <div class="col-md-2 text-center">
                 <img src="/assets/images/logos/boy.png" alt="Admin" class="rounded" width="70px">
                 <h6 class="float-right">
-                    <h6 class="card-title">rahul</h6>
+                    <h6 class="card-title">Name</h6>
                     <p class="text-secondary"></p>
                     <p class="text-muted font-size-sm"></p>
                 </h6>
@@ -56,9 +59,16 @@
     font-weight: normal;text-align: justify;color:black; overflow: auto;padding-left: 10px; padding-top: 10px;padding-right: 10px;border:solid 1px #ddd;">
                                         <div style="height: auto; font-size: 18px; overflow-y: hidden; width: 700px;"
                                             class="w-100 text-justify text-font">
-                                            <span class="yellowcurrent">
-                                                {{passage}}
+                                            <span  [highlight]="isHiglight" [currentTextCounter]="currentTextCounter" [innerHTML]="passage" customClasses="bg-warning"  [typedWords]="typedWords">
+                                                <!-- {{passage}} -->
                                             </span>
+
+
+                                            <!-- <span >
+                                                Lorem Ipsum has been the industry's standard dummy text ever since the
+                                                1500s, when an unknown printer took a galley of type and scrambled it to
+                                                make a type specimen book.
+                                              </span> -->
                                         </div>
                                     </h5>
                                     <div>
@@ -68,7 +78,7 @@
                                             <textarea spellcheck="false" class="form-control textarea-height" rows="3"
                                                 (ngModelChange)="execute()" name="users_paragraph"
                                                 ng-paste="preventPaste($event)" [(ngModel)]="typedWords"
-                                                id="counter-text" *ngIf="!showResultFlag"></textarea>
+                                                id="counter-text" *ngIf="!showResultFlag" (keydown.Space)="inc()"></textarea>
 
                                             <div class="typedResults" *ngIf="showResultFlag">
                                                 <div [innerHTML]="typedoutput"></div>
@@ -91,9 +101,15 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="d-flex justify-content-between mb-2">
-                    <span>Word Count</span>
-                    <button (click)="calculateResult()">cal</button>
+                <div class="d-flex  mb-2" *ngIf="time == 601">
+                    <div>
+                        <input type="checkbox" class=" " [(ngModel)]="isHiglight"> 
+                       
+                    </div>
+                    <div class=" ml-2 bg-warning">
+                       Transcript
+                    </div>
+                    <!-- <button (click)="calculateResult()">cal</button> -->
                 </div>
                 <div class="bg-white panel-count h-100 p-4">
                     <div class="alert alert-info mb-3">
