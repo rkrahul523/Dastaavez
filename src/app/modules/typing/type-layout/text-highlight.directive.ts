@@ -33,10 +33,12 @@ export class HighlightDirective implements OnChanges {
                 const text = (this.el.nativeElement as HTMLElement).textContent;
                 //if (this.searchTerm === "") {
                 this.content = text;
-                if(!this.isHiglight){
-                    return;
-                }
+               
     
+            }
+
+            if(!this.isHiglight){
+                return;
             }
 
             if ("typedWords" in changes || "currentTextCounter" in changes || "isHiglight" in changes) {

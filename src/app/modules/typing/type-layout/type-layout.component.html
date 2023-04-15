@@ -15,11 +15,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="badge badge-primary alert-sm mb-3" id="time" role="alert">
-                            Time Left:
-                            {{ display }}
-
-                           
+                        <div class="mb-3" id="time" role="alert">
+                            <div class="badge badge-primary alert-sm ">
+                                Time Left:
+                                {{ display }} 
+                            </div>
+                          
                         </div>
                        
                     </div>
@@ -91,7 +92,7 @@
 
 
                                     <button type="submit" class="btn btn-success btn-lg" name="test_submit"
-                                        id="end_exam" style="float:right" *ngIf="time == 601"
+                                        id="end_exam" style="float:right" *ngIf="time == this.totalTestTime"
                                         (click)="startTimer()">Start Test</button>
                                 </div>
                             </form>
@@ -101,10 +102,9 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="d-flex  mb-2" *ngIf="time == 601">
+                <div class="d-flex  mb-2" *ngIf="time == this.totalTestTime">
                     <div>
                         <input type="checkbox" class=" " [(ngModel)]="isHiglight"> 
-                       
                     </div>
                     <div class=" ml-2 bg-warning">
                        Transcript
@@ -126,8 +126,11 @@
                     <div class="result-container" *ngIf="showResultFlag">
                         <h5 class="text-center">Typing Result</h5>
                         <div class="vi">Accuracy : <strong>{{accuracy}}%</strong></div>
-                        <div class="vi">Speed : <strong>{{wpm}} WPM</strong></div>
                         <div class="vi">Key Deppression : <strong>{{typedWords?.length}}</strong></div>
+                        <div class="vi">IncorrectWord : <strong>{{incorrectWord}}</strong></div>
+                        <div class="vi">Gross Speed : <strong>{{wpm}} WPM</strong></div>
+                        <div class="vi">Net Speed : <strong>{{netwpm}} WPM</strong></div>
+                      
                     </div>
                 </div>
             </div>

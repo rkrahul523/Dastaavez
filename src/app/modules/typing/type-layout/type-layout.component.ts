@@ -9,8 +9,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./type-layout.component.scss']
 })
 export class TypeLayoutComponent implements OnInit {
+  totalTestTime:number= 601;
 
-  time: number = 601;
+
+  time: number = this.totalTestTime;
   display: string = '10:00';
   interval: string | number | undefined | any;
   typedWordsLength: number = 0;
@@ -33,6 +35,8 @@ export class TypeLayoutComponent implements OnInit {
   wpm: number;
   passages: any[]=Passages;
 
+  incorrectWord:number;
+  netwpm:number;
   constructor(private api: ApiLocalService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
@@ -82,7 +86,7 @@ export class TypeLayoutComponent implements OnInit {
   }
 
   resetEveryThing() {
-    this.time = 601;
+    this.time = this.totalTestTime;
     this.showResultFlag = false;
     this.pauseTimer();
     this.display= '10:00';
@@ -101,6 +105,11 @@ export class TypeLayoutComponent implements OnInit {
      const typedPassage= this.typedWords.split(/\s/);
      const originalPassage= this.passage.split(/\s/);
 
+     if(!this.isHiglight){
+      this.isHiglight=true;
+      this.currentTextCounter= typedPassage.length-1;
+     }
+ 
      var correct=0;
      var incorrect=0;
      var typedoutput='';
@@ -121,6 +130,8 @@ export class TypeLayoutComponent implements OnInit {
      const total=(correct/(correct+incorrect))*100;
      this.accuracy= Math.round(total).toFixed(2);
      this.wpm=Math.ceil(this.countWords(this.typedWords)/10);
+     this.netwpm=Math.ceil(correct/10);
+     this.incorrectWord= incorrect;
 
   }
 
