@@ -3,5 +3,5 @@
 
 @font-face {
     font-family: "hindi_font";
-    src: url("./KRDEV010.ttf") format("opentype");
+    src: url("src/assets/fonts/KRDEV010.TTF") format("opentype");
   }
