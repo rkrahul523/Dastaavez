@@ -4,6 +4,12 @@
     font-size: 20px;
 }
 
+
+.hindifont{
+    font-family: 'hindi_font';
+    font-size: 20px;
+}
+
 .textarea-height{
     height: 200px;
 }
@@ -34,6 +40,12 @@
 .transcriptcheckbox{
     // width: 10px;
     // height: 5px;
+}
+
+.selectedLanguage{
+    border: 1px solid red;
+    background-color: seagreen;
+    color: white;
 }
 
 

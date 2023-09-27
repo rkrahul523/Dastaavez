@@ -14,6 +14,14 @@
                                     </option>
                                 </select>
                             </div>
+                            <div class="ml-3">
+                                <span [ngClass]="isEnglish ? 'selectedLanguage' : ''" (click)="changeLanguage('eng')">
+                                     ENGLISH
+                                </span>
+                                <span [ngClass]="!isEnglish ? 'selectedLanguage' : ''" (click)="changeLanguage('hin')">
+                                     HINDI
+                                </span>
+                            </div>
                         </div>
                         <div class="mb-3" id="time" role="alert">
                             <div class="badge badge-primary alert-sm ">
@@ -49,7 +57,7 @@
                 <div class="card border-primary rounded-0 border-0 ">
                     <div class="card-header border-primary bg-primary text-white">
                         KVS Test Language:
-                        english
+                        english 
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
@@ -59,7 +67,7 @@
                                         style="height: 250px; 
     font-weight: normal;text-align: justify;color:black; overflow: auto;padding-left: 10px; padding-top: 10px;padding-right: 10px;border:solid 1px #ddd;">
                                         <div style="height: auto; font-size: 18px; overflow-y: hidden; width: 700px;"
-                                            class="w-100 text-justify text-font">
+                                         [ngClass]="isEnglish ? 'w-100 text-justify text-font' : 'w-100 text-justify hindifont'"  >
                                             <span  [highlight]="isHiglight" [currentTextCounter]="currentTextCounter" [innerHTML]="passage" customClasses="bg-warning"  [typedWords]="typedWords">
                                                 <!-- {{passage}} -->
                                             </span>
@@ -76,7 +84,7 @@
                                         <div class="form-group mt-3">
                                             <label for="exampleFormControlTextarea1" class="text-Normal">Type
                                                 Here</label>
-                                            <textarea spellcheck="false" class="form-control textarea-height" rows="3"
+                                            <textarea spellcheck="false" [ngClass]="isEnglish ? 'form-control  textarea-height':'form-control hindifont textarea-height'" rows="3"
                                                 (ngModelChange)="execute()" name="users_paragraph"
                                                 ng-paste="preventPaste($event)" [(ngModel)]="typedWords"
                                                 id="counter-text" *ngIf="!showResultFlag" (keydown.Space)="inc()"></textarea>

@@ -34,6 +34,7 @@ export class TypeLayoutComponent implements OnInit {
   accuracy: any;
   wpm: number;
   passages: any[]=Passages;
+  isEnglish= true;
 
   incorrectWord:number;
   netwpm:number;
@@ -53,6 +54,11 @@ export class TypeLayoutComponent implements OnInit {
       this.passage=res.passage;
     })
   }
+
+  changeLanguage(val: string){
+  this.isEnglish= val == 'eng';
+  }
+
 
   updatePassage(){
     const name= this.passages.filter((res: any)=> res.location == this.selectedPassage)

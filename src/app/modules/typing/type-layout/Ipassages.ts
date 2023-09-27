@@ -683,6 +683,10 @@ export const Passages: any[] = [
     {
         "name": "KVS JSA MAY 40",
         "location": "may copy 40"
-    }
+    },
+    {
+        "name": "HIND TYP JA1",
+        "location": "hindi JA1"
+    },
 
 ]
