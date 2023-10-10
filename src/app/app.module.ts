@@ -29,6 +29,7 @@ import { ProfileComponent } from './modules/shared/components/profile/profile.co
 import { APIInterceptor } from './modules/shared/services/api.interceptor';
 import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 import { HighlightDirective } from './modules/typing/type-layout/text-highlight.directive';
+import { TypingHeaderComponent } from './modules/typing/typing-header/typing-header.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -46,7 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoaderComponent,
     ProfileComponent,
     TypeLayoutComponent,
-    HighlightDirective
+    HighlightDirective,
+    TypingHeaderComponent
   ],
   imports: [
     BrowserModule,

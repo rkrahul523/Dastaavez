@@ -4,6 +4,7 @@ import { FullComponent } from './modules/shared/full/full.component';
 import { ROUTE_PATH } from './modules/shared/models/route-path';
 import { AuthenticationGuard } from './modules/shared/services/authentication.guard';
 import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
+import { TypingHeaderComponent } from './modules/typing/typing-header/typing-header.component';
 
 
 const dastaavezroutes:  Routes = [{
@@ -20,8 +21,13 @@ const dastaavezroutes:  Routes = [{
 
   ]
 
-  const typingRoutes:  Routes = [{
-    path: '',
+  const typingRoutes:  Routes = [
+    {
+      path:'',
+      component: TypingHeaderComponent
+    },
+    {
+    path: 'typing',
     component: TypeLayoutComponent
   }]
 
