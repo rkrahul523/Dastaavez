@@ -13,7 +13,7 @@ const dastaavezroutes:  Routes = [{
   children: [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     {
-      path: 'dashboard',
+      path: 'home',
       loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
     },
   ]
