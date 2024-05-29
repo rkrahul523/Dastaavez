@@ -5,6 +5,7 @@ import { ROUTE_PATH } from './modules/shared/models/route-path';
 import { AuthenticationGuard } from './modules/shared/services/authentication.guard';
 import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 import { TypingHeaderComponent } from './modules/typing/typing-header/typing-header.component';
+import { LeaveHomeComponent } from './modules/leave-tracking/components/leave-home/leave-home.component';
 
 
 const dastaavezroutes:  Routes = [{
@@ -65,8 +66,34 @@ const routes: Routes = [
   }
 ];
 
+const emapproutes: Routes = [
+  // {
+  //   path: ROUTE_PATH.LOGIN,  
+  //   loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  // },
+  {
+    path: ROUTE_PATH.HOME,
+    component: LeaveHomeComponent,
+    // canActivate: [AuthenticationGuard] ,
+   
+    children: [
+      { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
+      {
+        path: ROUTE_PATH.DASHBOARD,
+        // canLoad:[AuthenticationGuard],
+        loadChildren: () => import('./modules/leave-tracking/leave-tracking.module').then(m => m.LeaveTrackingModule)
+      },
+    ]
+  },
+  {
+    path: '',
+    redirectTo: ROUTE_PATH.HOME,
+    pathMatch: 'full'
+  }
+];
+
 @NgModule({
-  imports: [RouterModule.forRoot(typingRoutes)],
+  imports: [RouterModule.forRoot(emapproutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="table-body">
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Sl</th>
+                <th scope="col">Name</th>
+                <th scope="col">Leave Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let detail of data">
+                <th>{{detail?.id}}</th>
+                <th>{{detail?.name}}<div>({{detail?.designation}})</div></th>
+                <th><app-leave-card></app-leave-card></th>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+</div>
+
