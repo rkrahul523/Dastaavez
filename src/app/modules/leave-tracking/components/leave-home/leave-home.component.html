@@ -1,1 +1,31 @@
-<router-outlet></router-outlet>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs nav-fill w-100">
+    <li [ngbNavItem]="1">
+        <a ngbNavLink>Leave Tracker</a>
+        <ng-template ngbNavContent>
+
+            <router-outlet></router-outlet>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+        <a ngbNavLink>Digital Dak </a>
+        <ng-template ngbNavContent>
+            figgg
+        </ng-template>
+    </li>
+
+</ul>
+
+
+
+<div [ngbNavOutlet]="nav" class="mt-2">
+
+</div>
+
+
+
+
+
+
+
+

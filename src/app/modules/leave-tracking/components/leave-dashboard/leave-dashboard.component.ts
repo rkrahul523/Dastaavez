@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ILeave } from '../../model/leave-types';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddLeaveComponent } from '../add-leave/add-leave.component';
 
 @Component({
   selector: 'app-leave-dashboard',
@@ -8,7 +10,8 @@ import { ILeave } from '../../model/leave-types';
 })
 export class LeaveDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngbModal: NgbModal,) { }
 
   data=[
     {
@@ -24,5 +27,17 @@ export class LeaveDashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  openLeaveModal(){
+    const modalRef = this.ngbModal.open(AddLeaveComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+    // modalRef.componentInstance.details = this.formulateRecords(details, lastComment);
+    // modalRef.componentInstance.modalActionType =IModalAction.VIEW;
+  }
+
 
 }

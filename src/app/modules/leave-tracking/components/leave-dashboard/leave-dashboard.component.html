@@ -1,4 +1,15 @@
 <div class="container-fluid">
+
+  <div class="action-buttons mb-2">
+
+    <button class="btn btn-success mr-2" (click)="openLeaveModal()">
+       <i class="bi bi-pencil"></i>
+       Add Leave
+   </button>
+    <button class="btn btn-primary mr-2" >
+       Calculate Leave
+   </button>
+  </div>
     <div class="table-body">
 
         <table class="table table-striped">
@@ -6,7 +17,7 @@
               <tr>
                 <th scope="col">Sl</th>
                 <th scope="col">Name</th>
-                <th scope="col">Leave Type</th>
+                <th scope="col">Leave Details</th>
               </tr>
             </thead>
             <tbody>
