@@ -3,6 +3,7 @@ import { DakApiService } from '../../services/dak-api-service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 
 @Component({
   selector: 'app-view-dak',
@@ -22,7 +23,8 @@ commentsForm: FormGroup;
     private ngbModal: NgbActiveModal,
     private fb: FormBuilder,
     private api: DakApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth: AuthenticationService
   ) { }
 
 
@@ -46,7 +48,7 @@ commentsForm: FormGroup;
       if (this.commentsForm.invalid) {
         return;
       }
-      const form={...this.commentsForm.value,curentUser:"fff", book:this.dakData.book};
+      const form={...this.commentsForm.value,curentUser:this.auth.currentUser, book:this.dakData.book};
       this.api.addComment(form).subscribe((res: any) => {
         if (res && res.status) {
           this.api.successToast(res.message, 'Added Comment Successfuly');
