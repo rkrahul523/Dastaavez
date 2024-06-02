@@ -1,1 +1,43 @@
-<p>digital-dak works!</p>
+<div class="container-fluid">
+
+    <div class="header-title text-center">
+        Digital Dak
+    </div>
+    <div class="dakbody">
+        <div class="action-items d-flex mb-2">
+            <div class="create-file-container mr-1">
+                   <button class="btn btn-success" (click)="addDak()">
+                       <i class="bi bi-folder-plus mr-2"></i> Add Dak
+                   </button>
+               </div>
+            <div class="export-file-container mr-1">
+                <button class="btn btn-secondary mr-2" (click)="exportAsExcel(true)">
+                    <i class="bi bi-download mr-1"></i>
+                    Export Selected
+                </button>
+
+                <button class="btn btn-secondary" (click)="exportAsExcel()">
+                    <i class="bi bi-file-earmark-arrow-down mr-1"></i>
+                    Export All
+                </button>
+            </div>
+        </div>
+        <div class="grid-body">
+            <ag-grid-angular id='receive-file-info' [gridOptions]="gridOptions" style="width: 100%; height: 550px"
+            class="ag-theme-alpine" [sideBar]='sideBar' [defaultColDef]="defaultColDef"
+            [rowData]="rowData" [columnDefs]="columnDefs"
+            [frameworkComponents]="frameworkComponents"
+            [modules]="modules" [components]="components" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+        <div class="pag-page-size">
+            Page Size:
+            <select (change)="onPageSizeChanged()" id="page-size" [(ngModel)]="pageSize" class="page-select">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+    </div>
+</div>

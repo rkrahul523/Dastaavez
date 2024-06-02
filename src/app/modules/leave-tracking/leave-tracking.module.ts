@@ -12,6 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AddLeaveComponent } from './components/add-leave/add-leave.component';
 import { DigitalDakComponent } from './components/digital-dak/digital-dak.component';
+import { AgGridModule } from '@ag-grid-community/angular';
+import { ActionRendererDakComponent } from './components/action-renderer/action-renderer.component';
+import { DateRangeFilterDakComponent } from './components/date-range-filter/date-range-filter.component';
+import { ModifyDakComponent } from './components/modify-dak/modify-dak.component';
+import { ViewDakComponent } from './components/view-dak/view-dak.component';
+import { CommentsRendererComponent } from './components/comments-renderer/comments-renderer.component';
 
 
 
@@ -22,7 +28,12 @@ import { DigitalDakComponent } from './components/digital-dak/digital-dak.compon
     LeaveHomeComponent,
     LeaveCardComponent,
     AddLeaveComponent,
-    DigitalDakComponent
+    DigitalDakComponent,
+    ActionRendererDakComponent,
+    DateRangeFilterDakComponent,
+    ModifyDakComponent,
+    ViewDakComponent,
+    CommentsRendererComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +48,7 @@ import { DigitalDakComponent } from './components/digital-dak/digital-dak.compon
     NgbModalModule,
     NgSelectModule,
     NgbDatepickerModule,
+    AgGridModule.withComponents([]),
      ]
 })
 export class LeaveTrackingModule { }

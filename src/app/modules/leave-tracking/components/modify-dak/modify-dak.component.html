@@ -1,0 +1,123 @@
+
+
+<div class="container-fluid">
+
+    <div class="add-leave m-4">
+       <div class="leave-title d-flex">
+        <div class="header-text text-center ml-auto">
+          {{isModify ? 'Modify Dak': "Add Dak"}}
+        </div>
+        <div class="cross-icon ml-auto" (click)="dismissModal()">
+            <button type="button" class="close text-danger" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+       </div>
+    
+       <div class="leave-form">
+        <div [formGroup]="dakForm">
+            <!--<div class="row mb-3">
+        
+                <div class="col-4">
+                    <div>Employee Name</div>
+                    <select
+                    class='custom-select mb-3'
+                    formControlName='name'>
+                    <option value="">Choose Name</option>
+                    <option *ngFor="let name of names" [value]="name.id">{{name.name}} </option>
+                </select>
+                 <ng-select class=" " [items]="leaveTypes" [selectOnTab]="true" 
+                placeholder="Select Deparment" formControlName="department">
+            </ng-select> 
+                </div>
+              
+                <div class="col-4">
+                    <div>Leave Type</div>
+                    <select
+                    class='custom-select mb-3'
+                        formControlName='leaveType'>
+                        <option value="">Choose Leave Type</option>
+                        <option *ngFor="let leave of leaveTypes" [value]="leave">{{leave}} </option>
+                    </select>
+                </div>
+            </div>-->
+            <div class="row mb-3">
+                <div class="col-4 col-sm-12">
+                    <label class="mb-0" for="book">
+                        Book No.
+                    </label>
+                    <input type="text" [readOnly]="isModify" class="form-control" formControlName='book'>
+                </div>
+                <div class="col-4 col-sm-12">
+                    <label class="mb-0" for="centrakDak">
+                        Central Dak No.
+                    </label>
+                    <input type="text" class="form-control" formControlName='centrakDak'>
+                </div>
+                <div class="col-4 col-sm-12">
+                    <label class="mb-0" for="dak_title">
+                        Dak Title
+                    </label>
+                    <input type="text" class="form-control" formControlName='dak_title'>
+                </div>
+                
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <div>Sender Name</div>
+                    <select
+                    class='custom-select mb-3'
+                    formControlName='senderId'>
+                    <option value="">Choose Name</option>
+                    <option *ngFor="let name of names" [value]="name.id">{{name.name}} </option>
+                </select>
+                 <!-- <ng-select class=" " [items]="leaveTypes" [selectOnTab]="true" 
+                placeholder="Select Deparment" formControlName="department">
+            </ng-select>  -->
+                </div>
+                <div class="col-4">
+                    <label class="mb-0" for="address">
+                        date
+                    </label>
+                    <input type="date" [readOnly]="isModify" class="form-control" formControlName='date'>
+                </div>
+
+                <div class="col-4">
+                    <label class="mb-0" for="address">
+                        Receiver Name
+                    </label>
+                    <input type="text" class="form-control" formControlName='receiver'>
+                </div>
+                
+            </div>
+
+            <div class="row mb-3">
+            <div class="col-6 ">
+                <div>Dak Details</div>
+                <textarea formControlName='dak_details' rows="3" cols="35">
+    
+                </textarea>
+            </div>
+            <div class="col-6 ">
+                <div>Comments</div>
+                <textarea formControlName='comments' [readOnly]="isModify" rows="3" cols="35">
+    
+                </textarea>
+            </div>
+            </div>
+            <div class="row">
+                <!-- <button type="button" class="btn ml-3 col-2 btn-success" 
+                    ><i class="bi bi-arrow-right-square mr-3"></i>Next</button> -->
+                <button type="button" class="btn ml-3 col-2 btn-success" (click)="isModify ? modifyDak() :confirm()"
+                    ><i class="bi bi-check-square mr-3"></i>Confirm</button>
+            </div>
+        
+     
+        
+        </div>
+       </div>
+    </div>
+    
+    </div>
+    
+    

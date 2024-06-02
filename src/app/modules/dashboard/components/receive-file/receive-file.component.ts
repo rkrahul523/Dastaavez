@@ -316,6 +316,9 @@ export class ReceiveFileComponent implements OnInit {
       },
     ]
 
+    
+
+
     const finalColumn = [...columns, ...RECEIVED_FILE_COLUMS]
     this.columnDefs = finalColumn;
   }

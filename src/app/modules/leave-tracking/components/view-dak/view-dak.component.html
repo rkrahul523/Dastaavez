@@ -1,0 +1,95 @@
+
+<div class="container p-4">
+    <div class="top-header mb-2 d-flex">
+        <div class="header-text">
+            Dak Details - Added By {{dakData?.addedBy}}
+        </div>
+        <div class="cross-icon ml-auto" (click)="dismissModal()">
+            <button type="button" class="close text-danger" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="dak-details-body">
+          <div class="dak-title bookno mb-2">
+              <span class=" ">
+                 Book No.- <b>{{dakData?.book}}</b>
+              </span>
+              <span class="float-right">
+               Central Dak- <b>{{dakData?.centrakDak}}</b>
+              </span>
+          </div>
+          <div class="dak-details mb-2">
+              <div class="dak-title text-center mb-2">
+                {{dakData?.dak_title}}
+              </div>
+              <div class="dak-details">
+                {{dakData?.dak_details}}
+              </div>
+
+          </div>
+
+          <div class="dak-sender d-flex ">
+            <span class=" ">
+                Receiver
+                <div>{{dakData?.receiver}}</div>
+
+            </span>
+            <span class="ml-auto">
+             <div>{{dakData?.sender}}</div>
+             <div>({{dakData?.date}})</div>
+            </span>
+        </div>
+
+        <hr>
+        <div class="modified-details  d-flex">
+            <span class=" ">
+                Last Updated On
+                <div>{{dakData?.last_updated_date}}</div>
+
+            </span>
+            <span class="ml-auto">
+                Modified By
+             <div>{{dakData?.modifiedBy}}</div>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="comments-section mt-2">
+
+        <div class="comments">
+            <div class="comment mb-2" *ngFor="let comm of dakData?.comments">
+                <div class="comment-tile">
+                    {{comm?.comment}}
+                </div>
+                <div class="comment-det d-flex">
+                    <span>
+                        {{comm?.addedby}}
+                    </span>
+                    <span class="ml-auto">
+                        {{comm?.updatedOn}}
+                    </span>
+
+                </div>
+
+            </div>
+              
+        </div>
+        <div class="row">
+            <div class="col-sm-12" [formGroup]="commentsForm">
+                <label for="w3review">Comment:</label>
+                <textarea name="w3review" rows="3" cols="50" class="form-control"
+                    formControlName="comment">
+            </textarea>
+     
+            </div>
+            <button class="btn btn-success ml-2 mt-2" (click)="addcomment()">
+                Add Comment
+            </button>
+        </div>
+    </div>
+
+</div>
