@@ -38,7 +38,7 @@ export const DAK_COLUMS = [
     {
         headerName: "Sender",
         colId: 'sender',
-        filter: 'agTextColumnFilter',
+        filter: 'agSetColumnFilter',
         sortable: true, 
         field: 'sender',
         width:200,
@@ -88,7 +88,7 @@ export const DAK_COLUMS = [
     {
         headerName: "Added By",
         colId: 'addedBy',
-        filter: 'agTextColumnFilter',
+        filter: 'agSetColumnFilter',
         hide:true,
         sortable: true, 
         field: 'addedBy',
@@ -97,7 +97,7 @@ export const DAK_COLUMS = [
     {
         headerName: "Modified By",
         colId: 'modifiedBy',
-        filter: 'agTextColumnFilter',
+        filter: 'agSetColumnFilter',
         hide:true,
         sortable: true, 
         field: 'modifiedBy',

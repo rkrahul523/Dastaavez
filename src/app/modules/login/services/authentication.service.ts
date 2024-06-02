@@ -3,6 +3,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { HttpResponse, HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ROUTE_PATH } from '../../shared/models/route-path';
+import { getEmployeeName } from '../../leave-tracking/model/employee-list';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AuthenticationService {
   :
   'http://localhost:5000/';;
   loginURL='validate-user-details';
+  currentUser='';
 
   user=new BehaviorSubject<any>(null);
   username=null;
@@ -28,6 +30,7 @@ export class AuthenticationService {
   login(loginData: any): Observable<any> {
     // Mock a successful call to an API server.
     this.username= loginData.username;
+    this.currentUser= getEmployeeName(loginData.username);
     return this.http.post(this.apiURL+this.loginURL,  loginData)
  
   }

@@ -67,27 +67,27 @@ const routes: Routes = [
 ];
 
 const emapproutes: Routes = [
-  // {
-  //   path: ROUTE_PATH.LOGIN,  
-  //   loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
-  // },
+  {
+    path: ROUTE_PATH.LOGIN,  
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  },
   {
     path: ROUTE_PATH.HOME,
     component: LeaveHomeComponent,
-    // canActivate: [AuthenticationGuard] ,
+    canActivate: [AuthenticationGuard] ,
    
     children: [
       { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
       {
         path: ROUTE_PATH.DASHBOARD,
-        // canLoad:[AuthenticationGuard],
+        canLoad:[AuthenticationGuard],
         loadChildren: () => import('./modules/leave-tracking/leave-tracking.module').then(m => m.LeaveTrackingModule)
       },
     ]
   },
   {
     path: '',
-    redirectTo: ROUTE_PATH.HOME,
+    redirectTo: ROUTE_PATH.LOGIN,
     pathMatch: 'full'
   }
 ];

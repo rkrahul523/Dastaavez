@@ -33,14 +33,14 @@ export class DakApiService {
 
     getU_id() {
         const userId: any = this.authentication.user.getValue();
-        return userId.u_id;   
+        return userId.userId;   
     }
 
 
 
 
     getAllDak() {
-        return this.http.get(this.apiURL + this.getAllDakUrl, { params: { user_id: '' } })
+        return this.http.get(this.apiURL + this.getAllDakUrl, { params: { user_id: this.getU_id() } })
     }
    
     // getAllDak() {
@@ -52,7 +52,7 @@ export class DakApiService {
         return this.http.post(this.apiURL + this.updatedDakUrl, {dakData})
     }
     addDak(dakData: any) {
-        return this.http.post(this.apiURL + this.addDakUrl, { dakData })
+        return this.http.post(this.apiURL + this.addDakUrl, { dakData , user_id: this.getU_id()})
     }
     addComment(dakData: any) {
         return this.http.post(this.apiURL + this.addCommentUrl, { dakData })

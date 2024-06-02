@@ -15,6 +15,7 @@ import { IAction } from '../../model/action-type';
 import { DakApiService } from '../../services/dak-api-service';
 import { ModifyDakComponent } from '../modify-dak/modify-dak.component';
 import { ViewDakComponent } from '../view-dak/view-dak.component';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 
 @Component({
   selector: 'app-digital-dak',
@@ -118,6 +119,7 @@ export class DigitalDakComponent implements OnInit {
   constructor(private toastr: ToastrService,
     private api: DakApiService,
     private ngbModal: NgbModal,
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit(): void {
@@ -351,7 +353,7 @@ export class DigitalDakComponent implements OnInit {
 
   generateColumnsForExcel(): string[] {
     const keys = this.gridColumnApi
-      .getAllDisplayedColumns()
+      .getAllColumns()
       .map(column => column.getColId())
 
     // const amountIndex: number = keys.findIndex(column => column === 'newPrice');
@@ -359,4 +361,8 @@ export class DigitalDakComponent implements OnInit {
     return keys.slice(2);
   }
 
+
+  logout(){
+    this.authService.logout();
+  }
 }

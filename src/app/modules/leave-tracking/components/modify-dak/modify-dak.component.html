@@ -65,15 +65,15 @@
             <div class="row mb-3">
                 <div class="col-4">
                     <div>Sender Name</div>
-                    <select
+                    <!-- <select
                     class='custom-select mb-3'
                     formControlName='senderId'>
                     <option value="">Choose Name</option>
                     <option *ngFor="let name of names" [value]="name.id">{{name.name}} </option>
-                </select>
-                 <!-- <ng-select class=" " [items]="leaveTypes" [selectOnTab]="true" 
-                placeholder="Select Deparment" formControlName="department">
-            </ng-select>  -->
+                </select> -->
+                 <ng-select class=" " [items]="names" [selectOnTab]="true" 
+                placeholder="Select Name" formControlName="senderId" bindValue="id" bindLabel="name">
+            </ng-select> 
                 </div>
                 <div class="col-4">
                     <label class="mb-0" for="address">

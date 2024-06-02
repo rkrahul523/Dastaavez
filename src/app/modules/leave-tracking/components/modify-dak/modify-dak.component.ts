@@ -5,6 +5,7 @@ import { ILeave } from '../../model/leave-types';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { DakApiService } from '../../services/dak-api-service';
+import { AuthenticationService } from 'src/app/modules/login/services/authentication.service';
 
 @Component({
   selector: 'app-modify-dak',
@@ -29,7 +30,8 @@ export class ModifyDakComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private ngbModal: NgbActiveModal,
     private toastr: ToastrService,
-    private api: DakApiService
+    private api: DakApiService,
+    private auth: AuthenticationService
     ) { }
 
   ngOnInit(): void {
@@ -58,7 +60,7 @@ export class ModifyDakComponent implements OnInit {
      }
 
     const formValue=this.dakForm.value;
-    const currentUser="Vishal"
+    const currentUser=this.auth.currentUser;
     const dakJson={
       ...formValue,
       curentUser: currentUser,
@@ -87,7 +89,7 @@ export class ModifyDakComponent implements OnInit {
 
     const formValue=this.dakForm.value;
     delete formValue.comments;
-    const currentUser="Vishal"
+    const currentUser=this.auth.currentUser
     const dakJson={
       ...formValue,
       curentUser: currentUser,
