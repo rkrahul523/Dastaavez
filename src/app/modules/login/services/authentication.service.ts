@@ -12,7 +12,7 @@ export class AuthenticationService {
 
  
   apiURL=!window.location.origin.includes('localhost') ?
-  'https://bbtracker.onrender.com/'
+  'https://big-basket-tracker.onrender.com/'
   :
   'http://localhost:5000/';;
   loginURL='validate-user-details';
