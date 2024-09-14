@@ -1,135 +1,141 @@
 export const employeeList=[
     
     {
-    name:"N.K. Singh",
+    name:"Dr. N.K. Singh",
     designation:"",
     id:1
 },
     {
-    name:"K.K. Singh",
+    name:"Dr. K.K. Singh",
     designation:"",
     id:2
 },
     {
-    name:"R.K. Odhar",
+    name:"Dr. R.K. Odhar",
     designation:"",
     id:3
 },
     {
-    name:"Nandita Gupta",
+    name:"Dr. Nandita Gupta",
     designation:"",
     id:4
 },
     {
-    name:"Manoj Kumar",
+    name:"Dr. Manoj Kumar",
     designation:"",
     id:5
 },
     {
-    name:"Amitesh Kumar",
+    name:"Dr. Amitesh Kumar",
     designation:"",
     id:6
 },
     {
-    name:"Ajit Kr Pramanick",
+    name:"Dr. Ajit Kr Pramanick",
     designation:"",
     id:7
 },
     {
-    name:"Vineet Chak",
+    name:"Dr. Vineet Chak",
     designation:"",
     id:8
 },
     {
-    name:"Deepak Kumar",
+    name:"Dr. Deepak Kumar",
     designation:"",
     id:9
 },
     {
-    name:"Himanshu Khandelwal",
+    name:"Dr. Himanshu Khandelwal",
     designation:"",
     id:10
 },
     {
-    name:"R. Rahul Kulkarni",
+    name:"Dr. R. Rahul Kulkarni",
     designation:"",
     id:11
 },
     {
-    name:"Vivek S Ayar",
+    name:"Dr. Vivek S Ayar",
     designation:"",
     id:12
 },
     {
-    name:"E. Hemachandran",
+    name:"Dr. E. Hemachandran",
     designation:"",
     id:13
 },
     {
-    name:"Sunny Singhania",
+    name:"Dr. Sunny Singhania",
     designation:"",
     id:14
 },
     {
-    name:"Anas Ahmad Siddique",
+    name:"Dr. Anas Ahmad Siddique",
     designation:"",
     id:15
 },
     {
-    name:"Pavitra Singh",
+    name:"Dr. Pavitra Singh",
     designation:"",
     id:16
 },
     {
-    name:"Shankar Behera",
+    name:"Dr. Rajat Upadhayay",
     designation:"",
     id:17
 },
-    {
-    name:"Chandan Kumar",
-    designation:"",
-    id:18
-},
-    {
-    name:"Pran Kumar",
-    designation:"",
-    id:19
-},
-    {
-    name:"Raju Ram",
-    designation:"",
-    id:20
-},
-    {
-    name:"Jitray Munda",
-    designation:"",
-    id:21
-},
-    {
-    name:"Munna Prasad",
-    designation:"",
-    id:22
-},
-    {
-    name:"Rahul kumar",
-    designation:"",
-    id:23
-},
-    {
-    name:"Md. Firoz",
-    designation:"",
-    id:24
-},
-    {
-    name:"Divesher Mukhiyar",
-    designation:"",
-    id:25
-},
-    {
-    name:"Vishal Kumar",
-    designation:"",
-    id:26
-},
+
+//     {
+//     name:"Shankar Behera",
+//     designation:"",
+//     id:17
+// },
+//     {
+//     name:"Chandan Kumar",
+//     designation:"",
+//     id:18
+// },
+//     {
+//     name:"Pran Kumar",
+//     designation:"",
+//     id:19
+// },
+//     {
+//     name:"Raju Ram",
+//     designation:"",
+//     id:20
+// },
+//     {
+//     name:"Jitray Munda",
+//     designation:"",
+//     id:21
+// },
+//     {
+//     name:"Munna Prasad",
+//     designation:"",
+//     id:22
+// },
+//     {
+//     name:"Rahul kumar",
+//     designation:"",
+//     id:23
+// },
+//     {
+//     name:"Md. Firoz",
+//     designation:"",
+//     id:24
+// },
+//     {
+//     name:"Divesher Mukhiyar",
+//     designation:"",
+//     id:25
+// },
+//     {
+//     name:"Vishal Kumar",
+//     designation:"",
+//     id:26
+// },
 
 
 ]

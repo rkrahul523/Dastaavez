@@ -6,6 +6,7 @@ import { AuthenticationGuard } from './modules/shared/services/authentication.gu
 import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 import { TypingHeaderComponent } from './modules/typing/typing-header/typing-header.component';
 import { LeaveHomeComponent } from './modules/leave-tracking/components/leave-home/leave-home.component';
+import { TimeTableViewComponent } from './modules/shared/components/time-table-view/time-table-view.component';
 
 
 const dastaavezroutes:  Routes = [{
@@ -92,8 +93,39 @@ const emapproutes: Routes = [
   }
 ];
 
+const timetable: Routes = [
+  {
+    path: ROUTE_PATH.DASHBOARD,  
+    component: TimeTableViewComponent
+  },
+
+  {
+    path: ROUTE_PATH.LOGIN,  
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: ROUTE_PATH.HOME,
+    component: LeaveHomeComponent,
+    canActivate: [AuthenticationGuard] ,
+   
+    children: [
+      { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
+      {
+        path: ROUTE_PATH.DASHBOARD,
+        canLoad:[AuthenticationGuard],
+        loadChildren: () => import('./modules/leave-tracking/leave-tracking.module').then(m => m.LeaveTrackingModule)
+      },
+    ]
+  },
+  {
+    path: '',
+    redirectTo: ROUTE_PATH.DASHBOARD,
+    pathMatch: 'full'
+  }
+];
+
 @NgModule({
-  imports: [RouterModule.forRoot(emapproutes)],
+  imports: [RouterModule.forRoot(timetable)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,4 +1,169 @@
 {
-    "passage":"Social led commerce ecosystem the social commerce ecosystem with deeper digital adoption, consumers today are more open towards shopping online, a trend further accelerated by the pandemic. However, even with over 570 million internet users, only 100 million transact online in India. While the data represents a huge opportunity for brands across sectors, it also begets the question what factors keep people from transacting online According to multiple reports, one of the biggest inhibitors to online shopping is the missing human touch point and consequently, the lack of trust. Social media today plays an intrinsic role in influencing people opinions, desires and even aspirations. Enter creators. Leveraging their online communities based on their passions, they enable consumers, more so beyond the metros, to discover and gain access to shared passions. Social commerce is a powerful format and requires the right business model to scale. Hence, brands and platforms must support and equip creators or passion preneurs with guidance and personalized digital tools helping them scale their online community while also building a sales pipeline. In India, Amway is up skilling its direct sellers through digital training programs along with innovative social and digital tools, helping them bolster their online engagement. The National Mental Health Survey of India in 2016 found that 1 in 20 people in India suffer from depression and productive age groups from 20 50 years of age are affected most! Economic burden of mental disorders has been huge with mental disorders affecting 792 million people worldwide by the year 2017 and rapidly growing through the pandemic. Mental Health has an impact on morbidity and functionality and directly affects quality of life and productivity. People with severe mental health conditions die prematurely as much as two decades early due to preventable physical conditions. Statistics suggest that depression tends to be more common among women than men. Depression and anxiety become more common as people get older. People with severe mental disorders are especially vulnerable during emergencies and need access to mental health care and other basic needs. Looking at the statistics can be alarming, but there is hope in the future as organizations, communities and governments are cognizant of the fact that this condition needs to be addressed. The National Mental Health Policy has envisioned a plan to promote mental health, prevent mental illness, enable recovery from mental illness, reduce stigma in seeking mental health solutions and de segregation. It has also become a priority to ensure socio economic inclusion of persons affected by mental illness by providing accessible, affordable and quality health. In recent years, there has been increasing acknowledgement of the important role mental health plays in achieving global development goals, as illustrated by the inclusion of mental health in the sustainable development goals. A 21st century approach to mental health could have a positive impact on millions of individuals and families who are presently unable to access the mental health care and support that they need and will deliver significant economic and social benefits to."
+    "status": true,
+    "data": [
+        {
+            "ADC_FORGE_SEM_1": {}
+        },
+        {
+            "ADC_FOUNDRY_SEM_1": {
+                "THU": [
+                    {
+                        "head": "Engineering Drawing",
+                        "sub": "Dr. Nandita Gupta",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "CAD",
+                        "startTime": 9,
+                        "endTime": 10,
+                        "day": "THU"
+                    }
+                ],
+                "MON": [
+                    {
+                        "head": "Physical Metallurgy",
+                        "sub": "Dr. Anas Ahmad Siddique",
+                        "short": "PM",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "startTime": 9,
+                        "endTime": 10,
+                        "day": "MON"
+                    },
+                    {
+                        "head": "Introduction to Materials Engineering",
+                        "sub": "Dr. Rajat Upadhayay",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "IME",
+                        "startTime": 10,
+                        "endTime": 11,
+                        "day": "MON"
+                    },
+                    {
+                        "head": "Engineering Science",
+                        "sub": "Dr. E. Hemachandran",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "ES",
+                        "startTime": 14,
+                        "endTime": 15,
+                        "day": "MON"
+                    },
+                    {
+                        "head": "Engineering Science Lab",
+                        "sub": "Dr. E. Hemachandran",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "ES LAB",
+                        "startTime": 15,
+                        "endTime": 17,
+                        "day": "MON"
+                    }
+                ],
+                "WED": [
+                    {
+                        "head": "Engineering Mechanics",
+                        "sub": "Dr. N.K. Singh",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "EM",
+                        "startTime": 9,
+                        "endTime": 10,
+                        "day": "WED"
+                    },
+                    {
+                        "head": "Introduction to Material Engineering Lab",
+                        "sub": "Dr. Rajat Upadhayay",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "IME LAB",
+                        "startTime": 15,
+                        "endTime": 17,
+                        "day": "WED"
+                    },
+                    {
+                        "head": "Metal Shaping Process",
+                        "sub": "Dr. Vivek S Ayar",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "MSP",
+                        "startTime": 12,
+                        "endTime": 13,
+                        "day": "WED"
+                    }
+                ],
+                "FRI": [
+                    {
+                        "head": "Introduction to Materials Engineering",
+                        "sub": "Dr. Rajat Upadhayay",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "IME",
+                        "startTime": 9,
+                        "endTime": 10,
+                        "day": "FRI"
+                    },
+                    {
+                        "head": "Physical Metallurgy Lab",
+                        "sub": "Dr. Amitesh Kumar",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "PM LAB",
+                        "startTime": 15,
+                        "endTime": 17,
+                        "day": "FRI"
+                    },
+                    {
+                        "head": "Metal Shaping Process",
+                        "sub": "Dr. Vivek S Ayar",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "MSP",
+                        "startTime": 14,
+                        "endTime": 15,
+                        "day": "FRI"
+                    },
+                    {
+                        "head": "Engineering Mechanics",
+                        "sub": "Dr. N.K. Singh",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "EM",
+                        "startTime": 11,
+                        "endTime": 12,
+                        "day": "FRI"
+                    }
+                ],
+                "TUE": [
+                    {
+                        "head": "Metal Shaping Process",
+                        "sub": "Dr. Vivek S Ayar",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "MSP",
+                        "startTime": 9,
+                        "endTime": 10,
+                        "day": "TUE"
+                    },
+                    {
+                        "head": "Metal Shaping Processes Lab",
+                        "sub": "Dr. Vivek S Ayar",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "MSP LAB",
+                        "startTime": 15,
+                        "endTime": 17,
+                        "day": "TUE"
+                    },
+                    {
+                        "head": "Engineering Mechanics",
+                        "sub": "Dr. N.K. Singh",
+                        "course": "ADC_FOUNDRY_SEM_1",
+                        "short": "EM",
+                        "startTime": 11,
+                        "endTime": 12,
+                        "day": "TUE"
+                    }
+                ]
+            }
+        },
+        {
+            "BTECH_CE_SEM_1": {}
+        },
+        {
+            "BTECH_PIE_SEM_1": {}
+        },
+        {
+            "BTECH_PIE_SEM_3": {}
+        },
+        {
+            "BTECH_PIE_SEM_5": {}
+        }
+    ]
 }
-    

@@ -30,6 +30,7 @@ import { APIInterceptor } from './modules/shared/services/api.interceptor';
 import { TypeLayoutComponent } from './modules/typing/type-layout/type-layout.component';
 import { HighlightDirective } from './modules/typing/type-layout/text-highlight.directive';
 import { TypingHeaderComponent } from './modules/typing/typing-header/typing-header.component';
+import { SharedUtilityModule } from './modules/shared/modules/shared-util.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -63,6 +64,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbDropdownModule,
     ToastrModule.forRoot(),
     NgSelectModule,
+    SharedUtilityModule
     // AgGridModule.withComponents([]),
   ],
   providers: [

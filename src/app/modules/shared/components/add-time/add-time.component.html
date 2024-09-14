@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <h2>Form Example</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="Day">Day:</label>
+        <ng-select class=" " [items]="days" [selectOnTab]="true" 
+        placeholder="Select Day" formControlName="day" >
+    </ng-select> 
+      </div>
+      <div class="form-group">
+        <label for="Course">Course:</label>
+        <ng-select class=" " [items]="courses" [selectOnTab]="true" 
+        placeholder="Select Course" formControlName="course" bindValue="id" bindLabel="name">
+    </ng-select> 
+      </div>
+      <div class="form-group">
+        <label for="head">Subject Name:</label>
+        <input id="head" class="form-control" formControlName="head" />
+      </div>
+  
+      <div class="form-group">
+        <label for="short">Short Name:</label>
+        <input id="short" class="form-control" formControlName="short" />
+      </div>
+  
+      <div class="form-group">
+        <label for="sub">Faculty Name:</label>
+        <!-- <input id="sub" class="form-control" formControlName="sub" /> -->
+        <ng-select class=" " [items]="names" [selectOnTab]="true" 
+        placeholder="Select Name" formControlName="sub" bindValue="name" bindLabel="name">
+    </ng-select> 
+      </div>
+  
+      <div class="form-group">
+        <label for="startTime">Start Time:</label>
+        <input id="startTime" class="form-control" type="number" formControlName="startTime" />
+      </div>
+  
+      <div class="form-group">
+        <label for="endTime">End Time:</label>
+        <input id="endTime" class="form-control" type="number" formControlName="endTime" />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

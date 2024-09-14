@@ -1,0 +1,81 @@
+
+
+
+
+<app-add-time></app-add-time>
+
+
+<div class="time-table-container">
+
+<div class="table-header">
+    <!-- <h1>
+        Time Table Allocation    
+    </h1> -->
+    <div class="weekday-container">
+      <div class="weekday" (click)="changeDay(day)" *ngFor="let day of days"><span [ngClass]="day== currentDay ? 'bg-success':''">{{ day }}</span></div>
+    </div>
+
+    <p>ADC Foundry - Room 202</p>
+    <p>ADC Forge - Room 302</p>
+</div>
+    <div class="table-container p-3">
+
+        <table class="table table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">09:00 - 10:00</th>
+                <th scope="col">10:00 - 11:00</th>
+                <th scope="col">11:00 - 12:00</th>
+                <th scope="col">12:00 - 13:00</th>
+                <th scope="col">13:00 - 14:00</th>
+                <th scope="col">14:00 - 15:00</th>
+                <th scope="col">15:00 - 16:00</th>
+                <th scope="col">16:00 - 17:00</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" >ADC 
+                    <div>FOUNDRY</div></th>
+                    <ng-container
+                        *ngFor="let data of adcFoundry">
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+              <tr>
+                <th scope="row" >ADC 
+                    <div>FORGE</div></th>
+                    <ng-container
+                        *ngFor="let data of adcForge">
+                     
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+<div class="avl-chip-container">
+  <div class="chip" *ngFor="let data of avlFaculty">
+    <span class="chip-content">{{data}}</span>
+    <!-- <button class="chip-close" (click)="remove()">&times;</button> -->
+  </div>
+</div>
+<div class="avl-chip-container mt-2">
+  <div class="chip bg-danger " *ngFor="let data of occFaculty">
+    <span class="chip-content">{{data}}</span>
+    <!-- <button class="chip-close" (click)="remove()">&times;</button> -->
+  </div>
+</div>
+</div>
