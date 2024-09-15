@@ -32,6 +32,14 @@ adcForge=[
   }
 ]
 
+btechpiesem1:any=[];
+btechpiesem3:any=[];
+btechpiesem5:any=[];
+
+btechce1:any=[]
+btechce3:any=[]
+btechce5:any=[]
+
 currentDay="FRI";
 fetchedData:any=[]
 avlFaculty:any=[]
@@ -102,6 +110,18 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
         const daydata= element.ADC_FORGE_SEM_1[`${this.currentDay}`]
         this.adcForge= this.organiseSessions(daydata)
       }
+      if('BTECH_PIE_SEM_1' in element){
+        const daydata= element.BTECH_PIE_SEM_1[`${this.currentDay}`]
+        this.btechpiesem1= this.organiseSessions(daydata)
+      }
+      if('BTECH_PIE_SEM_3' in element){
+        const daydata= element.BTECH_PIE_SEM_3[`${this.currentDay}`]
+        this.btechpiesem3= this.organiseSessions(daydata)
+      }
+      if('BTECH_PIE_SEM_5' in element){
+        const daydata= element.BTECH_PIE_SEM_5[`${this.currentDay}`]
+        this.btechpiesem5= this.organiseSessions(daydata)
+      }
        
      });
 
@@ -111,7 +131,11 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   calculateAvlFaculty(){
 
     const all=employeeList.map(v=> v.name);
-    const list=[...this.facultyisAvilable(this.adcFoundry), ...this.facultyisAvilable(this.adcForge)]
+    const list=[...this.facultyisAvilable(this.adcFoundry), ...this.facultyisAvilable(this.adcForge),
+      ...this.facultyisAvilable(this.btechpiesem1),
+      ...this.facultyisAvilable(this.btechpiesem3),
+      ...this.facultyisAvilable(this.btechpiesem5),
+    ]
     const uniqueOcc = list.filter((value, index, self) => self.indexOf(value) === index);
 
     this.occFaculty= uniqueOcc//all.filter(item => !list.includes(item));
@@ -120,6 +144,9 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   }
 
   facultyisAvilable(list:any){
+    if(!list){
+      return [];
+    }
     const filter= list.filter((v:any)=>this.isTimeBetween(v.startTime,v.endTime)).map((v:any)=> v.sub);
 
     return filter;
@@ -152,6 +179,9 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
 
 
 organiseSessions(sessions: any){
+  if(!sessions){
+    return
+  }
   const sortedSessions = sessions.sort((a: any, b: any) => a.startTime - b.startTime);
 
  let final: any=[];

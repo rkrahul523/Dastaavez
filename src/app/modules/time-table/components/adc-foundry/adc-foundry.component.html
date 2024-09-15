@@ -1,0 +1,48 @@
+
+<b>ADC (First Year - 1st semester) Foundry</b>
+
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <!-- Course Information -->
+    <div>
+      <label for="courseName">Course Name</label>
+      <input id="courseName" formControlName="courseName" type="text">
+    </div>
+    <div>
+      <label for="credits">Credits</label>
+      <input id="credits" formControlName="credits" type="number">
+    </div>
+    <div>
+      <label for="lectureHours">Lecture Hours</label>
+      <input id="lectureHours" formControlName="lectureHours" type="number">
+    </div>
+    <div>
+      <label for="tutorialHours">Tutorial Hours</label>
+      <input id="tutorialHours" formControlName="tutorialHours" type="number">
+    </div>
+    <div>
+      <label for="practicalHours">Practical Hours</label>
+      <input id="practicalHours" formControlName="practicalHours" type="number">
+    </div>
+  
+    <!-- Dynamic Instructors Section -->
+    <div formArrayName="instructors">
+      <div *ngFor="let instructor of instructors.controls; let i = index" [formGroupName]="i">
+        <div>
+          <label for="name">Instructor Name</label>
+          <input id="name" formControlName="name" type="text">
+        </div>
+        <div>
+          <label for="load">Load (Hrs)</label>
+          <input id="load" formControlName="load" type="number">
+        </div>
+        <button type="button" (click)="removeInstructor(i)" *ngIf="instructors.length > 1">Remove Faculty</button>
+      </div>
+    </div>
+  
+    <!-- Add New Faculty Button -->
+    <button type="button" (click)="addInstructor()">+ Add Faculty</button>
+  
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+  

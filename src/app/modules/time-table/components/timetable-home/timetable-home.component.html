@@ -1,1 +1,66 @@
-<p>timetable-home works!</p>
+<!-- <app-adc-foundry></app-adc-foundry> -->
+<button type="submit"  (click)="gen()">Submit</button>
+<!-- app.component.html -->
+<div>
+  <h1>Allotment of Subjects Generator (Excel)</h1>
+  <button (click)="onGenerateExcel()">Generate and Download Excel</button>
+</div>
+
+<div class="container">
+  <h1>ADC 1st Year(1st Sem) Foundry</h1>
+
+  <form [formGroup]="syllabusForm" (ngSubmit)="onSubmit()">
+    <table border="1" cellpadding="5" cellspacing="0" class="syllabus-table">
+      <thead>
+        <tr>
+          <th>Course Code</th>
+          <th>Course Name</th>
+          <th>L</th>
+          <th>T</th>
+          <th>P</th>
+          <th>Credits</th>
+          <th>Assigned Faculty</th>
+        </tr>
+      </thead>
+      <tbody formArrayName="courses">
+        <tr *ngFor="let course of courses.controls; let i = index" [formGroupName]="i">
+          <td>{{ course.get('courseCode')?.value }}</td>
+          <td>{{ course.get('courseName')?.value }}</td>
+          <td>{{ course.get('L')?.value }}</td>
+          <td>{{ course.get('T')?.value }}</td>
+          <td>{{ course.get('P')?.value }}</td>
+          <td>{{ course.get('credits')?.value }}</td>
+          <td>
+            <div formArrayName="facultyNames">
+              <div *ngFor="let faculty of getFacultyControls(i).controls; let j = index" [formGroupName]="j">
+                <div class="d-flex">
+                  <!-- <input formControlName="facultyName" placeholder="Enter Faculty Name" class="mr-2"/> -->
+
+                  <ng-select class="w-100 mr-2" [items]="names" [selectOnTab]="true" 
+                  placeholder="Select Name" formControlName="facultyName" bindValue="name" bindLabel="name">
+                 </ng-select>
+              
+
+                  <input formControlName="facultyLoad" placeholder="Load" type=number/>
+  
+                  <button type="button" class="btn bg-danger" (click)="removeInstructor(i,j )" *ngIf="j>0">DEL</button>
+       
+                </div>
+               
+              </div>
+              <!-- + Button to add more faculty -->
+              <button type="button" (click)="addFaculty(i)">+ Add Faculty</button>
+              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Submit Button -->
+    <div class="actions">
+      <button type="submit">Submit</button>
+     
+    </div>
+  </form>
+</div>

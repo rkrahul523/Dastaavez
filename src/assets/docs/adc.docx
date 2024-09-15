@@ -1,0 +1,14 @@
+try {
+  doc.render();
+} catch (error) {
+  console.error('Error rendering document:', error);
+  const e = {
+    message: error.message,
+    name: error.name,
+    stack: error.stack,
+    properties: error.properties,
+  };
+  console.log(JSON.stringify({ error: e }, null, 2));
+  throw error;
+}
+

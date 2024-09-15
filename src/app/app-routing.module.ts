@@ -98,25 +98,31 @@ const timetable: Routes = [
     path: ROUTE_PATH.DASHBOARD,  
     component: TimeTableViewComponent
   },
+  // {
+  //         path: ROUTE_PATH.DASHBOARD,
+  //       //  canLoad:[AuthenticationGuard],
+  //         loadChildren: () => import('./modules/time-table/time-table.module').then(m => m.TimeTableModule)
+  //       },
 
-  {
-    path: ROUTE_PATH.LOGIN,  
-    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
-  },
-  {
-    path: ROUTE_PATH.HOME,
-    component: LeaveHomeComponent,
-    canActivate: [AuthenticationGuard] ,
+
+  // {
+  //   path: ROUTE_PATH.LOGIN,  
+  //   loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  // },
+  // {
+  //   path: ROUTE_PATH.HOME,
+  //   component: LeaveHomeComponent,
+  //   canActivate: [AuthenticationGuard] ,
    
-    children: [
-      { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
-      {
-        path: ROUTE_PATH.DASHBOARD,
-        canLoad:[AuthenticationGuard],
-        loadChildren: () => import('./modules/leave-tracking/leave-tracking.module').then(m => m.LeaveTrackingModule)
-      },
-    ]
-  },
+  //   children: [
+  //     { path: '', redirectTo: ROUTE_PATH.DASHBOARD, pathMatch: 'full' },
+  //     {
+  //       path: ROUTE_PATH.DASHBOARD,
+  //       canLoad:[AuthenticationGuard],
+  //       loadChildren: () => import('./modules/leave-tracking/leave-tracking.module').then(m => m.LeaveTrackingModule)
+  //     },
+  //   ]
+  // },
   {
     path: '',
     redirectTo: ROUTE_PATH.DASHBOARD,

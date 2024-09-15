@@ -10,6 +10,11 @@ import { TimeTableRoutingModule } from './time-table.routing.module';
 import { InformationBulletinComponent } from './components/information-bulletin/information-bulletin.component';
 import { TimetableHomeComponent } from './components/timetable-home/timetable-home.component';
 import { AddTimetableComponent } from './components/add-timetable/add-timetable.component';
+import { AdcFoundryComponent } from './components/adc-foundry/adc-foundry.component';
+import { BtechFirstComponent } from './components/btech-first/btech-first.component';
+import { BtechThirdComponent } from './components/btech-third/btech-third.component';
+import { BtechFifthComponent } from './components/btech-fifth/btech-fifth.component';
+import { MtechFirstComponent } from './components/mtech-first/mtech-first.component';
 
 
 
@@ -19,7 +24,12 @@ import { AddTimetableComponent } from './components/add-timetable/add-timetable.
   
     InformationBulletinComponent,
             TimetableHomeComponent,
-            AddTimetableComponent
+            AddTimetableComponent,
+            AdcFoundryComponent,
+            BtechFirstComponent,
+            BtechThirdComponent,
+            BtechFifthComponent,
+            MtechFirstComponent
   ],
   imports: [
     CommonModule,

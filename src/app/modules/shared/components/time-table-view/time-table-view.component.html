@@ -2,7 +2,7 @@
 
 
 
-<app-add-time></app-add-time>
+<!-- <app-add-time></app-add-time> -->
 
 
 <div class="time-table-container">
@@ -15,8 +15,8 @@
       <div class="weekday" (click)="changeDay(day)" *ngFor="let day of days"><span [ngClass]="day== currentDay ? 'bg-success':''">{{ day }}</span></div>
     </div>
 
-    <p>ADC Foundry - Room 202</p>
-    <p>ADC Forge - Room 302</p>
+    <!-- <p>ADC Foundry - Room 202</p>
+    <p>ADC Forge - Room 302</p> -->
 </div>
     <div class="table-container p-3">
 
@@ -36,7 +36,7 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row" >ADC 
+                <th scope="row" >ADC 202
                     <div>FOUNDRY</div></th>
                     <ng-container
                         *ngFor="let data of adcFoundry">
@@ -49,10 +49,52 @@
                     </ng-container>
               </tr>
               <tr>
-                <th scope="row" >ADC 
+                <th scope="row" >ADC 302
                     <div>FORGE</div></th>
                     <ng-container
                         *ngFor="let data of adcForge">
+                     
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+              <tr>
+                <th scope="row" >Btech 307
+                    <div>PIE Sem 1</div></th>
+                    <ng-container
+                        *ngFor="let data of btechpiesem1">
+                     
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+              <tr>
+                <th scope="row" >Btech 203
+                    <div>PIE Sem 3</div></th>
+                    <ng-container
+                        *ngFor="let data of btechpiesem3">
+                     
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+              <tr>
+                <th scope="row" >Btech 105
+                    <div>PIE Sem 5</div></th>
+                    <ng-container
+                        *ngFor="let data of btechpiesem5">
                      
                         <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
                             {{data?.short}}
