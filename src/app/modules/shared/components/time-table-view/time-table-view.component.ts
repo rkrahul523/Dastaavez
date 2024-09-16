@@ -153,28 +153,20 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
 
   }
 
-  isTimeBetween(startHour:any, endHour:any) {
-    // Get the current date and time
+  isTimeBetween(startHour:any, endHour: any) {
     const now = new Date();
     const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+    const currentMinutes = now.getMinutes();
     
-    // Define the start and end hours in 24-hour format
-    const startHour24 = startHour;
-    const endHour24 = endHour;
+    // Create Date objects for the start and end times
+    const startTime = new Date();
+    startTime.setHours(startHour, 0, 0, 0); // Set to startHour:00:00
 
-    // Check if current time is between startHour and endHour
-    if (currentHour > startHour24 && currentHour < endHour24) {
-        return true;
-    }
-    if (currentHour === startHour24 && currentMinute >= 0) {
-        return true;
-    }
-    if (currentHour === endHour24 && currentMinute < 60) {
-        return true;
-    }
-    
-    return false;
+    const endTime = new Date();
+    endTime.setHours(endHour, 0, 0, 0); // Set to endHour:00:00
+
+    // Check if current time is between startTime and endTime
+    return now >= startTime && now < endTime;
 }
 
 
