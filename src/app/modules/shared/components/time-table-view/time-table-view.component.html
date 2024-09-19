@@ -15,6 +15,7 @@
       <div class="weekday" (click)="changeDay(day)" *ngFor="let day of days"><span [ngClass]="day== currentDay ? 'bg-success':''">{{ day }}</span></div>
     </div>
 
+    <h3 class="text-center">{{ currentTime }}</h3>
     <!-- <p>ADC Foundry - Room 202</p>
     <p>ADC Forge - Room 302</p> -->
 </div>

@@ -9,6 +9,7 @@ import { employeeList } from 'src/app/modules/leave-tracking/model/employee-list
 })
 export class TimeTableViewComponent implements OnInit {
 
+  currentTime: string = '';
 
 
   adcFoundry=[
@@ -58,6 +59,10 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
     this.currentDay= currentTime;
         
     this.getAllTime()
+
+    setInterval(() => {
+      this.currentTime = this.getISTTime();
+    }, 1000);
   }
 
 
@@ -65,9 +70,9 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   getAllTime(){
     
     this.api.getAlltime().subscribe((res: any) => {
-      if (res && res.status) {
+      //if (res && res.status) {
 
-       this.fetchedData= res.data;
+       this.fetchedData= res//.data;
        this.calculateTimeTable();
 
         //console.log(res)
@@ -77,9 +82,9 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
         //   this.onPageSizeChanged();
         // })
 
-      } else {
+     // } else {
         // this.rowData = [];
-      }
+      //}
 
     })
   }
@@ -241,4 +246,24 @@ getAbbreviatedDayOfWeek(date: any) {
   // Return the abbreviated day name
   return daysOfWeek[dayIndex];
 }
+
+ // Function to get the current time in 24-hour format in IST
+ getISTTime(): string {
+  const currentDate = new Date();
+
+  // IST is UTC + 5:30, so adjust the time by adding 330 minutes (5 hours 30 minutes)
+  const ISTOffset = 330 * 60 * 1000; // 330 minutes in milliseconds
+
+  // Create a new date object for IST
+  const ISTTime = new Date(currentDate.getTime() + ISTOffset);
+
+  // Get the hours, minutes, and seconds in 24-hour format
+  const hours = ISTTime.getUTCHours().toString().padStart(2, '0');
+  const minutes = ISTTime.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = ISTTime.getUTCSeconds().toString().padStart(2, '0');
+
+  // Return the formatted time in HH:MM:SS
+  return `${hours}:${minutes}:${seconds}`;
+}
+
 }

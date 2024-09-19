@@ -43,6 +43,7 @@ export class TimeTableApiService {
 
 
     getAlltime() {
+      return this.http.get('assets/docs/time-table.json');
         return this.http.get(this.apiURL + this.getAllTimeTable)
     }
    
