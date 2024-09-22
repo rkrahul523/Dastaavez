@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TimeTableApiService {
 
+  private timeapiUrl = 'https://api.ipgeolocation.io/ipgeo?apiKey=c44d4e73d2e44e0e9c57a3959f9683b6'; // API for IST time
 
     apiURL = !window.location.origin.includes('localhost') ?
         'https://big-basket-tracker.onrender.com/'
@@ -40,6 +41,11 @@ export class TimeTableApiService {
     }
 
 
+    
+  
+    getCurrentTime(): Observable<any> {
+      return this.http.get(this.timeapiUrl);
+    }
 
 
     getAlltime() {

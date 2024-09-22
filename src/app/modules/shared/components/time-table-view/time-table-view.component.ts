@@ -67,7 +67,13 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
 
 
 
+
   getAllTime(){
+    // this.api.getCurrentTime().subscribe((res: any) => {
+
+    //   const todayDATE = res.time_zone.current_time
+    //   console.log(res)
+    // })
     
     this.api.getAlltime().subscribe((res: any) => {
       //if (res && res.status) {
@@ -157,6 +163,11 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
     return filter;
 
   }
+
+
+  // this.timeService.getCurrentTime().subscribe(
+  //   (data) => {
+  //     const dateTime = new Date(data.datetime);
 
   isTimeBetween(startHour:any, endHour: any) {
     const now = new Date();

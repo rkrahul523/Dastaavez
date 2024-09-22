@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <div class="row">
+      <!-- Form Section - col-4 -->
+      <div class="col-4">
+        <form [formGroup]="gradeForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="roll">Roll Number</label>
+            <input type="number" id="roll" class="form-control" formControlName="roll" placeholder="Enter Roll Number">
+          </div>
+  
+          <div class="form-group">
+            <label for="sgpa">SGPA</label>
+            <input type="number" id="sgpa" class="form-control" formControlName="sgpa" placeholder="Enter SGPA">
+          </div>
+  
+          <!-- <div class="form-group">
+            <label for="subjectCode">Subject Code</label>
+            <input type="text" id="subjectCode" class="form-control" formControlName="subjectCode" placeholder="Enter Subject Code">
+          </div> -->
+  <div formArrayName="grades">
+    <div class="row">
+        <div class="col-6" *ngFor="let grade of grades.controls; let i = index" [formGroupName]="i">
+          <div class="form-group">
+            <label for="grade-{{i}}">{{grade.value?.subcode}}</label>
+            <ng-select class="w-100" id="grade-{{i}}" 
+              [items]="gradesip" 
+              [selectOnTab]="true" 
+              placeholder="Select Grade" 
+              formControlName="grade" 
+              bindValue="grade" 
+              bindLabel="grade">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+      
+        </div>
+          <!-- <button type="button" class="btn btn-primary" (click)="addGrade()">Add Grade</button> -->
+      <button type="submit" class="btn btn-success mt-3" [disabled]="gradeForm.invalid">Submit</button>
+        </form>
+      </div>
+  
+      <!-- Table Section - col-8 -->
+      <div class="col-8">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                
+                <th>Roll</th>
+              <th>SGPA</th>
+              
+              <th *ngFor="let item of subjects ">
+                {{item.subcode}}<th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of submittedData">
+                <td>{{data.roll}}</td>
+                <td>{{data.sgpa}}</td>
+                <td *ngFor="let item of subjects " [ngClass]="getGradeClass(data[item.subcode])">
+                   {{data[item.subcode]}}
+                    </td>
+              <!-- <td *ngFor="let item of data | keyvalue">{{item.key}}</td> -->
+            </tr>
+          </tbody>
+        </table>
+  
+        <button class="btn btn-info" (click)="downloadAsJson()">Download as JSON</button>
+        <!-- <button class="btn btn-info" (click)="downloadAsExcel()">Download as Excel</button> -->
+       
+       
+        <div class="container mt-2">
+            <h2>Upload JSON and Download Excel</h2>
+            <input type="file" (change)="onFileUpload($event)" accept=".json">
+            <button (click)="downloadAsExcel()" [disabled]="!jsonData">Download Excel</button>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  

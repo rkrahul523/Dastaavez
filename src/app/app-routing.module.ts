@@ -98,11 +98,11 @@ const timetable: Routes = [
     path: ROUTE_PATH.DASHBOARD,  
     component: TimeTableViewComponent
   },
-  // {
-  //         path: ROUTE_PATH.DASHBOARD,
-  //       //  canLoad:[AuthenticationGuard],
-  //         loadChildren: () => import('./modules/time-table/time-table.module').then(m => m.TimeTableModule)
-  //       },
+  {
+          path: 'marks',
+        //  canLoad:[AuthenticationGuard],
+          loadChildren: () => import('./modules/time-table/time-table.module').then(m => m.TimeTableModule)
+        },
 
 
   // {

@@ -1,0 +1,45 @@
+
+
+.grade-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .marks{
+    font-weight: 800;
+    font-size: large;
+    color: white;
+  }
+  .grade-excellent {
+    background-color: #0f5011; 
+   
+    /* Green for A+ and A */
+  }
+  .grade-excellent-low {
+    background-color: #6dec71; /* Green for A+ and A */
+  }
+  
+  .grade-good {
+    background-color: #083a63; /* Blue for B+ and B */
+  }
+  
+  .grade-good-low {
+    background-color: #4ba7f3; /* Blue for B+ and B */
+  }
+  
+  .grade-average {
+    background-color: #756b0f; /* Yellow for C+ and C */
+    color: black;
+  }
+  .grade-average-low {
+    background-color: #ffeb34; /* Yellow for C+ and C */
+    color: black;
+  }
+  
+  .grade-fail {
+    background-color: #F44336; /* Red for F */
+  }
+  

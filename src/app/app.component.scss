@@ -11,3 +11,38 @@
 body {
     font-family: 'hindi_font', 'arial', sans-serif;
 }
+
+
+
+nav {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0 10px;
+  }
+  
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    display: inline-block;
+  }
+  
+  a:hover {
+    background-color: #555;
+  }
+  
+  .active-link {
+    border-bottom: 2px solid #fff;
+  }
+  

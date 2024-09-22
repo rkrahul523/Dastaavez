@@ -15,6 +15,7 @@ import { BtechFirstComponent } from './components/btech-first/btech-first.compon
 import { BtechThirdComponent } from './components/btech-third/btech-third.component';
 import { BtechFifthComponent } from './components/btech-fifth/btech-fifth.component';
 import { MtechFirstComponent } from './components/mtech-first/mtech-first.component';
+import { MarkEntryComponent } from './components/mark-entry/mark-entry.component';
 
 
 
@@ -29,7 +30,8 @@ import { MtechFirstComponent } from './components/mtech-first/mtech-first.compon
             BtechFirstComponent,
             BtechThirdComponent,
             BtechFifthComponent,
-            MtechFirstComponent
+            MtechFirstComponent,
+            MarkEntryComponent
   ],
   imports: [
     CommonModule,

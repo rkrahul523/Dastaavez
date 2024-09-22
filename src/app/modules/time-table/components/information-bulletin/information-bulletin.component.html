@@ -1,1 +1,20 @@
-<p>information-bulletin works!</p>
+<!-- src/app/app.component.html -->
+<div style="text-align:center">
+    <h1>OCR with Tesseract.js in Angular</h1>
+  
+    <!-- File input to upload an image -->
+    <input type="file" (change)="onFileSelected($event)" accept="image/*">
+  
+    <!-- Display OCR Text Result -->
+    <div *ngIf="ocrResult">
+      <h2>Extracted Text:</h2>
+      <pre>{{ ocrResult }}</pre>
+    </div>
+  
+    <!-- Display JSON Output -->
+    <div *ngIf="jsonOutput">
+      <h2>Converted to JSON:</h2>
+      <pre>{{ jsonOutput | json }}</pre>
+    </div>
+  </div>
+  
