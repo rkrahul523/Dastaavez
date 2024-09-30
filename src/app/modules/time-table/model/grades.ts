@@ -31,13 +31,16 @@ export const GRADES = [
 
 
 export const SUBJECTS = [
-    { subcode: 'ME2401', credit: 3 },
-     { subcode: 'ME2402', credit: 3 },
-     { subcode: 'ME2403', credit: 3 },
-     { subcode: 'ME2404', credit: 3 },
-     { subcode: 'ME2405', credit: 3 },
-     { subcode: 'ME2406', credit: 3 },
-     { subcode: 'ME2407', credit: 3 },
-     { subcode: 'ME2408', credit: 3 },
+    { subcode: 'ME401', credit: 3 },
+     { subcode: 'ME402', credit: 3 },
+     { subcode: 'ME403', credit: 3 },
+     { subcode: 'ME404', credit: 3 },
+     { subcode: 'EC404', credit: 3 },
+     { subcode: 'IT402', credit: 0 },
+     { subcode: 'ME401P', credit: 1 },
+     { subcode: 'ME403P', credit: 1 },
+    { subcode: 'PE401P', credit: 1 },
+    { subcode: 'EX401', credit: 1 },
+    { subcode: 'IN401', credit: 2 },
     
     ]
