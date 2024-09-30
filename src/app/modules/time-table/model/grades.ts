@@ -29,8 +29,7 @@ export const GRADES = [
     },
 ]
 
-
-export const SUBJECTS = [
+const ME=[
     { subcode: 'ME401', credit: 3 },
      { subcode: 'ME402', credit: 3 },
      { subcode: 'ME403', credit: 3 },
@@ -44,3 +43,19 @@ export const SUBJECTS = [
     { subcode: 'IN401', credit: 2 },
     
     ]
+
+
+    const MME=[
+        { subcode: 'MT2201', credit: 2 },
+         { subcode: 'MT2202', credit: 3 },
+         { subcode: 'MT2203', credit: 3 },
+         { subcode: 'MT2204', credit: 3 },
+         { subcode: 'MT2205', credit: 3 },
+         { subcode: 'MT2206', credit: 4 },
+         { subcode: 'MT2211', credit: 1 },
+         { subcode: 'MTD2212', credit: 1 },
+        { subcode: 'EA2221', credit: 1 }
+        
+        ]
+
+export const SUBJECTS = MME;
