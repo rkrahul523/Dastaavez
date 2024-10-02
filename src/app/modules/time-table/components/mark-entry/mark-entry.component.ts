@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { GRADES, SUBJECTS } from '../../model/grades';
+import { GRADES, SUBJECTS, subjectCodes } from '../../model/grades';
 
 @Component({
   selector: 'app-mark-entry',
@@ -14,16 +14,25 @@ export class MarkEntryComponent implements OnInit {
   jsonData: any;
 
   gradeForm: FormGroup;
+  SubjectForm: FormGroup;
   xlsxData:any=[]
   submittedData: any[] = [];  // Holds the data for the table
   gradesip=GRADES;
   subjects=SUBJECTS
+
+  subjectCodes=subjectCodes
 
   originaldata:any=[];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+
+    
+
+    this.SubjectForm = this.fb.group({
+      sub: [1, Validators.required],
+    })
     this.gradeForm = this.fb.group({
       roll: ['', Validators.required],
       sgpa: ['', Validators.required],
@@ -31,7 +40,31 @@ export class MarkEntryComponent implements OnInit {
       grades: this.fb.array([])
     });
     this.addForm()
+
+
+    this.SubjectForm.controls.sub.valueChanges.subscribe((res:any)=>{
+      this.submittedData=[];
+this.updateSubjects(res);
+
+      console.log("value changes",res)
+    })
   }
+
+  updateSubjects(code:number){
+    const filt= subjectCodes.filter(v=>v.code==code);
+    if(filt.length){
+     this.subjects= filt[0].sub;
+     this.gradeForm.reset();
+    // this.submittedData=[];
+     (this.gradeForm.controls.grades as FormArray).clear();
+     this.addForm()
+
+    }else{
+      alert("NO Data Exist")
+    }
+  }
+
+
 
   addForm(){
     this.subjects.forEach((res:any)=>{
@@ -50,7 +83,7 @@ export class MarkEntryComponent implements OnInit {
     return this.fb.group({
       subcode: [subcode, ],
       grade: ['', Validators.required],
-      credit: [subcode, ],
+      credit: [credit, ],
       point: ['', ]
     });
   }
@@ -110,18 +143,25 @@ export class MarkEntryComponent implements OnInit {
   }
 
 
-  formulateDataasTable(data: any): any{
+  formulateDataasTable(data: any, subjects: any): any{
+  
+    let result:any = subjects.reduce((acc: any, item:any) => ({ ...acc, [item.subcode]: item.credit }), {});
+    const totalCredit= subjects.map((s:any)=> s.credit).reduce((a:any,b:any)=>a+b,0);
+
+
     const tableData:any=[];
 
     data.forEach((tab:any)=>{
       const final={roll:tab.roll, sgpa: tab.sgpa}
       let gradeMapping: any = {};
-
+let score=0;
       tab.grades.forEach((item:any )=> {
     // Use subcode as key, grade as value
       gradeMapping[item.subcode] = item.grade;
+const point=this.getPoint(item.grade)
+      score+= point * result[`${item.subcode}`]
       });
-      tableData.push({...final, ...gradeMapping})
+      tableData.push({...final, ...gradeMapping,calSGPA:(score/totalCredit).toFixed(2)})
     })
    return tableData;
   }
@@ -162,9 +202,14 @@ export class MarkEntryComponent implements OnInit {
       const jsonString = fileReader.result as string;
       try {
         this.jsonData = JSON.parse(jsonString);
-        this.submittedData= this.formulateDataasTable(this.jsonData);
+        const res: number= this.identifyCode(this.jsonData);
+        this.updateSubjects(res);
+        const subjects= subjectCodes[res-1].sub;
+       setTimeout(()=>{
+        this.submittedData= this.formulateDataasTable(this.jsonData, subjects);
         this.xlsxData= this.formulateDataasXLSX(this.jsonData);
         alert('JSON file loaded successfully');
+       })
       } catch (error) {
         alert('Invalid JSON file');
       }
@@ -193,6 +238,18 @@ export class MarkEntryComponent implements OnInit {
       default:
         return ''; // No specific class for other grades
     }
+  }
+
+  onSubject(){
+
+  }
+
+  identifyCode(Data:any):number{
+
+   const eachsubjects=Data[0].grades.map((v:any)=> v.subcode);
+  const indexof= subjectCodes.findIndex((t:any)=> (t.sub.map((v:any)=> v.subcode)).every((s:any)=> eachsubjects.includes(s)))
+    return indexof>-1 ? indexof+1 : 1;
+
   }
 
 }

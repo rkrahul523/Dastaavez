@@ -58,4 +58,73 @@ const ME=[
         
         ]
 
-export const SUBJECTS = MME;
+
+        const MME3rd=[
+            { subcode: 'MA2101', credit: 3 },
+             { subcode: 'MT2101', credit: 3 },
+             { subcode: 'MT2102', credit:2 },
+             { subcode: 'MT2103', credit:2 },
+             { subcode: 'MT2104', credit: 4 },
+             { subcode: 'MT2105', credit: 3 },
+            { subcode: 'MT2111', credit: 1 },
+            { subcode: 'MT2112', credit: 1 },
+            { subcode: 'MT2113', credit: 1 },
+            { subcode: 'EA2121', credit: 1 }
+            
+            ]
+
+            const ME3rd=[
+                { subcode: 'ME301', credit: 3 },
+                { subcode: 'ME302', credit: 3 },
+                { subcode: 'ME303', credit: 3 },
+                 { subcode: 'MT301', credit: 3 },
+                 { subcode: 'BSC301', credit: 4 },
+                { subcode: 'BSC302', credit: 0 },
+                { subcode: 'ME301P', credit: 1 },
+                { subcode: 'ME302P', credit: 1 },
+                { subcode: 'ME303P', credit: 1 },
+                { subcode: 'EX301', credit: 1 },
+                { subcode: 'HS301', credit: 1 }
+                
+                ]
+
+                const ME2nd=[
+                    { subcode: 'BSC105', credit: 4 },
+                    { subcode: 'BSC102', credit: 4 },
+                    { subcode: 'BSC104', credit: 4 },
+                    { subcode: 'BSC103', credit: 4 },
+                    { subcode: 'HSMC101', credit: 3 },
+                    { subcode: 'ESC104', credit: 3 },
+                    { subcode: 'BSC102P', credit: 1 },
+                    { subcode: 'ESC103P', credit: 1 },
+                    
+                    ]
+                const BE1st=[
+                    { subcode: 'BSC101', credit: 4 },
+                    { subcode: 'BSC103', credit: 4 },
+                    { subcode: 'ESC101', credit: 4 },
+                    { subcode: 'ESC102', credit: 3 },
+                    { subcode: 'BSC101P', credit: 1.5 },
+                    { subcode: 'ESC101P', credit: 1 },
+                    
+                    ]
+
+export const subjectCodes=[ 
+    {text:'B.Tech 1st SEM MME (2021-2025)', code: 1, sub: BE1st},
+    {text:'B.Tech 1st SEM ME (2021-2025)', code: 2, sub: BE1st},
+    {text:'B.Tech 2nd SEM MME (2021-2025)', code: 3, sub: ME2nd},
+    {text:'B.Tech 2nd SEM ME (2021-2025)', code: 4, sub: ME2nd},
+    {text:'B.Tech 3rd SEM MME (2021-2025)', code: 5, sub: MME3rd},
+    {text:'B.Tech 3rd SEM ME (2021-2025)', code: 6, sub: ME3rd},
+    {text:'B.Tech 3rd SEM ME (2021-2025)', code: 7, sub: ME3rd},
+    {text:'B.Tech 3rd SEM ME (2021-2025)', code: 8, sub: ME3rd},
+    {text:'B.Tech 4th SEM MME (2021-2025)', code: 9, sub: MME},
+    {text:'B.Tech 4th SEM ME (2021-2025)', code: 10, sub: ME},
+]
+
+
+export const SUBJECTS = ME;
+
+
+
+
