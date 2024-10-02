@@ -264,7 +264,7 @@ const point=this.getPoint(item.grade)
       backdrop: true
     });
 
-    // const data= this.calculateBarChart();
+    //const data= this.calculateBarChart();
    modalRef.componentInstance.submittedData = this.submittedData;
     // modalRef.componentInstance.barChartLabels = data.datasets;
 
