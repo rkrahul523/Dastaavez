@@ -1,18 +1,28 @@
 <div class="container mt-2">
 
   <div class="row">
-    <form [formGroup]="SubjectForm" (ngSubmit)="onSubject()">
-      <div class="form-group w-100">
-        <label for="subjects"></label>
-        <ng-select class="w-100" id="subjects" 
-        [items]="subjectCodes" 
-        [selectOnTab]="true" 
-        placeholder="Select Subject" 
-        formControlName="sub" 
-        bindValue="code" 
-        bindLabel="text">
-      </ng-select></div>
-      </form>
+    <div class="col-5">
+      <form [formGroup]="SubjectForm" (ngSubmit)="onSubject()">
+        <div class="form-group w-100 ">
+          <label for="subjects"></label>
+          <ng-select class="w-100" id="subjects" 
+          [items]="subjectCodes" 
+          [selectOnTab]="true" 
+          placeholder="Select Subject" 
+          formControlName="sub" 
+          bindValue="code" 
+          bindLabel="text">
+        </ng-select></div>
+        </form>
+    </div>
+  
+
+<div class="col-4">
+  <button class="chart-button float-right" (click)="openchart()">
+    <i class="fas fa-chart-line"></i> View Chart
+  </button>
+</div>
+     
   </div>
     <div class="row">
       <!-- Form Section - col-4 -->
@@ -96,4 +106,8 @@
       </div>
     </div>
   </div>
+  <!-- <button  >chart</button> -->
+
+
+
   

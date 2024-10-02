@@ -17,7 +17,8 @@ import { BtechFifthComponent } from './components/btech-fifth/btech-fifth.compon
 import { MtechFirstComponent } from './components/mtech-first/mtech-first.component';
 import { MarkEntryComponent } from './components/mark-entry/mark-entry.component';
 
-
+import { ChartsModule } from 'ng2-charts';
+import { DynamicChartComponent } from './components/dynamic-chart/dynamic-chart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MarkEntryComponent } from './components/mark-entry/mark-entry.component
             BtechThirdComponent,
             BtechFifthComponent,
             MtechFirstComponent,
-            MarkEntryComponent
+            MarkEntryComponent,
+            DynamicChartComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +48,7 @@ import { MarkEntryComponent } from './components/mark-entry/mark-entry.component
     NgbModalModule,
     NgSelectModule,
     NgbDatepickerModule,
+    ChartsModule,
     AgGridModule.withComponents([]),
      ]
 })

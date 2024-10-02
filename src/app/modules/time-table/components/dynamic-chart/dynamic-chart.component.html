@@ -1,0 +1,39 @@
+
+
+
+
+
+  <div class="container-fluid p-5">
+    <div class="chart-container">
+        <!-- <div class="row">
+           
+            <button type="button" class="btn ml-auto col-2 btn-danger" 
+                (click)="dismissModal()"><i class="bi bi-x-square  mr-3"></i>Cancel</button>
+    </div> -->
+
+
+    <div style="display: block;" *ngIf="barChartData?.length && barChartLabels?.length">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+        </canvas>
+      </div>
+
+
+      <div style="display: block; width: 80%;" class="mt-3">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                [colors]="pieChartColors"
+                [options]="pieChartOptions">
+        </canvas>
+      </div>
+      
+       
+    </div>
+</div>
+  

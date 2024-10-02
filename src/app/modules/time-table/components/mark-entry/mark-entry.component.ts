@@ -3,6 +3,8 @@ import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { GRADES, SUBJECTS, subjectCodes } from '../../model/grades';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DynamicChartComponent } from '../dynamic-chart/dynamic-chart.component';
 
 @Component({
   selector: 'app-mark-entry',
@@ -24,7 +26,7 @@ export class MarkEntryComponent implements OnInit {
 
   originaldata:any=[];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private ngbModal: NgbModal,) {}
 
   ngOnInit(): void {
 
@@ -252,7 +254,36 @@ const point=this.getPoint(item.grade)
 
   }
 
-}
+
+
+  openchart() {
+   
+    const modalRef = this.ngbModal.open(DynamicChartComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+
+    // const data= this.calculateBarChart();
+   modalRef.componentInstance.submittedData = this.submittedData;
+    // modalRef.componentInstance.barChartLabels = data.datasets;
+
+    // //   @Input() actionType='Create';
+    // // @Input() formValue=null;
+
+    // modalRef.componentInstance.createdFileStatus.subscribe((createdFileStatus: any) => {
+    //   if (createdFileStatus && createdFileStatus.status) {
+    //     this.getAllFiles();
+    //   }
+    // })
+
+  }
+
+
+
+
+
+  }
 
 
 

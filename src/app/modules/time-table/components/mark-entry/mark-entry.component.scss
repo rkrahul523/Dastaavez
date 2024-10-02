@@ -43,3 +43,26 @@
     background-color: #F44336; /* Red for F */
   }
   
+
+  .chart-button {
+    background-color: #4CAF50; /* Green background */
+    border: none;              /* No border */
+    color: white;              /* White text */
+    padding: 15px 32px;        /* Padding around the button */
+    text-align: center;        /* Center the text */
+    text-decoration: none;     /* Remove underline */
+    display: inline-block;     /* Make the button inline */
+    font-size: 16px;           /* Button font size */
+    margin: 10px 2px;          /* Margin */
+    cursor: pointer;           /* Pointer cursor on hover */
+    border-radius: 5px;        /* Rounded corners */
+    transition: background-color 0.3s ease;
+  }
+
+  .chart-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+
+  .chart-button i {
+    margin-right: 8px; /* Spacing between icon and text */
+  }
