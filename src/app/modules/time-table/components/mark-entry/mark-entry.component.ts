@@ -5,6 +5,10 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { GRADES, SUBJECTS, subjectCodes } from '../../model/grades';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DynamicChartComponent } from '../dynamic-chart/dynamic-chart.component';
+import { VerifyDataComponent } from '../verify-data/verify-data.component';
+import { master, transform } from './fg';
+
+// import * as Papa from 'papaparse';
 
 @Component({
   selector: 'app-mark-entry',
@@ -14,6 +18,12 @@ import { DynamicChartComponent } from '../dynamic-chart/dynamic-chart.component'
 export class MarkEntryComponent implements OnInit {
 
   jsonData: any;
+
+  transformedData: any=[]
+
+  verifyjsonData: any = null;
+  fileType: string = '';
+
 
   gradeForm: FormGroup;
   SubjectForm: FormGroup;
@@ -281,6 +291,99 @@ const point=this.getPoint(item.grade)
 
 
 
+
+  verifydata() {
+   
+    const modalRef = this.ngbModal.open(VerifyDataComponent, {
+      size: "lg",
+      keyboard: false,
+      backdrop: true
+    });
+
+   modalRef.componentInstance.submittedData = this.submittedData;
+   modalRef.componentInstance.transformedData = this.submittedData;
+   
+
+  }
+
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    
+    if (file) {
+      const fileType = file.name.split('.').pop();
+      this.fileType = fileType;
+
+      if (fileType === 'xlsx' || fileType === 'xls') {
+        this.handleXLSXFile(file);
+      } else if (fileType === 'csv') {
+        this.handleCSVFile(file);
+      } else {
+        alert('Please upload a valid .xlsx or .csv file.');
+      }
+    }
+  }
+
+  handleXLSXFile(file: File) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const binaryStr = e.target.result;
+      const workbook = XLSX.read(binaryStr, { type: 'binary' });
+
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+      this.verifyjsonData = jsonData;
+      console.log(jsonData);
+      this.calculateverifyData();
+    };
+    reader.readAsBinaryString(file);
+  }
+
+  handleCSVFile(file: File) {
+    // Papa.parse(file, {
+    //   header: true,
+    //   complete: (result) => {
+    //     this.verifyjsonData = result.data;
+    //     console.log(this.jsonData);
+    //   }
+    // });
+  }
+
+  calculateverifyData(){
+    var data: any=[];
+    this.verifyjsonData.forEach((res: any)=>{
+
+      const transformedData = this.transformData(res);
+      data.push(transformedData);
+    })
+
+
+    this.transformedData=  data;
+   
+  }
+
+
+
+  transformData(data: any) {
+    // Initialize an empty object for the result
+    let result : any= {
+      roll: data.REGN_NO,
+      SGPA: data.SGPA
+    };
+  
+    // Loop through the properties of the original object
+    for (const key in data) {
+      // Check if the key starts with 'SUB' and ends with '_GRADE'
+      if (key.startsWith('SUB') && key.endsWith('_GRADE')) {
+        // Extract the subject code by removing '_GRADE' from the key
+        const subCode = data[key.replace('_GRADE', '')];
+        result[subCode] = data[key]; // Assign the grade to the subject code in the result object
+      }
+    }
+  
+    return result;
+  }
 
 
   }

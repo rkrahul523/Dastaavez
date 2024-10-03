@@ -19,6 +19,7 @@ import { MarkEntryComponent } from './components/mark-entry/mark-entry.component
 
 import { ChartsModule } from 'ng2-charts';
 import { DynamicChartComponent } from './components/dynamic-chart/dynamic-chart.component';
+import { VerifyDataComponent } from './components/verify-data/verify-data.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DynamicChartComponent } from './components/dynamic-chart/dynamic-chart.
             BtechFifthComponent,
             MtechFirstComponent,
             MarkEntryComponent,
-            DynamicChartComponent
+            DynamicChartComponent,
+            VerifyDataComponent
   ],
   imports: [
     CommonModule,

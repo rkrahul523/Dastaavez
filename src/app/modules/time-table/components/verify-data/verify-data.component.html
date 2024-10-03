@@ -1,0 +1,31 @@
+<div class="table-container p-2">
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Roll</th>
+              <th>SGPA</th>
+              <th *ngFor="let key of getSubjectHeaders(masterData)">
+                {{ key }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of masterData"
+                [ngClass]="{
+                  'error': student.isError,
+                  'miss': student.isMiss
+                }">
+              <td>{{ student.roll }}</td>
+              <td>{{ student.sgpa }}</td>
+              <!-- Dynamically generate subject columns -->
+              <td *ngFor="let key of getSubjectHeaders(masterData)">
+                {{ student[key] || '-' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+</div>

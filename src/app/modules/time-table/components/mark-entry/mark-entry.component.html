@@ -22,6 +22,10 @@
     <i class="fas fa-chart-line"></i> View Chart
   </button>
 </div>
+<div class="col-3">
+  <input type="file" (change)="onFileChange($event)" />
+  <button class="chart-button float-right" (click)="verifydata()"> Verify  </button>
+</div>
      
   </div>
     <div class="row">
