@@ -301,7 +301,7 @@ const point=this.getPoint(item.grade)
     });
 
    modalRef.componentInstance.submittedData = this.submittedData;
-   modalRef.componentInstance.transformedData = this.submittedData;
+   modalRef.componentInstance.transformedData = this.transformedData;
    
 
   }

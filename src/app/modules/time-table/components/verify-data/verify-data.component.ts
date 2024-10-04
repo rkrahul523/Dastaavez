@@ -39,13 +39,22 @@ export class VerifyDataComponent implements OnInit {
 
   compareStudentData(masterData: MasterStudent[], compareData: CompareStudent[]) {
     // Loop through each student in the master data
-    masterData.forEach(masterStudent => {
+    masterData.forEach(Student => {
+      let masterStudent=Student;
+      if('isMiss' in masterStudent){
+        masterStudent['isMiss']=false;
+      }
+      if('isError' in masterStudent){
+        masterStudent['isError']=false;
+      }
       // Find the corresponding student in compareData by roll number
       const compareStudent = compareData.find(cs => cs.roll === String(masterStudent.roll));
   
+      
       // If student is not found in the compare data, mark as missing
       if (!compareStudent) {
         masterStudent['isMiss'] = true;
+        this.masterData.push(masterStudent);
         return; // Skip further processing for this student
       }
   
@@ -67,10 +76,13 @@ export class VerifyDataComponent implements OnInit {
           }
         }
       }
+
+      this.masterData.push(masterStudent);
+
     });
 
 
-    this.masterData= masterData;
+    
   }
 
 

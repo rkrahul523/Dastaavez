@@ -79,7 +79,7 @@ export class DynamicChartComponent implements OnInit {
 const subject = new Set<string>();
 subData.forEach((student: any) => {
     Object.keys(student).forEach(key => {
-        if (key !== 'roll' && key !== 'sgpa' && key !== 'calSGPA') {
+        if (key !== 'roll' && key !== 'sgpa' && key !== 'calSGPA' && key !== 'isMiss' && key !== 'isError' ) {
             subject.add(key); // Add unique subjects dynamically
         }
     });
