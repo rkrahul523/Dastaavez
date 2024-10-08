@@ -65,14 +65,24 @@ export class VerifyDataComponent implements OnInit {
   
       // Loop through master student's subjects and compare the grades
       for (const key in masterStudent) {
-        if (key !== 'roll' && key !== 'sgpa' && key !== 'calSGPA' && key !== 'isError' && key !== 'isMiss') {
+        if (key !== 'roll' && key !== 'sgpa' && key !== 'calSGPA' && key !== 'isError' && key !== 'isMiss' && key !== 'errorDetail') {
           // Compare each subject grade
           if (compareStudent[key] !== undefined) {
             if (masterStudent[key] !== compareStudent[key]) {
               masterStudent['isError'] = true; // Grade mismatch
+              if('errorDetail' in masterStudent){
+                masterStudent['errorDetail'].push(`Grade Mismatch of ${key}`)
+              }else{
+                masterStudent['errorDetail']= [`Grade Mismatch of ${key}`]
+              }
             }
           } else {
             masterStudent['isError'] = true; // Subject code missing in compare data
+            if('errorDetail' in masterStudent){
+              masterStudent['errorDetail'].push(`Subject missiong ${key}`)
+            }else{
+              masterStudent['errorDetail']= [`Subject missiong ${key}`]
+            }
           }
         }
       }
@@ -93,7 +103,7 @@ export class VerifyDataComponent implements OnInit {
   
     data.forEach(student => {
       Object.keys(student).forEach(key => {
-        if (key !== 'roll' && key !== 'sgpa' && key !== 'isError' && key !== 'isMiss' && key !== 'calSGPA') {
+        if (key !== 'roll' && key !== 'sgpa' && key !== 'isError' && key !== 'isMiss' && key !== 'calSGPA' && key !== 'errorDetail') {
           headers.add(key);
         }
       });

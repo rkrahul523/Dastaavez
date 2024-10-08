@@ -15,9 +15,10 @@
             <tr *ngFor="let student of masterData"
                 [ngClass]="{
                   'error': student.isError,
-                  'miss': student.isMiss
+                  'miss': student.isMiss,
+                  'success':!student.isError && !student.isMiss
                 }">
-              <td>{{ student.roll }}</td>
+              <td  ngbTooltip={{student?.errorDetail}}>{{ student.roll }}</td>
               <td>{{ student.sgpa }}</td>
               <!-- Dynamically generate subject columns -->
               <td *ngFor="let key of getSubjectHeaders(masterData)">
