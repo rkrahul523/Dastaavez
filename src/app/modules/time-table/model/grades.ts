@@ -92,7 +92,7 @@ const ME=[
                     { subcode: 'BSC105', credit: 4 },
                     { subcode: 'BSC102', credit: 4 },
                     { subcode: 'BSC104', credit: 4 },
-                    { subcode: 'BSC103', credit: 4 },
+                    { subcode: 'ESC103', credit: 4 },
                     { subcode: 'HSMC101', credit: 3 },
                     { subcode: 'ESC104', credit: 3 },
                     { subcode: 'BSC102P', credit: 1 },

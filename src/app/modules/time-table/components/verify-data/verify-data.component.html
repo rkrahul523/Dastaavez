@@ -18,7 +18,7 @@
                   'miss': student.isMiss,
                   'success':!student.isError && !student.isMiss
                 }">
-              <td  ngbTooltip={{student?.errorDetail}}>{{ student.roll }}</td>
+              <td  ><span ngbTooltip={{student?.errorDetail}}>{{ student.roll }}</span></td>
               <td>{{ student.sgpa }}</td>
               <!-- Dynamically generate subject columns -->
               <td *ngFor="let key of getSubjectHeaders(masterData)">
