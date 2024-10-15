@@ -20,6 +20,7 @@ import { MarkEntryComponent } from './components/mark-entry/mark-entry.component
 import { ChartsModule } from 'ng2-charts';
 import { DynamicChartComponent } from './components/dynamic-chart/dynamic-chart.component';
 import { VerifyDataComponent } from './components/verify-data/verify-data.component';
+import { XlsxCreatorComponent } from './components/xlsx-creator/xlsx-creator.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { VerifyDataComponent } from './components/verify-data/verify-data.compon
             MtechFirstComponent,
             MarkEntryComponent,
             DynamicChartComponent,
-            VerifyDataComponent
+            VerifyDataComponent,
+            XlsxCreatorComponent
   ],
   imports: [
     CommonModule,

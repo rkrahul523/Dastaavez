@@ -60,31 +60,31 @@ const ME=[
 
 
         const MME3rd=[
-            { subcode: 'MA2101', credit: 3 },
-             { subcode: 'MT2101', credit: 3 },
-             { subcode: 'MT2102', credit:2 },
-             { subcode: 'MT2103', credit:2 },
-             { subcode: 'MT2104', credit: 4 },
-             { subcode: 'MT2105', credit: 3 },
-            { subcode: 'MT2111', credit: 1 },
-            { subcode: 'MT2112', credit: 1 },
-            { subcode: 'MT2113', credit: 1 },
-            { subcode: 'EA2121', credit: 1 }
+            { subcode: 'MA2101', credit: 3 ,name:'MATHEMATICS-III', type:'THEORY'},
+             { subcode: 'MT2101', credit: 3 ,name:'FLUID MECHANICS', type:'THEORY'},
+             { subcode: 'MT2102', credit:2 ,name:'MINERAL DRESSING', type:'THEORY'},
+             { subcode: 'MT2103', credit:2 ,name:'FUELS, FURNACES AND REFRACTORIES', type:'THEORY'},
+             { subcode: 'MT2104', credit: 4 ,name:'METALLURGICAL THERMODYMICS AND KINETICS', type:'THEORY' },
+             { subcode: 'MT2105', credit: 3 ,name:'PRINCIPLES OF EXTRACTIVE METALLURGY', type:'THEORY' },
+            { subcode: 'MT2111', credit: 1 ,name:'FLUID MECHANICS LABORATORY', type:'PRACTICAL'},
+            { subcode: 'MT2112', credit: 1 ,name:'MINERAL DRESSING LABORATORY', type:'PRACTICAL'},
+            { subcode: 'MT2113', credit: 1 ,name:'FUELS, FURNACES AND REFRACTORIES LABORATORY', type:'PRACTICAL'},
+            { subcode: 'EA2121', credit: 1 ,name:'EXTRA ACTIVITIES (NSO/NSS/NCC/YOGA/CREATIVE ARTS/MINI PROJECT', type:'PRACTICAL'}
             
             ]
 
             const ME3rd=[
-                { subcode: 'ME301', credit: 3 },
-                { subcode: 'ME302', credit: 3 },
-                { subcode: 'ME303', credit: 3 },
-                 { subcode: 'MT301', credit: 3 },
-                 { subcode: 'BSC301', credit: 4 },
-                { subcode: 'BSC302', credit: 0 },
-                { subcode: 'ME301P', credit: 1 },
-                { subcode: 'ME302P', credit: 1 },
-                { subcode: 'ME303P', credit: 1 },
-                { subcode: 'EX301', credit: 1 },
-                { subcode: 'HS301', credit: 1 }
+                { subcode: 'ME301', credit: 3 ,name:'THERMODYNAMICS', type:'THEORY'},
+                { subcode: 'ME302', credit: 3  ,name:'FLUID MECHANICS', type:'THEORY'},
+                { subcode: 'ME303', credit: 3 ,name:'STRENGTH OF MATERIALS', type:'THEORY'},
+                 { subcode: 'MT301', credit: 3 ,name:'MATERIALS ENGINEERING', type:'THEORY'},
+                 { subcode: 'BSC301', credit: 4 ,name:'MATHEMATICS-III', type:'THEORY'},
+                { subcode: 'BSC302', credit: 0 ,name:'ENVIRONMENTAL SCIENCE', type:'THEORY'},
+                { subcode: 'ME301P', credit: 1 ,name:'THERMODYNAMICS LAB', type:'PRACTICAL'},
+                { subcode: 'ME302P', credit: 1 ,name:'FLUID MECHANICS LAB', type:'PRACTICAL'},
+                { subcode: 'ME303P', credit: 1 ,name:'STRENGTH OF MATERIALS LAB', type:'PRACTICAL'},
+                { subcode: 'EX301', credit: 1 ,name:'EXTRA ACTIVITIES (NSO/NSS/NCC/YOGA/CREATIVE ARTS/MINI PROJECT', type:'PRACTICAL'},
+                { subcode: 'HS301', credit: 1 ,name:'COMMUNICATION SKILL LAB', type:'PRACTICAL'}
                 
                 ]
 

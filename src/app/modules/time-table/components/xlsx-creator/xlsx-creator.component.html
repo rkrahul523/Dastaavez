@@ -1,0 +1,19 @@
+<!-- file-upload.component.html -->
+<div class="file-upload">
+    <h2>Upload JSON and XLSX</h2>
+  
+    <div>
+      <label for="jsonUpload">Upload JSON:</label>
+      <input type="file" id="jsonUpload" (change)="onJsonUpload($event)" accept=".json">
+      <div *ngIf="jsonError" class="error">{{ jsonError }}</div>
+    </div>
+  
+    <div class="mt-4"> 
+      <label for="xlsxUpload">Upload XLSX:</label>
+      <input type="file" id="xlsxUpload" (change)="onXlsxUpload($event)" accept=".xlsx">
+      <div *ngIf="xlsxError" class="error">{{ xlsxError }}</div>
+    </div>
+  
+    <button (click)="onCreate()" class="btn btn-primary">Export</button>
+  </div>
+  

@@ -4,14 +4,20 @@ import { TimetableHomeComponent } from './components/timetable-home/timetable-ho
 import { AdcFoundryComponent } from './components/adc-foundry/adc-foundry.component';
 import { InformationBulletinComponent } from './components/information-bulletin/information-bulletin.component';
 import { MarkEntryComponent } from './components/mark-entry/mark-entry.component';
+import { XlsxCreatorComponent } from './components/xlsx-creator/xlsx-creator.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'markentry',
     component: MarkEntryComponent
     // component: TimetableHomeComponent
     // component: AdcFoundryComponent
   },
+  {
+    path:'xlsx',
+    component: XlsxCreatorComponent
+
+  }
   
 ];
 
