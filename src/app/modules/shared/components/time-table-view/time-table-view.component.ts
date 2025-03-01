@@ -78,7 +78,7 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
     this.api.getAlltime().subscribe((res: any) => {
       //if (res && res.status) {
 
-       this.fetchedData= res//.data;
+       this.fetchedData= res.data;
        this.calculateTimeTable();
 
         //console.log(res)
