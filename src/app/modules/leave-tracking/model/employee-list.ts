@@ -80,29 +80,29 @@ export const employeeList=[
     designation:"",
     id:16
 },
-    {
-    name:"Dr. Rajat Upadhayay",
-    designation:"",
-    id:17
-},
-    {
-    name:"DASH Department",
-    designation:"",
-    other:true,
-    id:18
-},
-    {
-    name:"Electronics & Computer Department",
-    designation:"",
-    other:true,
-    id:19
-},
-    {
-    name:"Gymkhana Chairman",
-    designation:"",
-    other:true,
-    id:20
-},
+//     {
+//     name:"Dr. Rajat Upadhayay",
+//     designation:"",
+//     id:17
+// },
+//     {
+//     name:"DASH Department",
+//     designation:"",
+//     other:true,
+//     id:18
+// },
+//     {
+//     name:"Electronics & Computer Department",
+//     designation:"",
+//     other:true,
+//     id:19
+// },
+//     {
+//     name:"Gymkhana Chairman",
+//     designation:"",
+//     other:true,
+//     id:20
+// },
 
 //     {
 //     name:"Shankar Behera",
