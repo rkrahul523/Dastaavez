@@ -9,8 +9,8 @@ import { XlsxCreatorComponent } from './components/xlsx-creator/xlsx-creator.com
 const routes: Routes = [
   {
     path: 'markentry',
-    component: MarkEntryComponent
-    // component: TimetableHomeComponent
+    // component: MarkEntryComponent
+    component: TimetableHomeComponent
     // component: AdcFoundryComponent
   },
   {

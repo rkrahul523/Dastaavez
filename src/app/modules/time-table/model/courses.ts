@@ -44,6 +44,10 @@ export const courses=[
         name:"BTech ME 5th Semester",
         id:"BTECH_ME_SEM_5"
     },
+    {
+        name:"BTech PIE 7th Semester",
+        id:"BTECH_ME_SEM_7"
+    },
 
 
 
