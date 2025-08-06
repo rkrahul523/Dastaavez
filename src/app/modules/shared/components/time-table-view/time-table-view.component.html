@@ -2,7 +2,7 @@
 
 
 
-<app-add-time></app-add-time>
+<!-- <app-add-time></app-add-time> -->
 
 
 <div class="time-table-container">
@@ -96,6 +96,20 @@
                     <div>PIE Sem 5</div></th>
                     <ng-container
                         *ngFor="let data of btechpiesem5">
+                     
+                        <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
+                            {{data?.short}}
+                       <div ngbTooltip={{data?.head}}>
+                        {{data?.sub}}
+                       </div>
+                    </td>
+                    </ng-container>
+              </tr>
+              <tr>
+                <th scope="row" >Btech 105
+                    <div>PIE Sem 7</div></th>
+                    <ng-container
+                        *ngFor="let data of btechpiesem7">
                      
                         <td [ngClass]="data?.head && isTimeBetween(data?.startTime, data?.endTime) ? 'bg-info':''" [attr.colspan]="data.endTime -data.startTime" >
                             {{data?.short}}

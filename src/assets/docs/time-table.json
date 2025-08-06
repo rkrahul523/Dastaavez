@@ -500,33 +500,53 @@
     },
     {
         "BTECH_PIE_SEM_1": {
+            "FRI": [
+                {
+                    "day": "FRI",
+                    "course": "BTECH_PIE_SEM_1",
+                    "head": "Basic Material Engineering",
+                    "short": "BME",
+                    "sub": "Dr. K.K. Singh",
+                    "startTime": 10,
+                    "endTime": 11
+                }
+            ],
+            "THU": [
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_1",
+                    "head": "Engineering Drawing & Computer Graphics",
+                    "short": "EDCG",
+                    "sub": "Dr. Pavitra Singh",
+                    "startTime": 15,
+                    "endTime": 17
+                },
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_1",
+                    "head": "Basic Material Engineering",
+                    "short": "BME",
+                    "sub": "Dr. K.K. Singh",
+                    "startTime": 12,
+                    "endTime": 13
+                }
+            ],
             "MON": [
                 {
                     "day": "MON",
                     "course": "BTECH_PIE_SEM_1",
-                    "head": "Engineering Mechanics",
-                    "short": "EM",
-                    "sub": "Dr. Vineet Chak",
-                    "startTime": 11,
-                    "endTime": 12
-                }
-            ],
-            "TUE": [
-                {
-                    "day": "TUE",
-                    "course": "BTECH_PIE_SEM_1",
-                    "head": "Engineering Mechanics",
-                    "short": "EM",
-                    "sub": "Dr. Vineet Chak",
-                    "startTime": 11,
-                    "endTime": 12
+                    "head": "Workshop Practice Lab",
+                    "short": "WP Lab",
+                    "sub": "Dr. Vivek S Ayar",
+                    "startTime": 15,
+                    "endTime": 17
                 },
                 {
-                    "day": "TUE",
+                    "day": "MON",
                     "course": "BTECH_PIE_SEM_1",
-                    "head": "Manufacturing Science  II",
-                    "short": "MS II",
-                    "sub": "Dr. Deepak Kumar",
+                    "head": "Basic Material Engineering",
+                    "short": "BME",
+                    "sub": "Dr. K.K. Singh",
                     "startTime": 10,
                     "endTime": 11
                 }
@@ -535,30 +555,30 @@
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_1",
-                    "head": "Engineering Mechanics",
-                    "short": "EM",
-                    "sub": "Dr. Vineet Chak",
-                    "startTime": 10,
-                    "endTime": 11
+                    "head": "Workshop Practice Lab",
+                    "short": "WP Lab",
+                    "sub": "Dr. Vivek S Ayar",
+                    "startTime": 15,
+                    "endTime": 17
                 },
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_1",
-                    "head": "Manufacturing Science  II",
-                    "short": "MS II",
-                    "sub": "Dr. Deepak Kumar",
-                    "startTime": 12,
+                    "head": "Design Thinking & Idea Lab",
+                    "short": "DTI Lab",
+                    "sub": "Dr. Himanshu Khandelwal",
+                    "startTime": 11,
                     "endTime": 13
                 }
             ],
-            "FRI": [
+            "TUE": [
                 {
-                    "day": "FRI",
+                    "day": "TUE",
                     "course": "BTECH_PIE_SEM_1",
-                    "head": "Manufacturing Science  II",
-                    "short": "MS II",
-                    "sub": "Dr. Deepak Kumar",
-                    "startTime": 12,
+                    "head": "Engineering Drawing & Computer Graphics",
+                    "short": "EDCG",
+                    "sub": "Dr. Pavitra Singh",
+                    "startTime": 10,
                     "endTime": 13
                 }
             ]
@@ -566,325 +586,161 @@
     },
     {
         "BTECH_PIE_SEM_3": {
+            "FRI": [
+                {
+                    "day": "FRI",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Universal Human Values",
+                    "short": "UHV",
+                    "sub": "Dr. R. Rahul Kulkarni",
+                    "startTime": 12,
+                    "endTime": 13
+                }
+            ],
+            "MON": [
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Universal Human Values",
+                    "short": "UHV",
+                    "sub": "Dr. R. Rahul Kulkarni",
+                    "startTime": 9,
+                    "endTime": 10
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Strength of Materials",
+                    "short": "SOM",
+                    "sub": "Dr. R. Rahul Kulkarni",
+                    "startTime": 10,
+                    "endTime": 11
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Strength of Materials lab",
+                    "short": "SOM Lab",
+                    "sub": "Dr. R. Rahul Kulkarni",
+                    "startTime": 15,
+                    "endTime": 17
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Applied Thermodynamics",
+                    "short": "ATD",
+                    "sub": "Dr. E. Hemachandran",
+                    "startTime": 11,
+                    "endTime": 12
+                }
+            ],
+            "THU": [
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Applied Thermodynamics",
+                    "short": "ATD",
+                    "sub": "Dr. E. Hemachandran",
+                    "startTime": 10,
+                    "endTime": 11
+                }
+            ],
             "TUE": [
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "KInematics of Machine",
-                    "short": "KOM",
-                    "sub": "Dr. Sunny Singhania",
+                    "head": "Universal Human Values",
+                    "short": "UHV",
+                    "sub": "Dr. R. Rahul Kulkarni",
                     "startTime": 15,
                     "endTime": 16
                 },
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "Applied Thermodynamics",
-                    "short": "ATD",
-                    "sub": "Dr. E. Hemachandran",
+                    "head": "Strength of Materials",
+                    "short": "SOM",
+                    "sub": "Dr. R. Rahul Kulkarni",
                     "startTime": 12,
                     "endTime": 13
                 },
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "Solidification of Metals & Alloys",
-                    "short": "SMA",
-                    "sub": "Dr. Ajit Kr Pramanick",
+                    "head": "Applied Thermodynamics",
+                    "short": "ATD",
+                    "sub": "Dr. E. Hemachandran",
                     "startTime": 9,
                     "endTime": 10
                 },
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "Manufacturing Enginerring I",
-                    "short": "ME I",
-                    "sub": "Dr. Ajit Kr Pramanick",
+                    "head": "Production planning & control",
+                    "short": "PPC",
+                    "sub": "Dr. Himanshu Khandelwal",
                     "startTime": 10,
                     "endTime": 11
-                },
-                {
-                    "day": "TUE",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Industrial Engineering",
-                    "short": "IE",
-                    "sub": "Dr. R.K. Odhar",
-                    "startTime": 11,
-                    "endTime": 12
                 }
             ],
             "WED": [
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "Technology of Ferrous casting",
-                    "short": "TFC",
-                    "sub": "Dr. K.K. Singh",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "WED",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Production Planning & Control",
-                    "short": "PPC",
-                    "sub": "Dr. Himanshu Khandelwal",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "WED",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Manufacturing Enginerring I",
-                    "short": "ME I",
-                    "sub": "Dr. Ajit Kr Pramanick",
+                    "head": "Strength of Materials",
+                    "short": "SOM",
+                    "sub": "Dr. R. Rahul Kulkarni",
                     "startTime": 10,
                     "endTime": 11
                 },
                 {
                     "day": "WED",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Manufacturing Enginerring I lab",
-                    "short": "ME I Lab",
-                    "sub": "Dr. Ajit Kr Pramanick",
-                    "startTime": 15,
-                    "endTime": 17
-                },
-                {
-                    "day": "WED",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Industrial Engineering",
-                    "short": "IE",
-                    "sub": "Dr. R.K. Odhar",
-                    "startTime": 12,
-                    "endTime": 13
-                }
-            ],
-            "MON": [
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "KInematics of Machine",
-                    "short": "KOM",
-                    "sub": "Dr. Sunny Singhania",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Technology of Ferrous casting",
-                    "short": "TFC",
-                    "sub": "Dr. K.K. Singh",
-                    "startTime": 10,
-                    "endTime": 11
-                },
-                {
-                    "day": "MON",
                     "course": "BTECH_PIE_SEM_3",
                     "head": "Applied Thermodynamics",
                     "short": "ATD",
                     "sub": "Dr. E. Hemachandran",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Production Planning & Control",
-                    "short": "PPC",
-                    "sub": "Dr. Himanshu Khandelwal",
-                    "startTime": 12,
-                    "endTime": 13
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Industrial Engineering Lab",
-                    "short": "IE Lab",
-                    "sub": "Dr. R.K. Odhar",
-                    "startTime": 15,
-                    "endTime": 17
-                }
-            ],
-            "FRI": [
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "KInematics of Machine",
-                    "short": "KOM",
-                    "sub": "Dr. Sunny Singhania",
                     "startTime": 9,
                     "endTime": 10
                 },
                 {
-                    "day": "FRI",
+                    "day": "WED",
                     "course": "BTECH_PIE_SEM_3",
-                    "head": "Technology of Ferrous casting",
-                    "short": "TFC",
-                    "sub": "Dr. K.K. Singh",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Solidification of Metals & Alloys",
-                    "short": "SMA",
-                    "sub": "Dr. Anas Ahmad Siddique",
-                    "startTime": 12,
-                    "endTime": 13
-                },
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Manufacturing Enginerring I",
-                    "short": "ME I",
-                    "sub": "Dr. Ajit Kr Pramanick",
-                    "startTime": 10,
-                    "endTime": 11
-                },
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Metrology & Inspection Lab",
-                    "short": "MI Lab",
-                    "sub": "Dr. E. Hemachandran",
-                    "startTime": 15,
-                    "endTime": 17
-                }
-            ],
-            "THU": [
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Technology of Ferrous casting Lab",
-                    "short": "TFC Lab",
-                    "sub": "Dr. K.K. Singh",
-                    "startTime": 15,
-                    "endTime": 17
-                },
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Applied Thermodynamics",
-                    "short": "ATD",
-                    "sub": "Dr. Pavitra Singh",
-                    "startTime": 12,
-                    "endTime": 13
-                },
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Solidification of Metals & Alloys",
-                    "short": "SMA",
-                    "sub": "Dr. Anas Ahmad Siddique",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Industrial Engineering",
-                    "short": "IE",
-                    "sub": "Dr. R.K. Odhar",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Production Planning & Control",
+                    "head": "Production planning & control",
                     "short": "PPC",
-                    "sub": "Dr. Himanshu Khandelwal",
-                    "startTime": 10,
-                    "endTime": 11
+                    "sub": "Dr. Vineet Chak",
+                    "startTime": 11,
+                    "endTime": 12
                 }
             ]
         }
     },
     {
         "BTECH_PIE_SEM_5": {
-            "MON": [
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Simulation in Casting & Forging",
-                    "short": "SCG",
-                    "sub": "Dr. Himanshu Khandelwal",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Total Quality Management",
-                    "short": "TQM",
-                    "sub": "Dr. Anas Ahmad Siddique",
-                    "startTime": 10,
-                    "endTime": 11
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Physical Metallurgy for Casting & Forging",
-                    "short": "PMCFP",
-                    "sub": "Dr. Amitesh Kumar",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Technology of Non-Ferrous Casting",
-                    "short": "TNFC",
-                    "sub": "Dr. Nandita Gupta",
-                    "startTime": 12,
-                    "endTime": 13
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Machine Design",
-                    "short": "MD",
-                    "sub": "Dr. Sunny Singhania",
-                    "startTime": 14,
-                    "endTime": 15
-                },
-                {
-                    "day": "MON",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Machine Design Lab",
-                    "short": "MD Lab",
-                    "sub": "Dr. Sunny Singhania",
-                    "startTime": 15,
-                    "endTime": 17
-                }
-            ],
             "WED": [
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Simulation in Casting & Forging",
-                    "short": "SCG",
-                    "sub": "Dr. E. Hemachandran",
-                    "startTime": 10,
-                    "endTime": 11
+                    "head": "Technology of Ferrous Forging",
+                    "short": "TFF",
+                    "sub": "Dr. Manoj Kumar",
+                    "startTime": 12,
+                    "endTime": 13
                 },
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Technology of Non-Ferrous Casting Lab",
-                    "short": "TNFC Lab",
-                    "sub": "Dr. Nandita Gupta",
-                    "startTime": 15,
-                    "endTime": 17
+                    "head": "Machine Tool Design",
+                    "short": "MTD",
+                    "sub": "Dr. Sunny Singhania",
+                    "startTime": 14,
+                    "endTime": 15
                 },
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Machine Design",
-                    "short": "MD",
+                    "head": "Machine Tool Design",
+                    "short": "MTD",
                     "sub": "Dr. Sunny Singhania",
                     "startTime": 9,
                     "endTime": 10
@@ -892,93 +748,55 @@
                 {
                     "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Production and Value Engineering",
-                    "short": "PVE",
-                    "sub": "Dr. Vivek S Ayar",
-                    "startTime": 12,
-                    "endTime": 13
-                },
-                {
-                    "day": "WED",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Production & Operation Management",
-                    "short": "POM",
-                    "sub": "Dr. Vineet Chak",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "WED",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Management Concept & Techniques",
-                    "short": "MCT",
-                    "sub": "Dr. R. Rahul Kulkarni",
-                    "startTime": 14,
-                    "endTime": 15
-                }
-            ],
-            "THU": [
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Simulation in Casting & Forging",
-                    "short": "SCG",
-                    "sub": "Dr. E. Hemachandran",
-                    "startTime": 11,
-                    "endTime": 12
-                },
-                {
-                    "day": "THU",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Physical Metallurgy for Casting & Forging",
-                    "short": "PMCFP",
-                    "sub": "Dr. Amitesh Kumar",
+                    "head": "Manufacturing Engineering II",
+                    "short": "ME II",
+                    "sub": "Dr. Ajit Kr Pramanick",
                     "startTime": 10,
                     "endTime": 11
                 },
                 {
-                    "day": "THU",
+                    "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Machine Design",
-                    "short": "MD",
-                    "sub": "Dr. Sunny Singhania",
-                    "startTime": 12,
-                    "endTime": 13
+                    "head": "Manufacturing Engineering II Lab",
+                    "short": "ME II lab",
+                    "sub": "Dr. Ajit Kr Pramanick",
+                    "startTime": 15,
+                    "endTime": 17
                 },
                 {
-                    "day": "THU",
+                    "day": "WED",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Management Concept & Techniques",
-                    "short": "MCT",
-                    "sub": "Dr. R. Rahul Kulkarni",
-                    "startTime": 14,
-                    "endTime": 15
+                    "head": "Operation Research",
+                    "short": "OR",
+                    "sub": "Dr. R.K. Odhar",
+                    "startTime": 11,
+                    "endTime": 12
                 }
             ],
             "FRI": [
                 {
                     "day": "FRI",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Total Quality Management",
-                    "short": "TQM",
-                    "sub": "Dr. Anas Ahmad Siddique",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Technology of Non-Ferrous Casting",
-                    "short": "TNFC",
-                    "sub": "Dr. Nandita Gupta",
+                    "head": "Dynamics of Machine",
+                    "short": "DOM",
+                    "sub": "Dr. Sunny Singhania",
                     "startTime": 10,
                     "endTime": 11
                 },
                 {
                     "day": "FRI",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Production and Value Engineering",
-                    "short": "PVE",
+                    "head": "Ergonomics and Work Design",
+                    "short": "EWD",
+                    "sub": "Dr. Nandita Gupta",
+                    "startTime": 15,
+                    "endTime": 16
+                },
+                {
+                    "day": "FRI",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Heat and Mass Transfer",
+                    "short": "HMT",
                     "sub": "Dr. Pavitra Singh",
                     "startTime": 12,
                     "endTime": 13
@@ -986,18 +804,18 @@
                 {
                     "day": "FRI",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Production & Operation Management",
-                    "short": "POM",
-                    "sub": "Dr. Vineet Chak",
+                    "head": "Manufacturing Engineering II",
+                    "short": "ME II",
+                    "sub": "Dr. Ajit Kr Pramanick",
                     "startTime": 11,
                     "endTime": 12
                 },
                 {
                     "day": "FRI",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Management Concept & Techniques",
-                    "short": "MCT",
-                    "sub": "Dr. R. Rahul Kulkarni",
+                    "head": "Operation Research",
+                    "short": "OR",
+                    "sub": "Dr. R.K. Odhar",
                     "startTime": 14,
                     "endTime": 15
                 }
@@ -1006,58 +824,375 @@
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Total Quality Management",
-                    "short": "TQM",
-                    "sub": "Dr. Anas Ahmad Siddique",
-                    "startTime": 14,
-                    "endTime": 15
-                },
-                {
-                    "day": "TUE",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Physical Metallurgy for Casting & Forging",
-                    "short": "PMCFP",
-                    "sub": "Dr. Amitesh Kumar",
-                    "startTime": 10,
-                    "endTime": 11
-                },
-                {
-                    "day": "TUE",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Technology of Non-Ferrous Casting",
-                    "short": "TNFC",
+                    "head": "Ergonomics and Work Design",
+                    "short": "EWD",
                     "sub": "Dr. Nandita Gupta",
-                    "startTime": 9,
-                    "endTime": 10
-                },
-                {
-                    "day": "TUE",
-                    "course": "BTECH_PIE_SEM_5",
-                    "head": "Production and Value Engineering",
-                    "short": "PVE",
-                    "sub": "Dr. Vivek S Ayar",
                     "startTime": 11,
                     "endTime": 12
                 },
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Production & Operation Management",
-                    "short": "POM",
-                    "sub": "Dr. Vineet Chak",
+                    "head": "Manufacturing Engineering II",
+                    "short": "ME II",
+                    "sub": "Dr. Ajit Kr Pramanick",
+                    "startTime": 10,
+                    "endTime": 11
+                },
+                {
+                    "day": "TUE",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Operation Research",
+                    "short": "OR",
+                    "sub": "Dr. R.K. Odhar",
                     "startTime": 12,
                     "endTime": 13
                 },
                 {
                     "day": "TUE",
                     "course": "BTECH_PIE_SEM_5",
-                    "head": "Simulation in Casting & Forging Lab",
-                    "short": "SCF Lab",
+                    "head": "Technology of Ferrous Forging Lab",
+                    "short": "TFF Lab",
+                    "sub": "Dr. Manoj Kumar",
+                    "startTime": 15,
+                    "endTime": 17
+                }
+            ],
+            "MON": [
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Dynamics of Machine",
+                    "short": "DOM",
+                    "sub": "Dr. Sunny Singhania",
+                    "startTime": 9,
+                    "endTime": 10
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Ergonomics and Work Design",
+                    "short": "EWD",
+                    "sub": "Dr. Nandita Gupta",
+                    "startTime": 10,
+                    "endTime": 11
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Heat and Mass Transfer",
+                    "short": "HMT",
+                    "sub": "Dr. Pavitra Singh",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Technology of Ferrous Forging",
+                    "short": "TFF",
+                    "sub": "Dr. Manoj Kumar",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Machine Tool Design",
+                    "short": "MTD",
+                    "sub": "Dr. Sunny Singhania",
+                    "startTime": 14,
+                    "endTime": 15
+                },
+                {
+                    "day": "MON",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Heat and mass Transfer Lab",
+                    "short": "HMT Lab",
+                    "sub": "Dr. Pavitra Singh",
+                    "startTime": 15,
+                    "endTime": 17
+                }
+            ],
+            "THU": [
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_5",
+                    "sub": "Dr. Pavitra Singh",
+                    "startTime": 12,
+                    "endTime": 13,
+                    "head": "Heat and Mass Transfer",
+                    "short": "HMT"
+                },
+                {
+                    "head": "Technology of Ferrous Forging",
+                    "sub": "Dr. Manoj Kumar",
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_5",
+                    "startTime": 11,
+                    "endTime": 12,
+                    "short": "TFF"
+                },
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Dynamics of Machine",
+                    "short": "DOM",
+                    "sub": "Dr. Sunny Singhania",
+                    "startTime": 10,
+                    "endTime": 11
+                },
+                {
+                    "day": "THU",
+                    "course": "BTECH_PIE_SEM_5",
+                    "head": "Dynamics of Machine Lab",
+                    "short": "DOM Lab",
+                    "sub": "Dr. Sunny Singhania",
+                    "startTime": 15,
+                    "endTime": 17
+                }
+            ]
+        }
+    },
+    {
+        "BTECH_PIE_SEM_7": {
+            "WED": [
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Tooling Methoding",
+                    "short": "FTM",
                     "sub": "Dr. Himanshu Khandelwal",
+                    "startTime": 9,
+                    "endTime": 10
+                },
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Heat Treatment of Casting and Forging",
+                    "short": "HTCF",
+                    "sub": "Dr. Amitesh Kumar",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Technology of Non Ferrous Forging",
+                    "short": "TNFF",
+                    "sub": "Dr. R.K. Odhar",
+                    "startTime": 14,
+                    "endTime": 15
+                },
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Technology of Non Ferrous Forging Lab",
+                    "short": "TNFF lab",
+                    "sub": "Dr. R.K. Odhar",
+                    "startTime": 15,
+                    "endTime": 17
+                },
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Die Design and Product Realization",
+                    "short": "FDDPR",
+                    "sub": "Dr. N.K. Singh",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "WED",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Future Material Processing / Robotics & Automation (DK/AAS)",
+                    "short": "FMP RA",
+                    "sub": "Dr. Deepak Kumar",
+                    "startTime": 10,
+                    "endTime": 11
+                }
+            ],
+            "THU": [
+                {
+                    "day": "THU",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Computer Aided Manufacturing & Computer Integrated Mfg",
+                    "short": "CAM",
+                    "sub": "Dr. Ajit Kr Pramanick",
+                    "startTime": 14,
+                    "endTime": 15
+                },
+                {
+                    "day": "THU",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Design for Manufacturing",
+                    "short": "DFM",
+                    "sub": "Dr. Vineet Chak",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "THU",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Die Design and Product Realization",
+                    "short": "FDDPR",
+                    "sub": "Dr. N.K. Singh",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "THU",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Future Material Processing / Robotics & Automation (DK/AAS)",
+                    "short": "FMP RA",
+                    "sub": "Dr. Deepak Kumar",
+                    "startTime": 10,
+                    "endTime": 11
+                }
+            ],
+            "FRI": [
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Tooling Methoding",
+                    "short": "FTM",
+                    "sub": "Dr. Vivek S Ayar",
+                    "startTime": 14,
+                    "endTime": 15
+                },
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Heat Treatment of Casting and Forging",
+                    "short": "HTCF",
+                    "sub": "Dr. Amitesh Kumar",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Computer Aided Manufacturing & Computer Integrated Mfg",
+                    "short": "CAM",
+                    "sub": "Dr. Ajit Kr Pramanick",
+                    "startTime": 9,
+                    "endTime": 10
+                },
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Design for Manufacturing",
+                    "short": "DFM",
+                    "sub": "Dr. Vineet Chak",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Die Design and Product Realization lab",
+                    "short": "FDDPR lab",
+                    "sub": "Dr. N.K. Singh",
+                    "startTime": 15,
+                    "endTime": 17
+                },
+                {
+                    "day": "FRI",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Future Material Processing / Robotics & Automation (DK/AAS)",
+                    "short": "FMP RA",
+                    "sub": "Dr. Deepak Kumar",
+                    "startTime": 10,
+                    "endTime": 11
+                }
+            ],
+            "TUE": [
+                {
+                    "day": "TUE",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Technology of Non Ferrous Forging",
+                    "short": "TNFF",
+                    "sub": "Dr. R.K. Odhar",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "TUE",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Computer Aided Manufacturing & Computer Integrated Mfg",
+                    "short": "CAM",
+                    "sub": "Dr. Vivek S Ayar",
+                    "startTime": 9,
+                    "endTime": 10
+                },
+                {
+                    "day": "TUE",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Design for Manufacturing",
+                    "short": "DFM",
+                    "sub": "Dr. Vineet Chak",
+                    "startTime": 10,
+                    "endTime": 11
+                },
+                {
+                    "day": "TUE",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Die Design and Product Realization",
+                    "short": "FDDPR",
+                    "sub": "Dr. Manoj Kumar",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "TUE",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Tool Methoding Lab",
+                    "short": "FTM Lab",
+                    "sub": "Dr. Himanshu Khandelwal",
+                    "startTime": 15,
+                    "endTime": 17
+                }
+            ],
+            "MON": [
+                {
+                    "day": "MON",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Foundry Tooling Methoding",
+                    "short": "FTM",
+                    "sub": "Dr. Himanshu Khandelwal",
+                    "startTime": 11,
+                    "endTime": 12
+                },
+                {
+                    "day": "MON",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Heat Treatment of Casting and Forging",
+                    "short": "HTCF",
+                    "sub": "Dr. Amitesh Kumar",
+                    "startTime": 12,
+                    "endTime": 13
+                },
+                {
+                    "day": "MON",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Technology of Non Ferrous Forging",
+                    "short": "TNFF",
+                    "sub": "Dr. Manoj Kumar",
+                    "startTime": 14,
+                    "endTime": 15
+                },
+                {
+                    "day": "MON",
+                    "course": "ADC_FOUNDRY_SEM_1",
+                    "head": "Heat Treatment for casting and forging Lab",
+                    "short": "HTCF Lab",
+                    "sub": "Dr. Amitesh Kumar",
                     "startTime": 15,
                     "endTime": 17
                 }
             ]
         }
     }
+
 ]
+

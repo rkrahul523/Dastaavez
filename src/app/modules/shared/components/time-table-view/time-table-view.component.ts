@@ -36,6 +36,7 @@ adcForge=[
 btechpiesem1:any=[];
 btechpiesem3:any=[];
 btechpiesem5:any=[];
+btechpiesem7:any=[];
 
 btechce1:any=[]
 btechce3:any=[]
@@ -133,6 +134,10 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
         const daydata= element.BTECH_PIE_SEM_5[`${this.currentDay}`]
         this.btechpiesem5= this.organiseSessions(daydata)
       }
+      if('BTECH_PIE_SEM_7' in element){
+        const daydata= element.BTECH_PIE_SEM_7[`${this.currentDay}`]
+        this.btechpiesem7= this.organiseSessions(daydata)
+      }
        
      });
 
@@ -146,6 +151,7 @@ days: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
       ...this.facultyisAvilable(this.btechpiesem1),
       ...this.facultyisAvilable(this.btechpiesem3),
       ...this.facultyisAvilable(this.btechpiesem5),
+      ...this.facultyisAvilable(this.btechpiesem7),
     ]
     const uniqueOcc = list.filter((value, index, self) => self.indexOf(value) === index);
 
