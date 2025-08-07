@@ -586,17 +586,6 @@
     },
     {
         "BTECH_PIE_SEM_3": {
-            "FRI": [
-                {
-                    "day": "FRI",
-                    "course": "BTECH_PIE_SEM_3",
-                    "head": "Universal Human Values",
-                    "short": "UHV",
-                    "sub": "Dr. R. Rahul Kulkarni",
-                    "startTime": 12,
-                    "endTime": 13
-                }
-            ],
             "MON": [
                 {
                     "day": "MON",
@@ -709,6 +698,26 @@
                     "head": "Production planning & control",
                     "short": "PPC",
                     "sub": "Dr. Vineet Chak",
+                    "startTime": 11,
+                    "endTime": 12
+                }
+            ],
+            "FRI": [
+                {
+                    "short": "UHV",
+                    "endTime": 11,
+                    "course": "BTECH_PIE_SEM_3",
+                    "day": "FRI",
+                    "startTime": 10,
+                    "sub": "Dr. R. Rahul Kulkarni",
+                    "head": "Universal Human Values"
+                },
+                {
+                    "day": "FRI",
+                    "course": "BTECH_PIE_SEM_3",
+                    "head": "Production planning & control",
+                    "short": "PPC",
+                    "sub": "Dr. Himanshu Khandelwal",
                     "startTime": 11,
                     "endTime": 12
                 }
