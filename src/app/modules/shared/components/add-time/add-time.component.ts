@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { employeeList } from 'src/app/modules/leave-tracking/model/employee-list';
+import { employeeList, employeeListDASH } from 'src/app/modules/leave-tracking/model/employee-list';
 import { courses } from 'src/app/modules/time-table/model/courses';
 import { TimeTableApiService } from 'src/app/modules/time-table/services/time-api-service';
 
@@ -13,7 +13,7 @@ export class AddTimeComponent implements OnInit {
 
   form: FormGroup;
   days=["MON","TUE","WED","THU","FRI"]
-  names=employeeList;
+  names=employeeListDASH;
   courses=courses
 
   constructor(private fb: FormBuilder,private api: TimeTableApiService) { }

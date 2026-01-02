@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthenticationService } from '../../login/services/authentication.service';
 import { ToastrService } from 'ngx-toastr';
+import { ILEmployee } from '../model/employee-list';
 
 @Injectable({
     providedIn: 'root'
@@ -80,9 +81,30 @@ export class DakApiService {
       }
 
 
-
-
-
+      private employees: ILEmployee[] = [
+        {
+          id: 1,
+          name: 'John Doe',
+          position: 'Senior Developer',
+          department: 'IT',
+          joinDate: new Date('2018-01-15'),
+          leaveBalances: {
+            casualLeave: 5,
+            sickLeave: 7,
+            earnedLeave: 12,
+            otherLeave: 2
+          }
+        },
+        // Add more employees...
+      ];
+    
+      getEmployees(): ILEmployee[] {
+        return this.employees.sort((a, b) => a.joinDate.getTime() - b.joinDate.getTime());
+      }
+    
+      updateEmployeeOrder(employees: ILEmployee[]): void {
+        this.employees = employees;
+      }
 
 
 

@@ -158,6 +158,88 @@ export const employeeList=[
 
 ]
 
+export const employeeListDASH = [
+    {
+      name: 'Dr. Anil Kumar',
+      designation: 'Professor & Head',
+      id: 1,
+    },
+    {
+      name: 'Dr. S.R. Kumar',
+      designation: 'Professor',
+      id: 2,
+    },
+    {
+      name: 'Dr. Arvind Pandey',
+      designation: 'Professor',
+      id: 3,
+    },
+    {
+      name: 'Ms. Sujata S. Gupta',
+      designation: 'Assistant Professor',
+      id: 4,
+    },
+    {
+      name: 'Dr. Partha S. Mondal',
+      designation: 'Assistant Professor',
+      id: 5,
+    },
+    {
+      name: 'Dr. Subhankar Basu',
+      designation: 'Assistant Professor',
+      id: 6,
+    },
+    {
+      name: 'Dr. Sriparna Chattopadhyay',
+      designation: 'Assistant Professor',
+      id: 7,
+    },
+    {
+      name: 'Dr. H.Vignesh Babu',
+      designation: 'Assistant Professor',
+      id: 8,
+    },
+    {
+      name: 'Dr. Abhilash T. Nair',
+      designation: 'Assistant Professor',
+      id: 9,
+    },
+    {
+      name: 'Dr. Sumbul Rahman',
+      designation: 'Assistant Professor',
+      id: 10,
+    },
+    {
+      name: 'Dr. Khushboo',
+      designation: 'Assistant Professor',
+      id: 11,
+    },
+    {
+      name: 'Dr. Nilima Das',
+      designation: 'Assistant Professor',
+      id: 12,
+    },
+    {
+      name: 'Dr. Vandana',
+      designation: 'Assistant Professor',
+      id: 13,
+    },
+    // {
+    //   name: 'Mr. Vikram Kumar',
+    //   designation: 'MTS',
+    //   id: 14,
+    // },
+    // {
+    //   name: 'Mr. Prasanjeet Kumar Patar',
+    //   designation: 'Technician',
+    //   id: 15,
+    // },
+    // {
+    //   name: 'Mr. Laxmi Nayak',
+    //   designation: 'MTS',
+    //   id: 16,
+    // },
+  ];
 
 
 
@@ -169,3 +251,30 @@ export function getEmployeeName(id:number){
          return ""
      }
 }
+
+
+export interface ILEmployee {
+    id: number;
+    name: string;
+    position: string;
+    department: string;
+    joinDate: Date;
+    avatar?: string;
+    leaveBalances: {
+      casualLeave: number;
+      sickLeave: number;
+      earnedLeave: number;
+      otherLeave: number;
+    };
+  }
+
+  export interface ILLeave {
+    id: number;
+    employeeId: number;
+    employeeName: string;
+    type: 'Casual' | 'Sick' | 'Earned' | 'Other';
+    startDate: Date;
+    endDate: Date;
+    status: 'Pending' | 'Approved' | 'Rejected';
+    reason: string;
+  }
