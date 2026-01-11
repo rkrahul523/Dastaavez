@@ -1,23 +1,23 @@
 
 export const courses=[
     {
-        name:"BTECH MME 2nd Semester",
+        name:"ADC_FOUNDRY_SEM_2",
         id:"ADC_FOUNDRY_SEM_1"
     },
     {
-        name:"BTECH MME 4th Semester",
+        name:"ADC_FORGE_SEM_2",
         id:"ADC_FORGE_SEM_1"
     },
     {
-        name:"BTech ME 2nd Semester",
+        name:"BTech PIE 2 Semester",
         id:"BTECH_PIE_SEM_1"
     },
     {
-        name:"BTech ME 4th Semester",
+        name:"BTech PIE 4 Semester",
         id:"BTECH_PIE_SEM_3"
     },
     {
-        name:"BTech CE 2nd Semester",
+        name:"BTech PIE 6 Semester",
         id:"BTECH_PIE_SEM_5"
     },
     {
@@ -29,7 +29,7 @@ export const courses=[
         id:"BTECH_CE_SEM_3"
     },
     {
-        name:"BTech PIE 4 Semester",
+        name:"BTech MME 4 Semester",
         id:"BTECH_CE_SEM_5"
     },
     // {
