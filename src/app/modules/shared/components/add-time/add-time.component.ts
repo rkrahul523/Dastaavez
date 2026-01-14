@@ -13,7 +13,7 @@ export class AddTimeComponent implements OnInit {
 
   form: FormGroup;
   days=["MON","TUE","WED","THU","FRI"]
-  names=employeeList;
+  names=employeeListDASH;
   courses=courses
 
   constructor(private fb: FormBuilder,private api: TimeTableApiService) { }
